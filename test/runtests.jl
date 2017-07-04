@@ -1,5 +1,4 @@
 using CayleyDickson
-using Base.Test
+using Base.Test: @testset
 
-# write your own tests here
-@test 1 == 2
+
