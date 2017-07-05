@@ -20,10 +20,6 @@ function real(z::ParabolicCD)
     real(z.l)
 end
 
-function unreal(z::ParabolicCD)
-    vcat(unreal(z.l), asarray(z.r))
-end
-
 function abs2(z::ParabolicCD)
     abs2(z.l)
 end

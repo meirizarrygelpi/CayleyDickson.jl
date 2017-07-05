@@ -20,10 +20,6 @@ function real(z::HyperbolicCD)
     real(z.l)
 end
 
-function unreal(z::HyperbolicCD)
-    vcat(unreal(z.l), asarray(z.r))
-end
-
 function abs2(z::HyperbolicCD)
     abs2(z.l) - abs2(z.r)
 end

@@ -23,7 +23,9 @@ end
 
 @test begin
     a = 1
-    unreal(Perplex(0, a)) == [a]
+    l = unreal(Perplex(0, a)) 
+    r = [a]
+    l == r
 end
 
 @test begin
