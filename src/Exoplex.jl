@@ -53,3 +53,19 @@ function show(io::IO, z::Exoplex)
     print(io, z.r)
     print(io, "]")
 end
+
+function random(::Type{Exoplex{T}}) where T <: Real
+    Exoplex{T}(rand(T), rand(T))
+end
+
+function random(::Type{Exoplex{BigInt}})
+    Exoplex{BigInt}(randomBigInt(), randomBigInt())
+end
+
+function random(::Type{Exoplex{BigFloat}})
+    Exoplex{BigFloat}(randomBigFloat(), randomBigFloat())
+end
+
+function random(::Type{Exoplex{Rational{BigInt}}})
+    Exoplex{Rational{BigInt}}(randomBigRational(), randomBigRational())
+end
