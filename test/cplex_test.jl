@@ -11,7 +11,7 @@ end
 end
 
 @test begin
-    a = rand(Int8)
+    a = 1
     !isreal(Cplex(a, a))
 end
 

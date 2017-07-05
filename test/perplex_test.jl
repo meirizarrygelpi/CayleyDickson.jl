@@ -7,7 +7,7 @@ using Base.Test: @test, @test_throws
 end
 
 @test begin
-    a = rand(Int8)
+    a = 1
     !isreal(Perplex(a, a))
 end
 
@@ -17,13 +17,13 @@ end
 end
 
 @test begin
-    a = CayleyDickson.randomBigFloat()
+    a = 1
     real(Perplex(a)) == a
 end
 
 @test begin
-    a = CayleyDickson.randomBigFloat()
-    unreal(Perplex(big(0.0), a)) == [a]
+    a = 1
+    unreal(Perplex(0, a)) == [a]
 end
 
 @test begin

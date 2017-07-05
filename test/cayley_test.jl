@@ -7,7 +7,7 @@ using Base.Test: @test, @test_throws
 end
 
 @test begin
-    a = rand(Int8)
+    a = 1
     !isreal(Cayley(a, a, a, a))
 end
 

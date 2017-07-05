@@ -7,7 +7,7 @@ using Base.Test: @test, @test_throws
 end
 
 @test begin
-    a = rand(Int8)
+    a = 1
     !isreal(TriExoplex(a, a, a, a))
 end
 
@@ -17,12 +17,12 @@ end
 end
 
 @test begin
-    a = CayleyDickson.randomBigFloat()
+    a = 1
     real(TriExoplex(a)) == a
 end
 
 @test begin
-    a = CayleyDickson.randomBigFloat()
+    a = 1
     l = unreal(TriExoplex(0, a, a, a, a, a, a, a))
     r = [a, a, a, a, a, a, a]
     l == r

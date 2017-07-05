@@ -17,13 +17,13 @@ end
 end
 
 @test begin
-    a = CayleyDickson.randomBigFloat()
+    a = 1
     real(Exoplex(a)) == a
 end
 
 @test begin
-    a = CayleyDickson.randomBigFloat()
-    unreal(Exoplex(big(0.0), a)) == [a]
+    a = 1
+    unreal(Exoplex(0, a)) == [a]
 end
 
 @test begin

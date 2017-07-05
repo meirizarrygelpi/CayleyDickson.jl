@@ -7,7 +7,7 @@ using Base.Test: @test, @test_throws
 end
 
 @test begin
-    a = rand(Int8)
+    a = 1
     !isreal(Hamilton(a, a, a, a))
 end
 
@@ -22,9 +22,9 @@ end
 end
 
 @test begin
-    a = CayleyDickson.randomBigFloat()
-    b = CayleyDickson.randomBigFloat()
-    c = CayleyDickson.randomBigFloat()
+    a = 1
+    b = 2
+    c = 3
     l = unreal(Hamilton(0, a, b, c))
     r = [a, b, c]
     l == r
