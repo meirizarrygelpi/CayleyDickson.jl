@@ -164,3 +164,7 @@ function show(io::IO, z::Cayley)
     print(io, z.r.r.r)
     print(io, "]")
 end
+
+function random(::Type{Cayley{T}}) where T <: Real
+    Cayley{T}(random(Hamilton{T}), random(Hamilton{T}))
+end

@@ -103,15 +103,6 @@ end
 @test begin
     x = random(Hamilton{BigInt})
     y = random(Hamilton{BigInt})
-    z = random(Hamilton{BigInt})
-    l = associator(x, y, z)
-    r = zero(Hamilton{BigInt})
-    l == r
-end
-
-@test begin
-    x = random(Hamilton{BigInt})
-    y = random(Hamilton{BigInt})
     l = x - y
     r = -(y - x)
     l == r
