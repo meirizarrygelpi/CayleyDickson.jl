@@ -165,3 +165,7 @@ function show(io::IO, z::Zorn)
     print(io, z.r.r.r)
     print(io, "]")
 end
+
+function random(::Type{Zorn{T}}) where T <: Real
+    Zorn{T}(random(Hamilton{T}), random(Hamilton{T}))
+end
