@@ -57,3 +57,7 @@ function show(io::IO, z::ExoPerplex)
     print(io, z.r.r)
     print(io, "]")
 end
+
+function random(::Type{ExoPerplex{T}}) where T <: Real
+    ExoPerplex{T}(random(Perplex{T}), random(Perplex{T}))
+end
