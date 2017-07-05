@@ -2,6 +2,41 @@ using CayleyDickson
 using Base.Test: @test, @test_throws
 
 @test begin
+    a = CayleyDickson.randomBigFloat()
+    real(Cplex(a)) == a
+end
+
+@test begin
+    io = IOBuffer()
+    show(io, Cplex(1, 2))
+    l = String(take!(io))
+    r = "[1: 1, i: 2]"
+    l == r
+end
+
+@test begin
+    x = random(Cplex{BigFloat})
+    y = random(Cplex{BigFloat})
+    x != y
+end
+
+@test begin
+    a = CayleyDickson.randomBigInt()
+    z = random(Cplex{BigInt})
+    l = a + z
+    r = z + a
+    l == r
+end
+
+@test begin
+    a = CayleyDickson.randomBigInt()
+    z = random(Cplex{BigInt})
+    l = a - z
+    r = -(z - a)
+    l == r
+end
+
+@test begin
     x = random(Cplex{BigInt})
     y = random(Cplex{BigInt})
     l = x + y
@@ -177,4 +212,32 @@ end
 
 @test_throws ErrorException begin
     0 \ random(Cplex{Int})
+end
+
+@test begin
+    a = CayleyDickson.randomBigRational()
+    z = random(Cplex{Rational{BigInt}})
+    l = z / a
+    r = a \ z
+    l == r
+end
+
+@test begin
+    z = random(Cplex{BigInt})
+    z == z + zero(Cplex{BigInt})
+end
+
+@test begin
+    z = random(Cplex{BigInt})
+    z == z * one(Cplex{BigInt})
+end
+
+@test begin
+    z = random(Cplex{BigInt})
+    z == z + zero(z)
+end
+
+@test begin
+    z = random(Cplex{BigInt})
+    z == z * one(z)
 end
