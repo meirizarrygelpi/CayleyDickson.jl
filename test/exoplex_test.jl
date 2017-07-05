@@ -3,6 +3,21 @@ using Base.Test: @test, @test_throws
 
 @test begin
     a = CayleyDickson.randomBigFloat()
+    isreal(Exoplex(a))
+end
+
+@test begin
+    a = rand(Int8)
+    !isreal(Exoplex(a, a))
+end
+
+@test begin
+    z = random(Exoplex{Int})
+    z == +(z)
+end
+
+@test begin
+    a = CayleyDickson.randomBigFloat()
     real(Exoplex(a)) == a
 end
 

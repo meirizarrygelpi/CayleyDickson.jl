@@ -3,6 +3,21 @@ using Base.Test: @test, @test_throws
 
 @test begin
     a = CayleyDickson.randomBigFloat()
+    isreal(Perplex(a))
+end
+
+@test begin
+    a = rand(Int8)
+    !isreal(Perplex(a, a))
+end
+
+@test begin
+    z = random(Perplex{Int})
+    z == +(z)
+end
+
+@test begin
+    a = CayleyDickson.randomBigFloat()
     real(Perplex(a)) == a
 end
 

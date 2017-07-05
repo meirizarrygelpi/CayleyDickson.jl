@@ -2,6 +2,25 @@ using CayleyDickson
 using Base.Test: @test, @test_throws
 
 @test begin
+    length(unreal(1)) == 0
+end
+
+@test begin
+    a = CayleyDickson.randomBigFloat()
+    isreal(Cplex(a))
+end
+
+@test begin
+    a = rand(Int8)
+    !isreal(Cplex(a, a))
+end
+
+@test begin
+    z = random(Cplex{Int})
+    z == +(z)
+end
+
+@test begin
     a = CayleyDickson.randomBigFloat()
     real(Cplex(a)) == a
 end

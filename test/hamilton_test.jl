@@ -3,6 +3,21 @@ using Base.Test: @test, @test_throws
 
 @test begin
     a = CayleyDickson.randomBigFloat()
+    isreal(Hamilton(a))
+end
+
+@test begin
+    a = rand(Int8)
+    !isreal(Hamilton(a, a, a, a))
+end
+
+@test begin
+    z = random(Hamilton{Int})
+    z == +(z)
+end
+
+@test begin
+    a = CayleyDickson.randomBigFloat()
     real(Hamilton(a)) == a
 end
 
