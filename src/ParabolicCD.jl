@@ -12,6 +12,10 @@ end
 
 ParabolicCD(l::T, r::T) where T <: Number = ParabolicCD{T}(l, r)
 
+function (==)(x::ParabolicCD, y::ParabolicCD)
+    x.l == y.l && x.r == y.r
+end
+
 function real(z::ParabolicCD)
     real(z.l)
 end

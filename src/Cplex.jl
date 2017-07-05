@@ -33,3 +33,19 @@ function show(io::IO, z::Cplex)
     print(io, z.r)
     print(io, "]")
 end
+
+function random(::Type{Cplex{T}}) where T <: Real
+    Cplex{T}(rand(T), rand(T))
+end
+
+function random(::Type{Cplex{BigInt}})
+    Cplex{BigInt}(randomBigInt(), randomBigInt())
+end
+
+function random(::Type{Cplex{BigFloat}})
+    Cplex{BigFloat}(randomBigFloat(), randomBigFloat())
+end
+
+function random(::Type{Cplex{Rational{BigInt}}})
+    Cplex{Rational{BigInt}}(randomBigRational(), randomBigRational())
+end

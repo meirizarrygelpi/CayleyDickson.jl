@@ -12,6 +12,10 @@ end
 
 EllipticCD(l::T, r::T) where T <: Number = EllipticCD{T}(l, r)
 
+function (==)(x::EllipticCD, y::EllipticCD)
+    x.l == y.l && x.r == y.r
+end
+
 function real(z::EllipticCD)
     real(z.l)
 end

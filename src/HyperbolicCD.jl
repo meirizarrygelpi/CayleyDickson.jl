@@ -12,6 +12,10 @@ end
 
 HyperbolicCD(l::T, r::T) where T <: Number = HyperbolicCD{T}(l, r)
 
+function (==)(x::HyperbolicCD, y::HyperbolicCD)
+    x.l == y.l && x.r == y.r
+end
+
 function real(z::HyperbolicCD)
     real(z.l)
 end

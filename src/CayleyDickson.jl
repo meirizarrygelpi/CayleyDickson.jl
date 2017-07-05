@@ -2,7 +2,7 @@ __precompile__()
 
 module CayleyDickson
 
-import Base: +, -, *, /, \, real, isreal, conj, inv, abs2, show, zero, one, iszero
+import Base: +, -, *, /, \, real, isreal, conj, inv, abs2, show, zero, one, iszero, ==
 # import Unreal: unreal
 
 "Error when finding the inverse of a zero divisor."
@@ -32,6 +32,7 @@ include("ExoHamilton.jl")
 include("ExoCockle.jl")
 include("Sedenion.jl")
 include("TetraExoplex.jl")
+include("random.jl")
 
 # Types
 export CDConstruct, EllipticCD, HyperbolicCD, ParabolicCD,
@@ -41,8 +42,8 @@ export CDConstruct, EllipticCD, HyperbolicCD, ParabolicCD,
        Sedenion, TetraExoplex
 
 # Methods
-export unreal, asarray, iszerodivisor,
-       commutator, associator, jacobiator,
+export unreal, asarray, iszerodivisor, random,
+       commutator, associator, jacobiator, alternatorL, alternatorR,
        cloak, dagger, star, selfstar, antiselfstar
 
 end
