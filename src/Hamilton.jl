@@ -57,3 +57,7 @@ function show(io::IO, z::Hamilton)
     print(io, z.r.r)
     print(io, "]")
 end
+
+function random(::Type{Hamilton{T}}) where T <: Real
+    Hamilton{T}(random(Cplex{T}), random(Cplex{T}))
+end
