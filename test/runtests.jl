@@ -11,3 +11,4 @@ using Base.Test: @testset
 @testset "BiExoplex" begin include("biexoplex_test.jl") end
 @testset "Cayley" begin include("cayley_test.jl") end
 @testset "Zorn" begin include("zorn_test.jl") end
+@testset "TriExoplex" begin include("triexoplex_test.jl") end

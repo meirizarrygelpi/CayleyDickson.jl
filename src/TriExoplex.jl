@@ -184,3 +184,7 @@ function show(io::IO, z::TriExoplex)
     print(io, z.r.r.r)
     print(io, "]")
 end
+
+function random(::Type{TriExoplex{T}}) where T <: Real
+    TriExoplex{T}(random(BiExoplex{T}), random(BiExoplex{T}))
+end
