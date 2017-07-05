@@ -7,6 +7,11 @@ using Base.Test: @test, @test_throws
 end
 
 @test begin
+    a = CayleyDickson.randomBigFloat()
+    unreal(Perplex(big(0.0), a)) == [a]
+end
+
+@test begin
     io = IOBuffer()
     show(io, Perplex(1, 2))
     l = String(take!(io))

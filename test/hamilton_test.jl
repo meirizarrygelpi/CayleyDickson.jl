@@ -15,6 +15,23 @@ end
 end
 
 @test begin
+    a = CayleyDickson.randomBigInt()
+    b = CayleyDickson.randomBigFloat()
+    l = Hamilton(Cplex(a, b))
+    r = Hamilton(a, b)
+    l == r
+end
+
+@test begin
+    a = CayleyDickson.randomBigInt()
+    b = CayleyDickson.randomBigFloat()
+    c = CayleyDickson.randomBigInt()
+    l = Hamilton(a, b, c)
+    r = Hamilton(a, b, c, 0)
+    l == r
+end
+
+@test begin
     x = random(Hamilton{BigFloat})
     y = random(Hamilton{BigFloat})
     x != y
@@ -29,7 +46,23 @@ end
 end
 
 @test begin
+    a = random(Cplex{BigInt})
+    z = random(Hamilton{BigInt})
+    l = a + z
+    r = z + a
+    l == r
+end
+
+@test begin
     a = CayleyDickson.randomBigInt()
+    z = random(Hamilton{BigInt})
+    l = a - z
+    r = -(z - a)
+    l == r
+end
+
+@test begin
+    a = random(Cplex{BigInt})
     z = random(Hamilton{BigInt})
     l = a - z
     r = -(z - a)
@@ -50,6 +83,15 @@ end
     l = x * y
     r = y * x
     l != r
+end
+
+@test begin
+    x = random(Hamilton{BigInt})
+    y = random(Hamilton{BigInt})
+    z = random(Hamilton{BigInt})
+    l = associator(x, y, z)
+    r = zero(Hamilton{BigInt})
+    l == r
 end
 
 @test begin
@@ -160,6 +202,14 @@ end
     l = a * x
     r = x * a
     l == r
+end
+
+@test begin
+    a = random(Cplex{BigInt})
+    x = random(Hamilton{BigInt})
+    l = a * x
+    r = x * a
+    l != r
 end
 
 @test begin

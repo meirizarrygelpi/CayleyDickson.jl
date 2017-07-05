@@ -7,6 +7,11 @@ using Base.Test: @test, @test_throws
 end
 
 @test begin
+    a = CayleyDickson.randomBigFloat()
+    unreal(Exoplex(big(0.0), a)) == [a]
+end
+
+@test begin
     io = IOBuffer()
     show(io, Exoplex(1, 2))
     l = String(take!(io))
@@ -81,6 +86,31 @@ end
 @test begin
     x = random(Exoplex{BigInt})
     conj(conj(x)) == x
+end
+
+@test begin
+    x = random(Exoplex{BigInt})
+    cloak(cloak(x)) == x
+end
+
+@test begin
+    x = random(Exoplex{BigInt})
+    dagger(dagger(x)) == x
+end
+
+@test begin
+    x = random(Exoplex{BigInt})
+    star(star(x)) == x
+end
+
+@test begin
+    x = random(Exoplex{Rational{BigInt}})
+    selfstar(selfstar(x)) == selfstar(x)
+end
+
+@test begin
+    x = random(Exoplex{Rational{BigInt}})
+    antiselfstar(antiselfstar(x)) == antiselfstar(x)
 end
 
 @test begin
