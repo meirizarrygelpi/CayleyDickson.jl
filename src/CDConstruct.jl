@@ -62,7 +62,10 @@ end
 """
     commutator(x::CDConstruct, y::CDConstruct)
 
-Measure the failure of commutativity of the multiplication operation.
+Measure the failure of commutativity of the multiplication operation:
+```julia
+    (x * y) - (y * x)
+```
 If `commutator(x, y)` is zero, then the multiplication operation is commutative.
 """
 function commutator(x::CDConstruct, y::CDConstruct)
@@ -72,7 +75,10 @@ end
 """
     associator(x::CDConstruct, y::CDConstruct, z::CDConstruct)
 
-Measure the failure of associativity of the multiplication operation.
+Measure the failure of associativity of the multiplication operation:
+```julia
+    ((x * y) * z) - (x * (y * z))
+```
 If `associator(x, y, z)` is zero, then the multiplication operation is associative.
 """
 function associator(x::CDConstruct, y::CDConstruct, z::CDConstruct)
@@ -91,6 +97,32 @@ identity.
 """
 function jacobiator(x::CDConstruct, y::CDConstruct, z::CDConstruct)
     ((x * y) * z) + ((z * x) * y) + ((y * z) * x)
+end
+
+"""
+    alternatorL(x::CDConstruct, y::CDConstruct)
+
+Measure the failure of the multiplication operation to be left-alternative:
+```julia
+    ((x * x) * y) - (x * (x * y))
+```
+If `alternatorL(x, y)` is zero, then the multiplication operation is left-alternative.
+"""
+function alternatorL(x::CDConstruct, y::CDConstruct)
+    associator(x, x, y)
+end
+
+"""
+    alternatorR(x::CDConstruct, y::CDConstruct)
+
+Measure the failure of the multiplication operation to be right-alternative:
+```julia
+    ((x * y) * y) - (x * (y * y))
+```
+If `alternatorR(x, y)` is zero, then the multiplication operation is right-alternative.
+"""
+function alternatorR(x::CDConstruct, y::CDConstruct)
+    associator(x, y, y)
 end
 
 """
