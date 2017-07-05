@@ -33,3 +33,19 @@ function show(io::IO, z::Perplex)
     print(io, z.r)
     print(io, "]")
 end
+
+function random(::Type{Perplex{T}}) where T <: Real
+    Perplex{T}(rand(T), rand(T))
+end
+
+function random(::Type{Perplex{BigInt}})
+    Perplex{BigInt}(randomBigInt(), randomBigInt())
+end
+
+function random(::Type{Perplex{BigFloat}})
+    Perplex{BigFloat}(randomBigFloat(), randomBigFloat())
+end
+
+function random(::Type{Perplex{Rational{BigInt}}})
+    Perplex{Rational{BigInt}}(randomBigRational(), randomBigRational())
+end
