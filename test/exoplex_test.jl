@@ -257,6 +257,14 @@ end
 end
 
 @test begin
+    a = CayleyDickson.randomBigRational()
+    z = random(Exoplex{Rational{BigInt}})
+    l = a / z
+    r = z \ a
+    l == r
+end
+
+@test begin
     z = random(Exoplex{BigInt})
     z == z + zero(Exoplex{BigInt})
 end

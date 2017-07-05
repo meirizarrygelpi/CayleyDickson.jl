@@ -281,6 +281,14 @@ end
 end
 
 @test begin
+    a = CayleyDickson.randomBigRational()
+    z = random(Cockle{Rational{BigInt}})
+    l = a / z
+    r = z \ a
+    l == r
+end
+
+@test begin
     z = random(Cockle{BigInt})
     z == z + zero(Cockle{BigInt})
 end

@@ -232,6 +232,14 @@ end
 end
 
 @test begin
+    a = CayleyDickson.randomBigRational()
+    z = random(Perplex{Rational{BigInt}})
+    l = a / z
+    r = z \ a
+    l == r
+end
+
+@test begin
     z = random(Perplex{BigInt})
     z == z + zero(Perplex{BigInt})
 end

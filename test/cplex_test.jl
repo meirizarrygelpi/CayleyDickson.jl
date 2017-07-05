@@ -223,6 +223,14 @@ end
 end
 
 @test begin
+    a = CayleyDickson.randomBigRational()
+    z = random(Cplex{Rational{BigInt}})
+    l = a / z
+    r = z \ a
+    l == r
+end
+
+@test begin
     z = random(Cplex{BigInt})
     z == z + zero(Cplex{BigInt})
 end

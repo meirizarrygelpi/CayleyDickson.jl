@@ -273,6 +273,14 @@ end
 end
 
 @test begin
+    a = CayleyDickson.randomBigRational()
+    z = random(Hamilton{Rational{BigInt}})
+    l = a / z
+    r = z \ a
+    l == r
+end
+
+@test begin
     z = random(Hamilton{BigInt})
     z == z + zero(Hamilton{BigInt})
 end
