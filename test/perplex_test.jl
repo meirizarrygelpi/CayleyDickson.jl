@@ -212,6 +212,10 @@ end
 end
 
 @test_throws ErrorException begin
+    inv(Perplex(1, 1))
+end
+
+@test_throws ErrorException begin
     random(Perplex{Int}) / 0
 end
 

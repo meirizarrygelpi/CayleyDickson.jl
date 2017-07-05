@@ -57,3 +57,7 @@ function show(io::IO, z::Cockle)
     print(io, z.r.r)
     print(io, "]")
 end
+
+function random(::Type{Cockle{T}}) where T <: Real
+    Cockle{T}(random(Cplex{T}), random(Cplex{T}))
+end

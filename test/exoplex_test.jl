@@ -237,6 +237,10 @@ end
 end
 
 @test_throws ErrorException begin
+    inv(Exoplex(0, 1.0))
+end
+
+@test_throws ErrorException begin
     random(Exoplex{Int}) / 0
 end
 
