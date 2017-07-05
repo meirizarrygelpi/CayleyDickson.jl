@@ -77,3 +77,7 @@ function show(io::IO, z::BiExoplex)
     print(io, z.r.r)
     print(io, "]")
 end
+
+function random(::Type{BiExoplex{T}}) where T <: Real
+    BiExoplex{T}(random(Exoplex{T}), random(Exoplex{T}))
+end

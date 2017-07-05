@@ -64,7 +64,17 @@ end
 @test begin
     a = CayleyDickson.randomBigInt()
     b = CayleyDickson.randomBigFloat()
-    l = Cayley(Hamilton(a, b))
+    c = CayleyDickson.randomBigInt()
+    d = CayleyDickson.randomBigFloat()
+    l = Cayley(Hamilton(a, b, c, d))
+    r = Cayley(a, b, c, d)
+    l == r
+end
+
+@test begin
+    a = CayleyDickson.randomBigInt()
+    b = CayleyDickson.randomBigFloat()
+    l = Cayley(Cplex(a, b))
     r = Cayley(a, b)
     l == r
 end

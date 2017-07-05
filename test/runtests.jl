@@ -6,4 +6,5 @@ using Base.Test: @testset
 @testset "Exoplex" begin include("exoplex_test.jl") end
 @testset "Hamilton" begin include("hamilton_test.jl") end
 @testset "Cockle" begin include("cockle_test.jl") end
+@testset "BiExoplex" begin include("biexoplex_test.jl") end
 @testset "Cayley" begin include("cayley_test.jl") end

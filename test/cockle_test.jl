@@ -22,6 +22,15 @@ end
 end
 
 @test begin
+    a = CayleyDickson.randomBigFloat()
+    b = CayleyDickson.randomBigFloat()
+    c = CayleyDickson.randomBigFloat()
+    l = unreal(Cockle(0, a, b, c))
+    r = [a, b, c]
+    l == r
+end
+
+@test begin
     io = IOBuffer()
     show(io, Cockle(1, 2, 3, 4))
     l = String(take!(io))
