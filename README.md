@@ -44,4 +44,4 @@ Sedenion{T <: Real} = EllipticCD{Cayley{T}}
 TetraExoplex{T <: Real} = ParabolicCD{TriExoplex{T}}
 ```
 
-NEEDS TESTS.
+NEEDS DOCS.

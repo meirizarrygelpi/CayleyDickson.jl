@@ -89,3 +89,7 @@ function show(io::IO, z::TetraExoplex)
     print(io, z.r.r.r.r)
     print(io, "]")
 end
+
+function random(::Type{TetraExoplex{T}}) where T <: Real
+    TetraExoplex{T}(random(TriExoplex{T}), random(TriExoplex{T}))
+end
