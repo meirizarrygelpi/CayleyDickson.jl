@@ -18,7 +18,8 @@ end
 
 function Sedenion(z::Cplex{T}) where T <: Real
     Sedenion{T}(
-        Cayley{T}(Hamilton{T}(z, zero(Cplex{T}))),
+        Cayley{T}(Hamilton{T}(z, zero(Cplex{T})),
+        zero(Hamilton{T})),
         zero(Cayley{T})
     )
 end
@@ -66,4 +67,8 @@ function show(io::IO, z::Sedenion)
     print(io, ", ((ij)k)m: ")
     print(io, z.r.r.r.r)
     print(io, "]")
+end
+
+function random(::Type{Sedenion{T}}) where T <: Real
+    Sedenion{T}(random(Cayley{T}), random(Cayley{T}))
 end
