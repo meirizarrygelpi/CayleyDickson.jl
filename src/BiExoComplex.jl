@@ -164,3 +164,7 @@ function show(io::IO, z::BiExoComplex)
     print(io, z.r.r.r)
     print(io, "]")
 end
+
+function random(::Type{BiExoComplex{T}}) where T <: Real
+    BiExoComplex{T}(random(ExoComplex{T}), random(ExoComplex{T}))
+end
