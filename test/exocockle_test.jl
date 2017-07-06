@@ -305,7 +305,7 @@ end
 
 @test begin
     x = random(ExoCockle{BigInt})
-    abs2(x) > big(0)
+    abs2(x) > big(0) || abs2(x) < big(0) || abs2(x) == big(0)
 end
 
 @test begin
