@@ -186,6 +186,14 @@ end
 
 @test begin
     x = random(Cayley{BigInt})
+    y = random(Cayley{BigInt})
+    l = flexator(x, y)
+    r = zero(Cayley{BigInt})
+    l == r
+end
+
+@test begin
+    x = random(Cayley{BigInt})
     conj(conj(x)) == x
 end
 

@@ -145,6 +145,14 @@ end
 
 @test begin
     x = random(Sedenion{BigInt})
+    y = random(Sedenion{BigInt})
+    l = flexator(x, y)
+    r = zero(Sedenion{BigInt})
+    l == r
+end
+
+@test begin
+    x = random(Sedenion{BigInt})
     conj(conj(x)) == x
 end
 

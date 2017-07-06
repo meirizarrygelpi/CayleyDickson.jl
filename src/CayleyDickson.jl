@@ -43,7 +43,7 @@ export CDConstruct, EllipticCD, HyperbolicCD, ParabolicCD,
 
 # Methods
 export unreal, asarray, iszerodivisor, random,
-       commutator, associator, jacobiator, alternatorL, alternatorR,
+       commutator, associator, jacobiator, alternatorL, alternatorR, flexator,
        cloak, dagger, star, selfstar, antiselfstar
 
 end

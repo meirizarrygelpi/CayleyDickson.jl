@@ -126,6 +126,19 @@ function alternatorR(x::CDConstruct, y::CDConstruct)
 end
 
 """
+    flexator(x::CDConstruct, y::CDConstruct)
+
+Measure the failure of the multiplication operation to be flexible:
+```julia
+    ((x * y) * x) - (x * (y * x))
+```
+If `flexator(x, y)` is zero, then the multiplication operation is flexible.
+"""
+function flexator(x::CDConstruct, y::CDConstruct)
+    associator(x, y, x)
+end
+
+"""
     inv(z::CDConstruct)
 
 Return the multiplicative inverse of a Cayley-Dickson construct.
