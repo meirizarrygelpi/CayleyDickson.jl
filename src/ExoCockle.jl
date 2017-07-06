@@ -164,3 +164,7 @@ function show(io::IO, z::ExoCockle)
     print(io, z.r.r.r)
     print(io, "]")
 end
+
+function random(::Type{ExoCockle{T}}) where T <: Real
+    ExoCockle{T}(random(Cockle{T}), random(Cockle{T}))
+end
