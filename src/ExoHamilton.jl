@@ -165,3 +165,7 @@ function show(io::IO, z::ExoHamilton)
     print(io, z.r.r.r)
     print(io, "]")
 end
+
+function random(::Type{ExoHamilton{T}}) where T <: Real
+    ExoHamilton{T}(random(Hamilton{T}), random(Hamilton{T}))
+end
