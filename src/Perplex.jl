@@ -34,6 +34,18 @@ function show(io::IO, z::Perplex)
     print(io, "]")
 end
 
+function cloak(z::Perplex{T}) where T <: Real
+    Perplex{T}(-(z.l), z.r)
+end
+
+function dagger(z::Perplex{T}) where T <: Real
+    Perplex{T}(z.l, -(z.r))
+end
+
+function star(z::Perplex{T}) where T <: Real
+    Perplex{T}(-(z.r), z.l)
+end
+
 function random(::Type{Perplex{T}}) where T <: Real
     Perplex{T}(rand(T), rand(T))
 end

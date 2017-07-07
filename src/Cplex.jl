@@ -34,6 +34,26 @@ function show(io::IO, z::Cplex)
     print(io, "]")
 end
 
+function cloak(z::Cplex{T}) where T <: Real
+    Cplex{T}(-(z.l), z.r)
+end
+
+function dagger(z::Cplex{T}) where T <: Real
+    Cplex{T}(z.l, -(z.r))
+end
+
+function star(z::Cplex{T}) where T <: Real
+    Cplex{T}(z.r, z.l)
+end
+
+function selfstar(z::Cplex)
+    (z + star(z)) / 2
+end
+
+function antiselfstar(z::Cplex)
+    (z - star(z)) / 2
+end
+
 function random(::Type{Cplex{T}}) where T <: Real
     Cplex{T}(rand(T), rand(T))
 end
