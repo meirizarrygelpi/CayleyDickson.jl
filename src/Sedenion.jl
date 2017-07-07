@@ -1,7 +1,7 @@
 """
     Sedenion{T <: Real} = EllipticCD{Cayley{T}}
 
-A sedenion is an elliptic Sedenion-Dickson construct with Cayley octonions.
+A sedenion is an elliptic Cayley-Dickson construct with Cayley octonions.
 """
 const Sedenion{T <: Real} = EllipticCD{Cayley{T}}
 
@@ -27,7 +27,7 @@ end
 """
     unreal(z::Sedenion)
 
-The unreal part of a Sedenion octonion is a 15-vector.
+The unreal part of a sedenion is a 15-vector.
 """
 function unreal(z::Sedenion)
     vcat(unreal(z.l), asarray(z.r))

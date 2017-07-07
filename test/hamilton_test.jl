@@ -314,3 +314,28 @@ end
     z = random(Hamilton{BigInt})
     z == z * one(z)
 end
+
+@test begin
+    x = random(Hamilton{BigInt})
+    cloak(cloak(x)) == x
+end
+
+@test begin
+    x = random(Hamilton{BigInt})
+    dagger(dagger(x)) == x
+end
+
+@test begin
+    x = random(Hamilton{BigInt})
+    star(star(x)) == dagger(x)
+end
+
+@test begin
+    x = random(Hamilton{Rational{BigInt}})
+    selfstar(selfstar(x)) == selfstar(x)
+end
+
+@test begin
+    x = random(Hamilton{Rational{BigInt}})
+    antiselfstar(antiselfstar(x)) == antiselfstar(x)
+end
