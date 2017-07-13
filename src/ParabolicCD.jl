@@ -6,16 +6,6 @@ A parabolic Cayley-Dickson construct as a pair of `Number`s.
 struct ParabolicCD{T <: Number} <: CDConstruct{T}
     l::T
     r::T
-
-    ParabolicCD{T}(l::T, r::T) where T <: Number = new(l, r)
-end
-
-function ParabolicCD(a::T, b::T) where T <: Number
-    ParabolicCD{T}(a, b)
-end
-
-function ParabolicCD(l::Number, r::Number)
-    ParabolicCD(promote(l, r)...)
 end
 
 function (==)(x::ParabolicCD, y::ParabolicCD)

@@ -6,16 +6,6 @@ A hyperbolic Cayley-Dickson construct as a pair.
 struct HyperbolicCD{T <: Number} <: CDConstruct{T}
     l::T
     r::T
-
-    HyperbolicCD{T}(l::T, r::T) where T <: Number = new(l, r)
-end
-
-function HyperbolicCD(a::T, b::T) where T <: Number
-    HyperbolicCD{T}(a, b)
-end
-
-function HyperbolicCD(l::Number, r::Number)
-    HyperbolicCD(promote(l, r)...)
 end
 
 function (==)(x::HyperbolicCD, y::HyperbolicCD)

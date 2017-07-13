@@ -6,16 +6,6 @@ An elliptic Cayley-Dickson construct as a pair.
 struct EllipticCD{T <: Number} <: CDConstruct{T}
     l::T
     r::T
-
-    EllipticCD{T}(l::T, r::T) where T <: Number = new(l, r)
-end
-
-function EllipticCD(a::T, b::T) where T <: Number
-    EllipticCD{T}(a, b)
-end
-
-function EllipticCD(l::Number, r::Number)
-    EllipticCD(promote(l, r)...)
 end
 
 function (==)(x::EllipticCD, y::EllipticCD)
