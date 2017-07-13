@@ -64,24 +64,16 @@ function (+)(z::ParabolicCD{T}, a::T) where T <: Number
     ParabolicCD{T}(z.l + a, z.r)
 end
 
-function (+)(a::Real, z::ParabolicCD{T}) where T <: Number
-    ParabolicCD{T}(a + z.l, z.r)
+function (+)(a::Real, z::ParabolicCD)
+    ParabolicCD(a + z.l, z.r)
 end
 
-function (+)(z::ParabolicCD{T}, a::Real) where T <: Number
-    ParabolicCD{T}(z.l + a, z.r)
+function (+)(z::ParabolicCD, a::Real)
+    ParabolicCD(z.l + a, z.r)
 end
 
 function (-)(x::ParabolicCD{T}, y::ParabolicCD{T}) where T <: Number
     ParabolicCD{T}(x.l - y.l, x.r - y.r)
-end
-
-function (-)(a::Real, z::ParabolicCD{T}) where T <: Number
-    ParabolicCD{T}(a - z.l, -(z.r))
-end
-
-function (-)(z::ParabolicCD{T}, a::Real) where T <: Number
-    ParabolicCD{T}(z.l - a, z.r)
 end
 
 function (-)(a::T, z::ParabolicCD{T}) where T <: Number
@@ -90,6 +82,14 @@ end
 
 function (-)(z::ParabolicCD{T}, a::T) where T <: Number
     ParabolicCD{T}(z.l - a, z.r)
+end
+
+function (-)(a::Real, z::ParabolicCD)
+    ParabolicCD(a - z.l, -(z.r))
+end
+
+function (-)(z::ParabolicCD, a::Real)
+    ParabolicCD(z.l - a, z.r)
 end
 
 function (*)(x::ParabolicCD{T}, y::ParabolicCD{T}) where T <: Number
@@ -107,12 +107,12 @@ function (*)(z::ParabolicCD{T}, a::T) where T <: Number
     ParabolicCD{T}(z.l * a, z.r * conj(a))
 end
 
-function (*)(a::Real, z::ParabolicCD{T}) where T <: Number
-    ParabolicCD{T}(a * z.l, a * z.r)
+function (*)(a::Real, z::ParabolicCD)
+    ParabolicCD(a * z.l, a * z.r)
 end
 
-function (*)(z::ParabolicCD{T}, a::Real) where T <: Number
-    ParabolicCD{T}(z.l * a, z.r * a)
+function (*)(z::ParabolicCD, a::Real)
+    ParabolicCD(z.l * a, z.r * a)
 end
 
 function (/)(z::ParabolicCD, a::Real)

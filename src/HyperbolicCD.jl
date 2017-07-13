@@ -64,12 +64,12 @@ function (+)(z::HyperbolicCD{T}, a::T) where T <: Number
     HyperbolicCD{T}(z.l + a, z.r)
 end
 
-function (+)(a::Real, z::HyperbolicCD{T}) where T <: Number
-    HyperbolicCD{T}(a + z.l, z.r)
+function (+)(a::Real, z::HyperbolicCD)
+    HyperbolicCD(a + z.l, z.r)
 end
 
-function (+)(z::HyperbolicCD{T}, a::Real) where T <: Number
-    HyperbolicCD{T}(z.l + a, z.r)
+function (+)(z::HyperbolicCD, a::Real)
+    HyperbolicCD(z.l + a, z.r)
 end
 
 function (-)(x::HyperbolicCD{T}, y::HyperbolicCD{T}) where T <: Number
@@ -84,12 +84,12 @@ function (-)(z::HyperbolicCD{T}, a::T) where T <: Number
     HyperbolicCD{T}(z.l - a, z.r)
 end
 
-function (-)(a::Real, z::HyperbolicCD{T}) where T <: Number
-    HyperbolicCD{T}(a - z.l, -(z.r))
+function (-)(a::Real, z::HyperbolicCD)
+    HyperbolicCD(a - z.l, -(z.r))
 end
 
-function (-)(z::HyperbolicCD{T}, a::Real) where T <: Number
-    HyperbolicCD{T}(z.l - a, z.r)
+function (-)(z::HyperbolicCD, a::Real)
+    HyperbolicCD(z.l - a, z.r)
 end
 
 function (*)(x::HyperbolicCD{T}, y::HyperbolicCD{T}) where T <: Number
@@ -107,12 +107,12 @@ function (*)(z::HyperbolicCD{T}, a::T) where T <: Number
     HyperbolicCD{T}(z.l * a, z.r * conj(a))
 end
 
-function (*)(a::Real, z::HyperbolicCD{T}) where T <: Number
-    HyperbolicCD{T}(a * z.l, a * z.r)
+function (*)(a::Real, z::HyperbolicCD)
+    HyperbolicCD(a * z.l, a * z.r)
 end
 
-function (*)(z::HyperbolicCD{T}, a::Real) where T <: Number
-    HyperbolicCD{T}(z.l * a, z.r * a)
+function (*)(z::HyperbolicCD, a::Real)
+    HyperbolicCD(z.l * a, z.r * a)
 end
 
 function (/)(z::HyperbolicCD, a::Real)

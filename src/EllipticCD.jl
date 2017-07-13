@@ -64,24 +64,16 @@ function (+)(z::EllipticCD{T}, a::T) where T <: Number
     EllipticCD{T}(z.l + a, z.r)
 end
 
-function (+)(a::Real, z::EllipticCD{T}) where T <: Number
-    EllipticCD{T}(a + z.l, z.r)
+function (+)(a::Real, z::EllipticCD)
+    EllipticCD(a + z.l, z.r)
 end
 
-function (+)(z::EllipticCD{T}, a::Real) where T <: Number
-    EllipticCD{T}(z.l + a, z.r)
+function (+)(z::EllipticCD, a::Real)
+    EllipticCD(z.l + a, z.r)
 end
 
 function (-)(x::EllipticCD{T}, y::EllipticCD{T}) where T <: Number
     EllipticCD{T}(x.l - y.l, x.r - y.r)
-end
-
-function (-)(a::Real, z::EllipticCD{T}) where T <: Number
-    EllipticCD{T}(a - z.l, -(z.r))
-end
-
-function (-)(z::EllipticCD{T}, a::Real) where T <: Number
-    EllipticCD{T}(z.l - a, z.r)
 end
 
 function (-)(a::T, z::EllipticCD{T}) where T <: Number
@@ -90,6 +82,14 @@ end
 
 function (-)(z::EllipticCD{T}, a::T) where T <: Number
     EllipticCD{T}(z.l - a, z.r)
+end
+
+function (-)(a::Real, z::EllipticCD)
+    EllipticCD(a - z.l, -(z.r))
+end
+
+function (-)(z::EllipticCD, a::Real)
+    EllipticCD(z.l - a, z.r)
 end
 
 function (*)(x::EllipticCD{T}, y::EllipticCD{T}) where T <: Number
@@ -107,12 +107,12 @@ function (*)(z::EllipticCD{T}, a::T) where T <: Number
     EllipticCD{T}(z.l * a, z.r * conj(a))
 end
 
-function (*)(a::Real, z::EllipticCD{T}) where T <: Number
-    EllipticCD{T}(a * z.l, a * z.r)
+function (*)(a::Real, z::EllipticCD)
+    EllipticCD(a * z.l, a * z.r)
 end
 
-function (*)(z::EllipticCD{T}, a::Real) where T <: Number
-    EllipticCD{T}(z.l * a, z.r * a)
+function (*)(z::EllipticCD, a::Real)
+    EllipticCD(z.l * a, z.r * a)
 end
 
 function (/)(z::EllipticCD, a::Real)
