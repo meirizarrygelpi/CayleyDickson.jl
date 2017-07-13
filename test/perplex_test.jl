@@ -275,18 +275,3 @@ end
     z = random(Perplex{BigInt})
     z == z * one(z)
 end
-
-@test begin
-    x = random(Perplex{BigInt})
-    cloak(cloak(x)) == x
-end
-
-@test begin
-    x = random(Perplex{BigInt})
-    dagger(dagger(x)) == x
-end
-
-@test begin
-    x = random(Perplex{BigInt})
-    star(star(x)) == -(x)
-end

@@ -58,26 +58,6 @@ function show(io::IO, z::Hamilton)
     print(io, "]")
 end
 
-function cloak(z::Hamilton{T}) where T <: Real
-    Hamilton{T}(cloak(z.l), dagger(z.r))
-end
-
-function dagger(z::Hamilton{T}) where T <: Real
-    Hamilton{T}(dagger(z.l), cloak(z.r))
-end
-
-function star(z::Hamilton{T}) where T <: Real
-    Hamilton{T}(dagger(star(z.r)), star(z.l))
-end
-
-function selfstar(z::Hamilton)
-    (z + star(z) + dagger(z) + star(dagger(z))) / 4
-end
-
-function antiselfstar(z::Hamilton)
-    (z - star(z) + dagger(z) - star(dagger(z))) / 4
-end
-
 function random(::Type{Hamilton{T}}) where T <: Real
     Hamilton{T}(random(Cplex{T}), random(Cplex{T}))
 end

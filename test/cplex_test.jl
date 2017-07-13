@@ -268,28 +268,3 @@ end
     z = random(Cplex{BigInt})
     z == z * one(z)
 end
-
-@test begin
-    x = random(Cplex{BigInt})
-    cloak(cloak(x)) == x
-end
-
-@test begin
-    x = random(Cplex{BigInt})
-    dagger(dagger(x)) == x
-end
-
-@test begin
-    x = random(Cplex{BigInt})
-    star(star(x)) == x
-end
-
-@test begin
-    x = random(Cplex{Rational{BigInt}})
-    selfstar(selfstar(x)) == selfstar(x)
-end
-
-@test begin
-    x = random(Cplex{Rational{BigInt}})
-    antiselfstar(antiselfstar(x)) == antiselfstar(x)
-end
