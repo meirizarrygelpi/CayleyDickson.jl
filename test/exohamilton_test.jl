@@ -2,6 +2,14 @@ using CayleyDickson
 using Base.Test: @test, @test_throws
 
 @test begin
+    a = CayleyDickson.randomBigInt()
+    b = CayleyDickson.randomBigInt()
+    l = ExoHamilton(Exoplex(a, b))
+    r = ExoHamilton(a, 0, 0, 0, b, 0, 0, 0)
+    l == r
+end
+
+@test begin
     a = CayleyDickson.randomBigFloat()
     isreal(ExoHamilton(a))
 end

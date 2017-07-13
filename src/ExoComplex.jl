@@ -37,6 +37,10 @@ function ExoComplex(a::Real, b::Real, c::Real, d::Real)
     ExoComplex(promote(a, b, c, d)...)
 end
 
+function ExoComplex(z::Exoplex{T}) where T <: Real
+    ExoComplex(z.l, zero(T), z.r, zero(T))
+end
+
 """
     unreal(z::ExoComplex)
 

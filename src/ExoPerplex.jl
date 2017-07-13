@@ -37,6 +37,10 @@ function ExoPerplex(a::Real, b::Real, c::Real, d::Real)
     ExoPerplex(promote(a, b, c, d)...)
 end
 
+function ExoPerplex(z::Exoplex{T}) where T <: Real
+    ExoPerplex(z.l, zero(T), z.r, zero(T))
+end
+
 """
     unreal(z::ExoPerplex)
 

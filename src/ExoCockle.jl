@@ -136,6 +136,10 @@ function ExoCockle(a::Real, b::Real, c::Real, d::Real, f::Real, g::Real, h::Real
     ExoCockle(promote(a, b, c, d, f, g, h, j)...)
 end
 
+function ExoCockle(z::Exoplex{T}) where T <: Real
+    ExoCockle(z.l, zero(T), zero(T), zero(T), z.r, zero(T), zero(T), zero(T))
+end
+
 """
     unreal(z::ExoCockle)
 

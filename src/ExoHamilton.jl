@@ -136,6 +136,10 @@ function ExoHamilton(a::Real, b::Real, c::Real, d::Real, f::Real, g::Real, h::Re
     ExoHamilton(promote(a, b, c, d, f, g, h, j)...)
 end
 
+function ExoHamilton(z::Exoplex{T}) where T <: Real
+    ExoHamilton(z.l, zero(T), zero(T), zero(T), z.r, zero(T), zero(T), zero(T))
+end
+
 """
 
     unreal(z::ExoHamilton)

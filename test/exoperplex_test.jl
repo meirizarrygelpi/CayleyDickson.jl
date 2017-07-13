@@ -2,6 +2,14 @@ using CayleyDickson
 using Base.Test: @test, @test_throws
 
 @test begin
+    a = CayleyDickson.randomBigInt()
+    b = CayleyDickson.randomBigInt()
+    l = ExoPerplex(Exoplex(a, b))
+    r = ExoPerplex(a, 0, b, 0)
+    l == r
+end
+
+@test begin
     a = CayleyDickson.randomBigFloat()
     isreal(ExoPerplex(a))
 end
