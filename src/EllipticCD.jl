@@ -10,7 +10,13 @@ struct EllipticCD{T <: Number} <: CDConstruct{T}
     EllipticCD{T}(l::T, r::T) where T <: Number = new(l, r)
 end
 
-EllipticCD(l::T, r::T) where T <: Number = EllipticCD{T}(l, r)
+function EllipticCD(a::T, b::T) where T <: Number
+    EllipticCD{T}(a, b)
+end
+
+function EllipticCD(l::Number, r::Number)
+    EllipticCD(promote(l, r)...)
+end
 
 function (==)(x::EllipticCD, y::EllipticCD)
     x.l == y.l && x.r == y.r
@@ -52,8 +58,8 @@ function conj(z::EllipticCD)
     EllipticCD(conj(z.l), -(z.r))
 end
 
-function (+)(x::EllipticCD{T}, y::EllipticCD{T}) where T <: Number
-    EllipticCD{T}(x.l + y.l, x.r + y.r)
+function (+)(x::EllipticCD, y::EllipticCD)
+    EllipticCD(x.l + y.l, x.r + y.r)
 end
 
 function (+)(a::T, z::EllipticCD{T}) where T <: Number
@@ -72,8 +78,8 @@ function (+)(z::EllipticCD, a::Real)
     EllipticCD(z.l + a, z.r)
 end
 
-function (-)(x::EllipticCD{T}, y::EllipticCD{T}) where T <: Number
-    EllipticCD{T}(x.l - y.l, x.r - y.r)
+function (-)(x::EllipticCD, y::EllipticCD)
+    EllipticCD(x.l - y.l, x.r - y.r)
 end
 
 function (-)(a::T, z::EllipticCD{T}) where T <: Number
@@ -92,8 +98,8 @@ function (-)(z::EllipticCD, a::Real)
     EllipticCD(z.l - a, z.r)
 end
 
-function (*)(x::EllipticCD{T}, y::EllipticCD{T}) where T <: Number
-    EllipticCD{T}(
+function (*)(x::EllipticCD, y::EllipticCD)
+    EllipticCD(
         (x.l * y.l) - (conj(y.r) * x.r),
         (y.r * x.l) + (x.r * conj(y.l))
     )

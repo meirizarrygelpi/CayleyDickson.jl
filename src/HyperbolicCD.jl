@@ -10,7 +10,13 @@ struct HyperbolicCD{T <: Number} <: CDConstruct{T}
     HyperbolicCD{T}(l::T, r::T) where T <: Number = new(l, r)
 end
 
-HyperbolicCD(l::T, r::T) where T <: Number = HyperbolicCD{T}(l, r)
+function HyperbolicCD(a::T, b::T) where T <: Number
+    HyperbolicCD{T}(a, b)
+end
+
+function HyperbolicCD(l::Number, r::Number)
+    HyperbolicCD(promote(l, r)...)
+end
 
 function (==)(x::HyperbolicCD, y::HyperbolicCD)
     x.l == y.l && x.r == y.r
@@ -52,8 +58,8 @@ function conj(z::HyperbolicCD)
     HyperbolicCD(conj(z.l), -(z.r))
 end
 
-function (+)(x::HyperbolicCD{T}, y::HyperbolicCD{T}) where T <: Number
-    HyperbolicCD{T}(x.l + y.l, x.r + y.r)
+function (+)(x::HyperbolicCD, y::HyperbolicCD)
+    HyperbolicCD(x.l + y.l, x.r + y.r)
 end
 
 function (+)(a::T, z::HyperbolicCD{T}) where T <: Number
@@ -72,8 +78,8 @@ function (+)(z::HyperbolicCD, a::Real)
     HyperbolicCD(z.l + a, z.r)
 end
 
-function (-)(x::HyperbolicCD{T}, y::HyperbolicCD{T}) where T <: Number
-    HyperbolicCD{T}(x.l - y.l, x.r - y.r)
+function (-)(x::HyperbolicCD, y::HyperbolicCD)
+    HyperbolicCD(x.l - y.l, x.r - y.r)
 end
 
 function (-)(a::T, z::HyperbolicCD{T}) where T <: Number
@@ -92,8 +98,8 @@ function (-)(z::HyperbolicCD, a::Real)
     HyperbolicCD(z.l - a, z.r)
 end
 
-function (*)(x::HyperbolicCD{T}, y::HyperbolicCD{T}) where T <: Number
-    HyperbolicCD{T}(
+function (*)(x::HyperbolicCD, y::HyperbolicCD)
+    HyperbolicCD(
         (x.l * y.l) + (conj(y.r) * x.r),
         (y.r * x.l) + (x.r * conj(y.l))
     )

@@ -10,7 +10,13 @@ struct ParabolicCD{T <: Number} <: CDConstruct{T}
     ParabolicCD{T}(l::T, r::T) where T <: Number = new(l, r)
 end
 
-ParabolicCD(l::T, r::T) where T <: Number = ParabolicCD{T}(l, r)
+function ParabolicCD(a::T, b::T) where T <: Number
+    ParabolicCD{T}(a, b)
+end
+
+function ParabolicCD(l::Number, r::Number)
+    ParabolicCD(promote(l, r)...)
+end
 
 function (==)(x::ParabolicCD, y::ParabolicCD)
     x.l == y.l && x.r == y.r
@@ -52,8 +58,8 @@ function conj(z::ParabolicCD)
     ParabolicCD(conj(z.l), -(z.r))
 end
 
-function (+)(x::ParabolicCD{T}, y::ParabolicCD{T}) where T <: Number
-    ParabolicCD{T}(x.l + y.l, x.r + y.r)
+function (+)(x::ParabolicCD, y::ParabolicCD)
+    ParabolicCD(x.l + y.l, x.r + y.r)
 end
 
 function (+)(a::T, z::ParabolicCD{T}) where T <: Number
@@ -72,8 +78,8 @@ function (+)(z::ParabolicCD, a::Real)
     ParabolicCD(z.l + a, z.r)
 end
 
-function (-)(x::ParabolicCD{T}, y::ParabolicCD{T}) where T <: Number
-    ParabolicCD{T}(x.l - y.l, x.r - y.r)
+function (-)(x::ParabolicCD, y::ParabolicCD)
+    ParabolicCD(x.l - y.l, x.r - y.r)
 end
 
 function (-)(a::T, z::ParabolicCD{T}) where T <: Number
@@ -92,8 +98,8 @@ function (-)(z::ParabolicCD, a::Real)
     ParabolicCD(z.l - a, z.r)
 end
 
-function (*)(x::ParabolicCD{T}, y::ParabolicCD{T}) where T <: Number
-    ParabolicCD{T}(
+function (*)(x::ParabolicCD, y::ParabolicCD)
+    ParabolicCD(
         (x.l * y.l),
         (y.r * x.l) + (x.r * conj(y.l))
     )
