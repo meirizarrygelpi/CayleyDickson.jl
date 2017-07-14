@@ -147,7 +147,7 @@ end
 The unreal part of an exo-Hamilton quaternion is a 7-vector.
 """
 function unreal(z::ExoHamilton)
-    vcat(unreal(z.l), asarray(z.r))
+    vcat(unreal(z.l), array(z.r))
 end
 
 function show(io::IO, z::ExoHamilton)

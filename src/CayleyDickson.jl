@@ -42,7 +42,7 @@ export CDConstruct, EllipticCD, HyperbolicCD, ParabolicCD,
        Sedenion, TetraExoplex
 
 # Methods
-export unreal, asarray, iszerodivisor, random,
+export unreal, array, iszerodivisor, random,
        commutator, associator, jacobiator, alternatorL, alternatorR, flexator,
        cloak, dagger, star, selfstar, antiselfstar
 

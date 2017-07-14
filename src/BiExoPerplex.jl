@@ -146,7 +146,7 @@ end
 The unreal part of a bi-exo-perplex number is a 7-vector.
 """
 function unreal(z::BiExoPerplex)
-    vcat(unreal(z.l), asarray(z.r))
+    vcat(unreal(z.l), array(z.r))
 end
 
 function show(io::IO, z::BiExoPerplex)

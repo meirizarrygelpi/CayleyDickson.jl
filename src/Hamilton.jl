@@ -43,7 +43,7 @@ end
 The unreal part of a Hamilton quaternion is a 3-vector.
 """
 function unreal(z::Hamilton)
-    vcat(unreal(z.l), asarray(z.r))
+    vcat(unreal(z.l), array(z.r))
 end
 
 function show(io::IO, z::Hamilton)

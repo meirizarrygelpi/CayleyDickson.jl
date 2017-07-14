@@ -30,7 +30,7 @@ end
 The unreal part of a sedenion is a 15-vector.
 """
 function unreal(z::Sedenion)
-    vcat(unreal(z.l), asarray(z.r))
+    vcat(unreal(z.l), array(z.r))
 end
 
 function show(io::IO, z::Sedenion)

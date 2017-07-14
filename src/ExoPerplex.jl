@@ -47,7 +47,7 @@ end
 The unreal part of an exo-perplex number is a 3-vector.
 """
 function unreal(z::ExoPerplex)
-    vcat(unreal(z.l), asarray(z.r))
+    vcat(unreal(z.l), array(z.r))
 end
 
 function show(io::IO, z::ExoPerplex)

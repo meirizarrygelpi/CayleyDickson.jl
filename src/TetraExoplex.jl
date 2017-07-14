@@ -51,7 +51,7 @@ end
 The unreal part of a tri-exoplex number is a 15-vector.
 """
 function unreal(z::TetraExoplex)
-    vcat(unreal(z.l), asarray(z.r))
+    vcat(unreal(z.l), array(z.r))
 end
 
 function show(io::IO, z::TetraExoplex)

@@ -15,11 +15,11 @@ function unreal(::T) where T <: Real
 end
 
 """
-    asarray(z::CDConstruct) -> Array
+    array(z::CDConstruct) -> Array
 
 Return an array with all the `Real` components of `z`.
 """
-function asarray(z::CDConstruct)
+function array(z::CDConstruct)
     vcat(real(z), unreal(z))
 end
 
@@ -38,7 +38,7 @@ end
 Return `true` if all `Real` components of `z` are zero.
 """
 function iszero(z::CDConstruct)
-    iszero(asarray(z))
+    iszero(array(z))
 end
 
 """

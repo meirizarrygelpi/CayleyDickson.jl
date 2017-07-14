@@ -162,7 +162,7 @@ end
 The unreal part of a tri-exoplex number is a 7-vector.
 """
 function unreal(z::TriExoplex)
-    vcat(unreal(z.l), asarray(z.r))
+    vcat(unreal(z.l), array(z.r))
 end
 
 function show(io::IO, z::TriExoplex)
