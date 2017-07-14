@@ -2,6 +2,12 @@ using CayleyDickson
 using Base.Test: @test, @test_throws
 
 @test begin
+    l = BiExoComplex(BiExoplex(1,2,3,4))
+    r = BiExoComplex(1,0,2,0,3,0,4)
+    l == r
+end
+
+@test begin
     a = CayleyDickson.randomBigFloat()
     isreal(BiExoComplex(a))
 end

@@ -136,6 +136,10 @@ function BiExoPerplex(a::Real, b::Real, c::Real, d::Real, f::Real, g::Real, h::R
     BiExoPerplex(promote(a, b, c, d, f, g, h, j)...)
 end
 
+function BiExoPerplex(z::BiExoplex{T}) where T <: Real
+    BiExoPerplex(z.l.l, zero(T), z.l.r, zero(T), z.r.l, zero(T), z.r.r)
+end
+
 """
     unreal(z::BiExoPerplex)
 
