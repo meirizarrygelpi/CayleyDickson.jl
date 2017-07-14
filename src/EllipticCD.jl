@@ -48,8 +48,8 @@ function conj(z::EllipticCD)
     EllipticCD(conj(z.l), -(z.r))
 end
 
-function (+)(x::EllipticCD, y::EllipticCD)
-    EllipticCD(x.l + y.l, x.r + y.r)
+function (+)(x::EllipticCD{T}, y::EllipticCD{T}) where T <: Number
+    EllipticCD{T}(x.l + y.l, x.r + y.r)
 end
 
 function (+)(a::T, z::EllipticCD{T}) where T <: Number
@@ -68,8 +68,8 @@ function (+)(z::EllipticCD, a::Real)
     EllipticCD(z.l + a, z.r)
 end
 
-function (-)(x::EllipticCD, y::EllipticCD)
-    EllipticCD(x.l - y.l, x.r - y.r)
+function (-)(x::EllipticCD{T}, y::EllipticCD{T}) where T <: Number
+    EllipticCD{T}(x.l - y.l, x.r - y.r)
 end
 
 function (-)(a::T, z::EllipticCD{T}) where T <: Number
@@ -88,8 +88,8 @@ function (-)(z::EllipticCD, a::Real)
     EllipticCD(z.l - a, z.r)
 end
 
-function (*)(x::EllipticCD, y::EllipticCD)
-    EllipticCD(
+function (*)(x::EllipticCD{T}, y::EllipticCD{T}) where T <: Number
+    EllipticCD{T}(
         (x.l * y.l) - (conj(y.r) * x.r),
         (y.r * x.l) + (x.r * conj(y.l))
     )

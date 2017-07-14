@@ -48,8 +48,8 @@ function conj(z::HyperbolicCD)
     HyperbolicCD(conj(z.l), -(z.r))
 end
 
-function (+)(x::HyperbolicCD, y::HyperbolicCD)
-    HyperbolicCD(x.l + y.l, x.r + y.r)
+function (+)(x::HyperbolicCD{T}, y::HyperbolicCD{T}) where T <: Number
+    HyperbolicCD{T}(x.l + y.l, x.r + y.r)
 end
 
 function (+)(a::T, z::HyperbolicCD{T}) where T <: Number
@@ -68,8 +68,8 @@ function (+)(z::HyperbolicCD, a::Real)
     HyperbolicCD(z.l + a, z.r)
 end
 
-function (-)(x::HyperbolicCD, y::HyperbolicCD)
-    HyperbolicCD(x.l - y.l, x.r - y.r)
+function (-)(x::HyperbolicCD{T}, y::HyperbolicCD{T}) where T <: Number
+    HyperbolicCD{T}(x.l - y.l, x.r - y.r)
 end
 
 function (-)(a::T, z::HyperbolicCD{T}) where T <: Number
@@ -88,8 +88,8 @@ function (-)(z::HyperbolicCD, a::Real)
     HyperbolicCD(z.l - a, z.r)
 end
 
-function (*)(x::HyperbolicCD, y::HyperbolicCD)
-    HyperbolicCD(
+function (*)(x::HyperbolicCD{T}, y::HyperbolicCD{T}) where T <: Number
+    HyperbolicCD{T}(
         (x.l * y.l) + (conj(y.r) * x.r),
         (y.r * x.l) + (x.r * conj(y.l))
     )

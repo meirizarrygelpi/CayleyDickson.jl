@@ -48,8 +48,8 @@ function conj(z::ParabolicCD)
     ParabolicCD(conj(z.l), -(z.r))
 end
 
-function (+)(x::ParabolicCD, y::ParabolicCD)
-    ParabolicCD(x.l + y.l, x.r + y.r)
+function (+)(x::ParabolicCD{T}, y::ParabolicCD{T}) where T <: Number
+    ParabolicCD{T}(x.l + y.l, x.r + y.r)
 end
 
 function (+)(a::T, z::ParabolicCD{T}) where T <: Number
@@ -68,8 +68,8 @@ function (+)(z::ParabolicCD, a::Real)
     ParabolicCD(z.l + a, z.r)
 end
 
-function (-)(x::ParabolicCD, y::ParabolicCD)
-    ParabolicCD(x.l - y.l, x.r - y.r)
+function (-)(x::ParabolicCD{T}, y::ParabolicCD{T}) where T <: Number
+    ParabolicCD{T}(x.l - y.l, x.r - y.r)
 end
 
 function (-)(a::T, z::ParabolicCD{T}) where T <: Number
@@ -88,8 +88,8 @@ function (-)(z::ParabolicCD, a::Real)
     ParabolicCD(z.l - a, z.r)
 end
 
-function (*)(x::ParabolicCD, y::ParabolicCD)
-    ParabolicCD(
+function (*)(x::ParabolicCD{T}, y::ParabolicCD{T}) where T <: Number
+    ParabolicCD{T}(
         (x.l * y.l),
         (y.r * x.l) + (x.r * conj(y.l))
     )
