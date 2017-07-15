@@ -371,3 +371,15 @@ end
     z = random(ExoCockle{BigInt})
     z == z * one(z)
 end
+
+@test begin
+    widen(ExoCockle{Int32}) == ExoCockle{Int64}
+end
+
+@test begin
+    float(ExoCockle{Int64}) == ExoCockle{Float64}
+end
+
+@test begin
+    float(ExoCockle{Float64}) == ExoCockle{Float64}
+end

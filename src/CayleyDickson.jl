@@ -2,7 +2,8 @@ __precompile__()
 
 module CayleyDickson
 
-import Base: +, -, *, /, \, real, isreal, conj, inv, abs2, show, zero, one, iszero, ==
+import Base: +, -, *, /, \, real, isreal, conj, inv, abs2, show, zero, one, iszero, ==,
+             promote_rule, widen, convert, float, convert
 # import Unreal: unreal
 
 "Error when finding the inverse of a zero divisor."

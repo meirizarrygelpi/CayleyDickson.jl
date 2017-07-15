@@ -126,3 +126,15 @@ function (\)(a::Real, z::HyperbolicCD)
     
     HyperbolicCD(a \ z.l, a \ z.r)
 end
+
+function widen(::Type{HyperbolicCD{T}}) where T
+    HyperbolicCD{widen(T)}
+end
+
+function float(::Type{HyperbolicCD{T}}) where T <: AbstractFloat
+    HyperbolicCD{T}
+end
+
+function float(::Type{HyperbolicCD{T}}) where T
+    HyperbolicCD{float(T)}
+end

@@ -126,3 +126,15 @@ function (\)(a::Real, z::EllipticCD)
     
     EllipticCD(a \ z.l, a \ z.r)
 end
+
+function widen(::Type{EllipticCD{T}}) where T
+    EllipticCD{widen(T)}
+end
+
+function float(::Type{EllipticCD{T}}) where T <: AbstractFloat
+    EllipticCD{T}
+end
+
+function float(::Type{EllipticCD{T}}) where T
+    EllipticCD{float(T)}
+end

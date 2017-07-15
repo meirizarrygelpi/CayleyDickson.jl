@@ -126,3 +126,15 @@ function (\)(a::Real, z::ParabolicCD)
     
     ParabolicCD(a \ z.l, a \ z.r)
 end
+
+function widen(::Type{ParabolicCD{T}}) where T
+    ParabolicCD{widen(T)}
+end
+
+function float(::Type{ParabolicCD{T}}) where T <: AbstractFloat
+    ParabolicCD{T}
+end
+
+function float(::Type{ParabolicCD{T}}) where T
+    ParabolicCD{float(T)}
+end
