@@ -275,3 +275,7 @@ end
     z = random(Perplex{BigInt})
     z == z * one(z)
 end
+
+@test begin
+    float(Perplex{Float64}) == Perplex{Float64}
+end

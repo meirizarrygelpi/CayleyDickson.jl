@@ -300,3 +300,7 @@ end
     z = random(Exoplex{BigInt})
     z == z * one(z)
 end
+
+@test begin
+    float(Exoplex{Float64}) == Exoplex{Float64}
+end
