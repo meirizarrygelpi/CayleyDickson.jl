@@ -25,7 +25,7 @@ end
     io = IOBuffer()
     show(io, TetraExoplex(TriExoplex(1.0, 2, 3, 4, 5, 6, 7, 8)))
     l = String(take!(io))
-    r = "[1: 1.0, A: 2.0, B: 3.0, AB: 4.0, C: 5.0, AC: 6.0, BC: 7.0, (AB)C: 8.0, D: 0.0, AD: 0.0, BD: 0.0, (AB)D: 0.0, CD: 0.0, (AC)D: 0.0, (BC)D: 0.0, ((AB)C)D: 0.0]"
+    r = "[1: 1.0, a: 2.0, b: 3.0, ab: 4.0, c: 5.0, ac: 6.0, bc: 7.0, (ab)c: 8.0, d: 0.0, ad: 0.0, bd: 0.0, (ab)d: 0.0, cd: 0.0, (ac)d: 0.0, (bc)d: 0.0, ((ab)c)d: 0.0]"
     l == r
 end
 

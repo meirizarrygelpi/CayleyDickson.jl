@@ -32,7 +32,7 @@ end
     io = IOBuffer()
     show(io, TriExoplex(1.0, 2, 3, 4, 5, 6, 7, 8))
     l = String(take!(io))
-    r = "[1: 1.0, A: 2.0, B: 3.0, AB: 4.0, C: 5.0, AC: 6.0, BC: 7.0, (AB)C: 8.0]"
+    r = "[1: 1.0, a: 2.0, b: 3.0, ab: 4.0, c: 5.0, ac: 6.0, bc: 7.0, (ab)c: 8.0]"
     l == r
 end
 
@@ -40,7 +40,7 @@ end
     io = IOBuffer()
     show(io, TriExoplex(1.0, 2, 3, 4, 5, 6, 7))
     l = String(take!(io))
-    r = "[1: 1.0, A: 2.0, B: 3.0, AB: 4.0, C: 5.0, AC: 6.0, BC: 7.0, (AB)C: 0.0]"
+    r = "[1: 1.0, a: 2.0, b: 3.0, ab: 4.0, c: 5.0, ac: 6.0, bc: 7.0, (ab)c: 0.0]"
     l == r
 end
 
@@ -48,7 +48,7 @@ end
     io = IOBuffer()
     show(io, TriExoplex(1.0, 2, 3, 4, 5, 6))
     l = String(take!(io))
-    r = "[1: 1.0, A: 2.0, B: 3.0, AB: 4.0, C: 5.0, AC: 6.0, BC: 0.0, (AB)C: 0.0]"
+    r = "[1: 1.0, a: 2.0, b: 3.0, ab: 4.0, c: 5.0, ac: 6.0, bc: 0.0, (ab)c: 0.0]"
     l == r
 end
 
@@ -56,7 +56,7 @@ end
     io = IOBuffer()
     show(io, TriExoplex(1.0, 2, 3, 4, 5))
     l = String(take!(io))
-    r = "[1: 1.0, A: 2.0, B: 3.0, AB: 4.0, C: 5.0, AC: 0.0, BC: 0.0, (AB)C: 0.0]"
+    r = "[1: 1.0, a: 2.0, b: 3.0, ab: 4.0, c: 5.0, ac: 0.0, bc: 0.0, (ab)c: 0.0]"
     l == r
 end
 
@@ -64,7 +64,7 @@ end
     io = IOBuffer()
     show(io, TriExoplex(1.0, 2, 3, 4))
     l = String(take!(io))
-    r = "[1: 1.0, A: 2.0, B: 3.0, AB: 4.0, C: 0.0, AC: 0.0, BC: 0.0, (AB)C: 0.0]"
+    r = "[1: 1.0, a: 2.0, b: 3.0, ab: 4.0, c: 0.0, ac: 0.0, bc: 0.0, (ab)c: 0.0]"
     l == r
 end
 

@@ -33,7 +33,7 @@ end
     io = IOBuffer()
     show(io, ExoCockle(1.0, 2, 3, 4, 5, 6, 7, 8))
     l = String(take!(io))
-    r = "[1: 1.0, i: 2.0, s: 3.0, is: 4.0, A: 5.0, iA: 6.0, sA: 7.0, (is)A: 8.0]"
+    r = "[1: 1.0, i: 2.0, s: 3.0, is: 4.0, a: 5.0, ia: 6.0, sa: 7.0, (is)a: 8.0]"
     l == r
 end
 
@@ -41,7 +41,7 @@ end
     io = IOBuffer()
     show(io, ExoCockle(1.0, 2, 3, 4, 5, 6, 7))
     l = String(take!(io))
-    r = "[1: 1.0, i: 2.0, s: 3.0, is: 4.0, A: 5.0, iA: 6.0, sA: 7.0, (is)A: 0.0]"
+    r = "[1: 1.0, i: 2.0, s: 3.0, is: 4.0, a: 5.0, ia: 6.0, sa: 7.0, (is)a: 0.0]"
     l == r
 end
 
@@ -49,7 +49,7 @@ end
     io = IOBuffer()
     show(io, ExoCockle(1.0, 2, 3, 4, 5, 6))
     l = String(take!(io))
-    r = "[1: 1.0, i: 2.0, s: 3.0, is: 4.0, A: 5.0, iA: 6.0, sA: 0.0, (is)A: 0.0]"
+    r = "[1: 1.0, i: 2.0, s: 3.0, is: 4.0, a: 5.0, ia: 6.0, sa: 0.0, (is)a: 0.0]"
     l == r
 end
 
@@ -57,7 +57,7 @@ end
     io = IOBuffer()
     show(io, ExoCockle(1.0, 2, 3, 4, 5))
     l = String(take!(io))
-    r = "[1: 1.0, i: 2.0, s: 3.0, is: 4.0, A: 5.0, iA: 0.0, sA: 0.0, (is)A: 0.0]"
+    r = "[1: 1.0, i: 2.0, s: 3.0, is: 4.0, a: 5.0, ia: 0.0, sa: 0.0, (is)a: 0.0]"
     l == r
 end
 
@@ -65,7 +65,7 @@ end
     io = IOBuffer()
     show(io, ExoCockle(1.0, 2, 3, 4))
     l = String(take!(io))
-    r = "[1: 1.0, i: 2.0, s: 3.0, is: 4.0, A: 0.0, iA: 0.0, sA: 0.0, (is)A: 0.0]"
+    r = "[1: 1.0, i: 2.0, s: 3.0, is: 4.0, a: 0.0, ia: 0.0, sa: 0.0, (is)a: 0.0]"
     l == r
 end
 

@@ -42,7 +42,7 @@ end
     io = IOBuffer()
     show(io, ExoPerplex(1, 2, 3, 4))
     l = String(take!(io))
-    r = "[1: 1, s: 2, A: 3, sA: 4]"
+    r = "[1: 1, s: 2, a: 3, sa: 4]"
     l == r
 end
 

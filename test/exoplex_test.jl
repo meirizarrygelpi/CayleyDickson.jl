@@ -32,7 +32,7 @@ end
     io = IOBuffer()
     show(io, Exoplex(1, 2))
     l = String(take!(io))
-    r = "[1: 1, A: 2]"
+    r = "[1: 1, a: 2]"
     l == r
 end
 

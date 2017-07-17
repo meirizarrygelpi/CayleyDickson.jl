@@ -31,7 +31,7 @@ end
     io = IOBuffer()
     show(io, BiExoComplex(1.0, 2, 3, 4, 5, 6, 7, 8))
     l = String(take!(io))
-    r = "[1: 1.0, i: 2.0, A: 3.0, iA: 4.0, B: 5.0, iB: 6.0, AB: 7.0, (iA)B: 8.0]"
+    r = "[1: 1.0, i: 2.0, a: 3.0, ia: 4.0, b: 5.0, ib: 6.0, ab: 7.0, (ia)b: 8.0]"
     l == r
 end
 
@@ -39,7 +39,7 @@ end
     io = IOBuffer()
     show(io, BiExoComplex(1.0, 2, 3, 4, 5, 6, 7))
     l = String(take!(io))
-    r = "[1: 1.0, i: 2.0, A: 3.0, iA: 4.0, B: 5.0, iB: 6.0, AB: 7.0, (iA)B: 0.0]"
+    r = "[1: 1.0, i: 2.0, a: 3.0, ia: 4.0, b: 5.0, ib: 6.0, ab: 7.0, (ia)b: 0.0]"
     l == r
 end
 
@@ -47,7 +47,7 @@ end
     io = IOBuffer()
     show(io, BiExoComplex(1.0, 2, 3, 4, 5, 6))
     l = String(take!(io))
-    r = "[1: 1.0, i: 2.0, A: 3.0, iA: 4.0, B: 5.0, iB: 6.0, AB: 0.0, (iA)B: 0.0]"
+    r = "[1: 1.0, i: 2.0, a: 3.0, ia: 4.0, b: 5.0, ib: 6.0, ab: 0.0, (ia)b: 0.0]"
     l == r
 end
 
@@ -55,7 +55,7 @@ end
     io = IOBuffer()
     show(io, BiExoComplex(1.0, 2, 3, 4, 5))
     l = String(take!(io))
-    r = "[1: 1.0, i: 2.0, A: 3.0, iA: 4.0, B: 5.0, iB: 0.0, AB: 0.0, (iA)B: 0.0]"
+    r = "[1: 1.0, i: 2.0, a: 3.0, ia: 4.0, b: 5.0, ib: 0.0, ab: 0.0, (ia)b: 0.0]"
     l == r
 end
 
@@ -63,7 +63,7 @@ end
     io = IOBuffer()
     show(io, BiExoComplex(1.0, 2, 3, 4))
     l = String(take!(io))
-    r = "[1: 1.0, i: 2.0, A: 3.0, iA: 4.0, B: 0.0, iB: 0.0, AB: 0.0, (iA)B: 0.0]"
+    r = "[1: 1.0, i: 2.0, a: 3.0, ia: 4.0, b: 0.0, ib: 0.0, ab: 0.0, (ia)b: 0.0]"
     l == r
 end
 

@@ -34,7 +34,7 @@ end
     io = IOBuffer()
     show(io, BiExoplex(1, 2, 3, 4))
     l = String(take!(io))
-    r = "[1: 1, A: 2, B: 3, AB: 4]"
+    r = "[1: 1, a: 2, b: 3, ab: 4]"
     l == r
 end
 

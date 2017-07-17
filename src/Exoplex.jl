@@ -49,7 +49,7 @@ end
 function show(io::IO, z::Exoplex)
     print(io, "[1: ")
     print(io, z.l)
-    print(io, ", A: ")
+    print(io, ", a: ")
     print(io, z.r)
     print(io, "]")
 end
