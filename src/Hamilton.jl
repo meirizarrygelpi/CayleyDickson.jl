@@ -1,9 +1,9 @@
 """
-    Hamilton{T <: Real} = EllipticCD{Cplex{T}}
+    Hamilton{T <: Real} = Elliptic{Cplex{T}}
 
 A Hamilton quaternion is an elliptic Cayley-Dickson construct with complex numbers.
 """
-const Hamilton{T <: Real} = EllipticCD{Cplex{T}}
+const Hamilton{T <: Real} = Elliptic{Cplex{T}}
 
 function Hamilton(z::Cplex{T}) where T <: Real
     Hamilton{T}(z, zero(Cplex{T}))

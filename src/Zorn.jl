@@ -1,9 +1,9 @@
 """
-    Zorn{T <: Real} = HyperbolicCD{Hamilton{T}}
+    Zorn{T <: Real} = Hyperbolic{Hamilton{T}}
 
 A Zorn octonion is a hyperbolic Cayley-Dickson construct with Hamilton quaternions.
 """
-const Zorn{T <: Real} = HyperbolicCD{Hamilton{T}}
+const Zorn{T <: Real} = Hyperbolic{Hamilton{T}}
 
 function Zorn(z::Hamilton{T}) where T <: Real
     Zorn{T}(z, zero(Hamilton{T}))

@@ -1,9 +1,9 @@
 """
-    ExoPerplex{T <: Real} = ParabolicCD{Perplex{T}}
+    ExoPerplex{T <: Real} = Parabolic{Perplex{T}}
 
 An exo-perplex number is a parabolic Cayley-Dickson construct with perplex numbers.
 """
-const ExoPerplex{T <: Real} = ParabolicCD{Perplex{T}}
+const ExoPerplex{T <: Real} = Parabolic{Perplex{T}}
 
 function ExoPerplex(z::Perplex{T}) where T <: Real
     ExoPerplex{T}(z, zero(Perplex{T}))

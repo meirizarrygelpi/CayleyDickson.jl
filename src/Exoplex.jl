@@ -1,9 +1,9 @@
 """
-    Exoplex{T <: Real} = ParabolicCD{T}
+    Exoplex{T <: Real} = Parabolic{T}
 
 An exoplex number is a parabolic Cayley-Dickson construct with real numbers.
 """
-const Exoplex{T <: Real} = ParabolicCD{T}
+const Exoplex{T <: Real} = Parabolic{T}
 
 function Exoplex(a::T, b::T) where T <: Real
     Exoplex{T}(a, b)

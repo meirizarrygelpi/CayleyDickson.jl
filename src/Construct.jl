@@ -1,9 +1,9 @@
 """
-    CDConstruct{T <: Number} <: Number
+    Construct{T <: Number} <: Number
 
 An abstract Cayley-Dickson construct.
 """
-abstract type CDConstruct{T <: Number} <: Number end
+abstract type Construct{T <: Number} <: Number end
 
 """
     unreal(::T) where T <: Real
@@ -15,11 +15,11 @@ function unreal(::T) where T <: Real
 end
 
 """
-    array(z::CDConstruct) -> Array
+    array(z::Construct) -> Array
 
 Return an array with all the `Real` components of `z`.
 """
-function array(z::CDConstruct)
+function array(z::Construct)
     vcat(real(z), unreal(z))
 end
 
@@ -33,34 +33,34 @@ function iszerodivisor(a::Real)
 end
 
 """
-    iszero(z::CDConstruct) -> Bool
+    iszero(z::Construct) -> Bool
 
 Return `true` if all `Real` components of `z` are zero.
 """
-function iszero(z::CDConstruct)
+function iszero(z::Construct)
     iszero(array(z))
 end
 
 """
-    isreal(z::CDConstruct) -> Bool
+    isreal(z::Construct) -> Bool
 
 Return `true` if the unreal part of `z` is zero.
 """
-function isreal(z::CDConstruct)
+function isreal(z::Construct)
     iszero(unreal(z))
 end
 
 """
-    (+)(z::CDConstruct)
+    (+)(z::Construct)
 
 The identity operation on Cayley-Dickson constructs.
 """
-function (+)(z::CDConstruct)
+function (+)(z::Construct)
     z
 end
 
 """
-    commutator(x::CDConstruct, y::CDConstruct)
+    commutator(x::Construct, y::Construct)
 
 Measure the failure of commutativity of the multiplication operation:
 ```julia
@@ -68,12 +68,12 @@ Measure the failure of commutativity of the multiplication operation:
 ```
 If `commutator(x, y)` is zero, then the multiplication operation is commutative.
 """
-function commutator(x::CDConstruct, y::CDConstruct)
+function commutator(x::Construct, y::Construct)
     (x * y) - (y * x)
 end
 
 """
-    associator(x::CDConstruct, y::CDConstruct, z::CDConstruct)
+    associator(x::Construct, y::Construct, z::Construct)
 
 Measure the failure of associativity of the multiplication operation:
 ```julia
@@ -81,12 +81,12 @@ Measure the failure of associativity of the multiplication operation:
 ```
 If `associator(x, y, z)` is zero, then the multiplication operation is associative.
 """
-function associator(x::CDConstruct, y::CDConstruct, z::CDConstruct)
+function associator(x::Construct, y::Construct, z::Construct)
     ((x * y) * z) - (x * (y * z))
 end
 
 """
-    jacobiator(x::CDConstruct, y::CDConstruct, z::CDConstruct)
+    jacobiator(x::Construct, y::Construct, z::Construct)
 
 Measure the failure of the multiplication operation to satisfy the Jacobi identity:
 ```julia
@@ -95,12 +95,12 @@ Measure the failure of the multiplication operation to satisfy the Jacobi identi
 If `jacobiator(x, y, z)` is zero, then the multiplication operation satisfies the Jacobi
 identity.
 """
-function jacobiator(x::CDConstruct, y::CDConstruct, z::CDConstruct)
+function jacobiator(x::Construct, y::Construct, z::Construct)
     ((x * y) * z) + ((z * x) * y) + ((y * z) * x)
 end
 
 """
-    alternatorL(x::CDConstruct, y::CDConstruct)
+    alternatorL(x::Construct, y::Construct)
 
 Measure the failure of the multiplication operation to be left-alternative:
 ```julia
@@ -108,12 +108,12 @@ Measure the failure of the multiplication operation to be left-alternative:
 ```
 If `alternatorL(x, y)` is zero, then the multiplication operation is left-alternative.
 """
-function alternatorL(x::CDConstruct, y::CDConstruct)
+function alternatorL(x::Construct, y::Construct)
     associator(x, x, y)
 end
 
 """
-    alternatorR(x::CDConstruct, y::CDConstruct)
+    alternatorR(x::Construct, y::Construct)
 
 Measure the failure of the multiplication operation to be right-alternative:
 ```julia
@@ -121,12 +121,12 @@ Measure the failure of the multiplication operation to be right-alternative:
 ```
 If `alternatorR(x, y)` is zero, then the multiplication operation is right-alternative.
 """
-function alternatorR(x::CDConstruct, y::CDConstruct)
+function alternatorR(x::Construct, y::Construct)
     associator(x, y, y)
 end
 
 """
-    flexator(x::CDConstruct, y::CDConstruct)
+    flexator(x::Construct, y::Construct)
 
 Measure the failure of the multiplication operation to be flexible:
 ```julia
@@ -134,17 +134,17 @@ Measure the failure of the multiplication operation to be flexible:
 ```
 If `flexator(x, y)` is zero, then the multiplication operation is flexible.
 """
-function flexator(x::CDConstruct, y::CDConstruct)
+function flexator(x::Construct, y::Construct)
     associator(x, y, x)
 end
 
 """
-    inv(z::CDConstruct)
+    inv(z::Construct)
 
 Return the multiplicative inverse of a Cayley-Dickson construct.
 If `z` is a zero divisor, then an `ErrorException` is thrown.
 """
-function inv(z::CDConstruct)
+function inv(z::Construct)
     if iszerodivisor(z)
         error(ZeroDivisorInverse)
     end
@@ -153,39 +153,39 @@ function inv(z::CDConstruct)
 end
 
 """
-    (/)(x::CDConstruct, y::CDConstruct)
+    (/)(x::Construct, y::Construct)
 
 Naive right quotient of two Cayley-Dickson constructs.
 Equivalent to multiplying `x` on the right by the inverse of `y`.
 """
-function (/)(x::CDConstruct, y::CDConstruct)
+function (/)(x::Construct, y::Construct)
     x * inv(y)
 end
 
 """
-    (\\)(y::CDConstruct, x::CDConstruct)
+    (\\)(y::Construct, x::Construct)
 
 Naive left quotient of two Cayley-Dickson constructs.
 Equivalent to multiplying `x` on the left by the inverse of `y`.
 """
-function (\)(y::CDConstruct, x::CDConstruct)
+function (\)(y::Construct, x::Construct)
     inv(y) * x
 end
 
 """
-    (/)(a::Real, z::CDConstruct)
+    (/)(a::Real, z::Construct)
 
 Equivalent to multiplying the inverse of `z` by `a`.
 """
-function (/)(a::Real, z::CDConstruct)
+function (/)(a::Real, z::Construct)
     a * inv(z)
 end
 
 """
-    (\\)(z::CDConstruct, a::Real)
+    (\\)(z::Construct, a::Real)
 
 Equivalent to multiplying the inverse of `z` by `a`.
 """
-function (\)(z::CDConstruct, a::Real)
+function (\)(z::Construct, a::Real)
     inv(z) * a
 end

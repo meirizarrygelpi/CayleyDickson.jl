@@ -1,9 +1,9 @@
 """
-    ExoComplex{T <: Real} = ParabolicCD{Cplex{T}}
+    ExoComplex{T <: Real} = Parabolic{Cplex{T}}
 
 An exo-complex number is a parabolic Cayley-Dickson construct with complex numbers.
 """
-const ExoComplex{T <: Real} = ParabolicCD{Cplex{T}}
+const ExoComplex{T <: Real} = Parabolic{Cplex{T}}
 
 function ExoComplex(z::Cplex{T}) where T <: Real
     ExoComplex{T}(z, zero(Cplex{T}))

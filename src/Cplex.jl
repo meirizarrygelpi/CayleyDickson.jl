@@ -1,9 +1,9 @@
 """
-    Cplex{T <: Real} = EllipticCD{T}
+    Cplex{T <: Real} = Elliptic{T}
 
 A complex number is an elliptic Cayley-Dickson construct with real numbers.
 """
-const Cplex{T <: Real} = EllipticCD{T}
+const Cplex{T <: Real} = Elliptic{T}
 
 function Cplex(a::T, b::T) where T <: Real
     Cplex{T}(a, b)

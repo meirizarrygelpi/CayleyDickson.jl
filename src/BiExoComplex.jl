@@ -1,9 +1,9 @@
 """
-    BiExoComplex{T <: Real} = ParabolicCD{ExoComplex{T}}
+    BiExoComplex{T <: Real} = Parabolic{ExoComplex{T}}
 
 A bi-exo-complex number is a parabolic Cayley-Dickson construct with exo-complex numbers.
 """
-const BiExoComplex{T <: Real} = ParabolicCD{ExoComplex{T}}
+const BiExoComplex{T <: Real} = Parabolic{ExoComplex{T}}
 
 function BiExoComplex(z::ExoComplex{T}) where T <: Real
     BiExoComplex{T}(z, zero(ExoComplex{T}))

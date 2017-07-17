@@ -1,9 +1,9 @@
 """
-    TetraExoplex{T <: Real} = ParabolicCD{TriExoplex{T}}
+    TetraExoplex{T <: Real} = Parabolic{TriExoplex{T}}
 
 A tetra-exoplex number is a parabolic Cayley-Dickson construct with tri-exoplex numbers.
 """
-const TetraExoplex{T <: Real} = ParabolicCD{TriExoplex{T}}
+const TetraExoplex{T <: Real} = Parabolic{TriExoplex{T}}
 
 function TetraExoplex(z::TriExoplex{T}) where T <: Real
     TetraExoplex{T}(z, zero(TriExoplex{T}))

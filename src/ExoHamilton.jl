@@ -1,9 +1,9 @@
 """
-    ExoHamilton{T <: Real} = ParabolicCD{Hamilton{T}}
+    ExoHamilton{T <: Real} = Parabolic{Hamilton{T}}
 
 An exo-Hamilton quaterion is a parabolic Cayley-Dickson construct with Hamilton quaternions.
 """
-const ExoHamilton{T <: Real} = ParabolicCD{Hamilton{T}}
+const ExoHamilton{T <: Real} = Parabolic{Hamilton{T}}
 
 function ExoHamilton(z::Hamilton{T}) where T <: Real
     ExoHamilton{T}(z, zero(Hamilton{T}))

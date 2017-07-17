@@ -1,9 +1,9 @@
 """
-    Cockle{T <: Real} = HyperbolicCD{Cplex{T}}
+    Cockle{T <: Real} = Hyperbolic{Cplex{T}}
 
 A Cockle quaternion is a hyperbolic Cayley-Dickson construct with complex numbers.
 """
-const Cockle{T <: Real} = HyperbolicCD{Cplex{T}}
+const Cockle{T <: Real} = Hyperbolic{Cplex{T}}
 
 function Cockle(z::Cplex{T}) where T <: Real
     Cockle{T}(z, zero(Cplex{T}))

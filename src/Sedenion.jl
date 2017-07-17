@@ -1,9 +1,9 @@
 """
-    Sedenion{T <: Real} = EllipticCD{Cayley{T}}
+    Sedenion{T <: Real} = Elliptic{Cayley{T}}
 
 A sedenion is an elliptic Cayley-Dickson construct with Cayley octonions.
 """
-const Sedenion{T <: Real} = EllipticCD{Cayley{T}}
+const Sedenion{T <: Real} = Elliptic{Cayley{T}}
 
 function Sedenion(z::Cayley{T}) where T <: Real
     Sedenion{T}(z, zero(Cayley{T}))

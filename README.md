@@ -6,42 +6,42 @@ This module provides arithmetic for Cayley-Dickson constructs.
 
 There is an abstract type:
 ```julia
-CDConstruct{T <: Number} <: Number
+Construct{T <: Number} <: Number
 ```
 and three concrete types:
 ```julia
-EllipticCD{T <: Number} <: CDConstruct{T}
-HyperbolicCD{T <: Number} <: CDConstruct{T}
-ParabolicCD{T <: Number} <: CDConstruct{T}
+Elliptic{T <: Number} <: Construct{T}
+Hyperbolic{T <: Number} <: Construct{T}
+Parabolic{T <: Number} <: Construct{T}
 ```
 Each of the concrete types is a pair of elements.
 
 A set of aliases are provided for convenience:
 ```julia
 # 2-dimensional
-Cplex{T <: Real} = EllipticCD{T}
-Perplex{T <: Real} = HyperbolicCD{T}
-Exoplex{T <: Real} = ParabolicCD{T}
+Cplex{T <: Real} = Elliptic{T}
+Perplex{T <: Real} = Hyperbolic{T}
+Exoplex{T <: Real} = Parabolic{T}
 
 # 4-dimensional
-Hamilton{T <: Real} = EllipticCD{Cplex{T}}
-Cockle{T <: Real} = HyperbolicCD{Cplex{T}}
-ExoComplex{T <: Real} = ParabolicCD{Cplex{T}}
-ExoPerplex{T <: Real} = ParabolicCD{Perplex{T}}
-BiExoplex{T <: Real} = ParabolicCD{Exoplex{T}}
+Hamilton{T <: Real} = Elliptic{Cplex{T}}
+Cockle{T <: Real} = Hyperbolic{Cplex{T}}
+ExoComplex{T <: Real} = Parabolic{Cplex{T}}
+ExoPerplex{T <: Real} = Parabolic{Perplex{T}}
+BiExoplex{T <: Real} = Parabolic{Exoplex{T}}
 
 # 8-dimensional
-Cayley{T <: Real} = EllipticCD{Hamilton{T}}
-Zorn{T <: Real} = HyperbolicCD{Hamilton{T}}
-ExoHamilton{T <: Real} = ParabolicCD{Hamilton{T}}
-ExoCockle{T <: Real} = ParabolicCD{Cockle{T}}
-BiExoComplex{T <: Real} = ParabolicCD{ExoComplex{T}}
-BiExoPerplex{T <: Real} = ParabolicCD{ExoPerplex{T}}
-TriExoplex{T <: Real} = ParabolicCD{BiExoplex{T}}
+Cayley{T <: Real} = Elliptic{Hamilton{T}}
+Zorn{T <: Real} = Hyperbolic{Hamilton{T}}
+ExoHamilton{T <: Real} = Parabolic{Hamilton{T}}
+ExoCockle{T <: Real} = Parabolic{Cockle{T}}
+BiExoComplex{T <: Real} = Parabolic{ExoComplex{T}}
+BiExoPerplex{T <: Real} = Parabolic{ExoPerplex{T}}
+TriExoplex{T <: Real} = Parabolic{BiExoplex{T}}
 
 # 16-dimensional
-Sedenion{T <: Real} = EllipticCD{Cayley{T}}
-TetraExoplex{T <: Real} = ParabolicCD{TriExoplex{T}}
+Sedenion{T <: Real} = Elliptic{Cayley{T}}
+TetraExoplex{T <: Real} = Parabolic{TriExoplex{T}}
 ```
 
 NEEDS DOCS.

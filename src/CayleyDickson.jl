@@ -12,16 +12,16 @@ const ZeroDivisorInverse = "inverse of zero divisor"
 "Error when the denominator in a quotient is zero."
 const ZeroDenominator = "denominator is zero"
 
-include("CDConstruct.jl")
-include("EllipticCD.jl")
+include("Construct.jl")
+include("Elliptic.jl")
 include("Cplex.jl")
 include("Hamilton.jl")
 include("Cayley.jl")
-include("HyperbolicCD.jl")
+include("Hyperbolic.jl")
 include("Perplex.jl")
 include("Cockle.jl")
 include("Zorn.jl")
-include("ParabolicCD.jl")
+include("Parabolic.jl")
 include("Exoplex.jl")
 include("BiExoplex.jl")
 include("ExoComplex.jl")
@@ -36,7 +36,7 @@ include("TetraExoplex.jl")
 include("random.jl")
 
 # Types
-export CDConstruct, EllipticCD, HyperbolicCD, ParabolicCD,
+export Construct, Elliptic, Hyperbolic, Parabolic,
        Cplex, Perplex, Exoplex,
        Hamilton, Cockle, BiExoplex, ExoComplex, ExoPerplex,
        Cayley, Zorn, ExoHamilton, ExoCockle, TriExoplex, BiExoComplex, BiExoPerplex,

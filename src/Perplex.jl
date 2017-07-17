@@ -1,9 +1,9 @@
 """
-    Perplex{T <: Real} = HyperbolicCD{T}
+    Perplex{T <: Real} = Hyperbolic{T}
 
 A perplex number is a hyperbolic Cayley-Dickson construct with real numbers.
 """
-const Perplex{T <: Real} = HyperbolicCD{T}
+const Perplex{T <: Real} = Hyperbolic{T}
 
 function Perplex(a::T, b::T) where T <: Real
     Perplex{T}(a, b)

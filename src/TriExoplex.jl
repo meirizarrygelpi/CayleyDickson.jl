@@ -1,9 +1,9 @@
 """
-    TriExoplex{T <: Real} = ParabolicCD{BiExoplex{T}}
+    TriExoplex{T <: Real} = Parabolic{BiExoplex{T}}
 
 A tri-exoplex number is a parabolic Cayley-Dickson construct with bi-exoplex numbers.
 """
-const TriExoplex{T <: Real} = ParabolicCD{BiExoplex{T}}
+const TriExoplex{T <: Real} = Parabolic{BiExoplex{T}}
 
 function TriExoplex(z::BiExoplex{T}) where T <: Real
     TriExoplex{T}(z, zero(BiExoplex{T}))

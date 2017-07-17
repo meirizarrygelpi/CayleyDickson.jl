@@ -1,9 +1,9 @@
 """
-    Cayley{T <: Real} = EllipticCD{Hamilton{T}}
+    Cayley{T <: Real} = Elliptic{Hamilton{T}}
 
 A Cayley octonion is an elliptic Cayley-Dickson construct with Hamilton quaternions.
 """
-const Cayley{T <: Real} = EllipticCD{Hamilton{T}}
+const Cayley{T <: Real} = Elliptic{Hamilton{T}}
 
 function Cayley(z::Hamilton{T}) where T <: Real
     Cayley{T}(z, zero(Hamilton{T}))

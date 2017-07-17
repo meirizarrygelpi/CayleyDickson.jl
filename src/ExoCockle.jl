@@ -1,9 +1,9 @@
 """
-    ExoCockle{T <: Real} = ParabolicCD{Cockle{T}}
+    ExoCockle{T <: Real} = Parabolic{Cockle{T}}
 
 An exo-Cockle quaterion is a parabolic Cayley-Dickson construct with Cockle quaternions.
 """
-const ExoCockle{T <: Real} = ParabolicCD{Cockle{T}}
+const ExoCockle{T <: Real} = Parabolic{Cockle{T}}
 
 function ExoCockle(z::Cockle{T}) where T <: Real
     ExoCockle{T}(z, zero(Cockle{T}))
