@@ -2,6 +2,14 @@ using CayleyDickson
 using Base.Test: @test, @test_throws
 
 @test begin
+    promote_rule(Cplex{Int}, Float64) == Cplex{Float64}
+end
+
+@test begin
+    promote_rule(Cplex{Int}, Cplex{Float64}) == Cplex{Float64}
+end
+
+@test begin
     -(1.0 - Cplex(2, 3)) == Cplex(1.0, 3.0) == Cplex(2, 3) - 1.0
 end
 
@@ -22,7 +30,7 @@ end
 end
 
 @test begin
-    convert(Cplex, Cplex(1)) == Cplex(1)
+    convert(Cplex{Int}, Cplex(1)) == Cplex(1)
 end
 
 @test begin
