@@ -189,3 +189,19 @@ Equivalent to multiplying the inverse of `z` by `a`.
 function (\)(z::Construct, a::Real)
     inv(z) * a
 end
+
+function convert(::Type{T}, z::Construct) where T <: Real
+    if !isreal(z)
+        throw(InexactError())
+    end
+
+    convert(T, real(z))
+end
+
+function covert(::Type{T}, z::T) where T <: Construct
+    z
+end
+
+function convert(::Type{T}, a::Real) where T <: Construct
+    T(a)
+end

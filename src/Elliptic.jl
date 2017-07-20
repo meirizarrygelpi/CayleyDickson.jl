@@ -61,11 +61,13 @@ function (+)(z::Elliptic{T}, a::T) where T <: Number
 end
 
 function (+)(a::Real, z::Elliptic)
-    Elliptic(a + z.l, z.r)
+    l = a + z.l
+    Elliptic(l, oftype(l, z.r))
 end
 
 function (+)(z::Elliptic, a::Real)
-    Elliptic(z.l + a, z.r)
+    l = z.l + a
+    Elliptic(l, oftype(l, z.r))
 end
 
 function (-)(x::Elliptic{T}, y::Elliptic{T}) where T <: Number
@@ -81,11 +83,13 @@ function (-)(z::Elliptic{T}, a::T) where T <: Number
 end
 
 function (-)(a::Real, z::Elliptic)
-    Elliptic(a - z.l, -(z.r))
+    l = a - z.l
+    Elliptic(l, -(oftype(l, z.r)))
 end
 
 function (-)(z::Elliptic, a::Real)
-    Elliptic(z.l - a, z.r)
+    l = z.l - a
+    Elliptic(l, oftype(l, z.r))
 end
 
 function (*)(x::Elliptic{T}, y::Elliptic{T}) where T <: Number

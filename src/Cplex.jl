@@ -49,3 +49,19 @@ end
 function random(::Type{Cplex{Rational{BigInt}}})
     Cplex{Rational{BigInt}}(randomBigRational(), randomBigRational())
 end
+
+function convert(::Type{Cplex{T}}, a::Real) where T <: Real
+    Cplex{T}(a, zero(T))
+end
+
+function convert(::Type{Cplex{T}}, z::Cplex) where T <: Real
+    Cplex{T}(z.l, z.r)
+end
+
+function promote_rule(::Type{Cplex{T}}, ::Type{S}) where {T <: Real, S <: Real}
+    Cplex{promote_type(T, S)}
+end
+
+function promote_rule(::Type{Cplex{T}}, ::Type{Cplex{S}}) where {T <: Real, S <: Real}
+    Cplex{promote_type(T, S)}
+end

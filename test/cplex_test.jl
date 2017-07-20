@@ -2,6 +2,38 @@ using CayleyDickson
 using Base.Test: @test, @test_throws
 
 @test begin
+    -(1.0 - Cplex(2, 3)) == Cplex(1.0, 3.0) == Cplex(2, 3) - 1.0
+end
+
+@test begin
+    1.0 + Cplex(2, 3) == Cplex(3.0, 3.0) == Cplex(2, 3) + 1.0
+end
+
+@test begin
+    convert(Cplex{Float64}, 1) == Cplex(1.0, 0)
+end
+
+@test begin
+    convert(Cplex{Float64}, Cplex(1,2)) == Cplex(1.0, 2.0)
+end
+
+@test begin
+    convert(Cplex, 2) == Cplex(2, 0)
+end
+
+@test begin
+    convert(Cplex, Cplex(1)) == Cplex(1)
+end
+
+@test begin
+    convert(Int, Cplex(3)) == 3
+end
+
+@test_throws InexactError begin
+    convert(Int, Cplex(3,4))
+end
+
+@test begin
     length(unreal(1)) == 0
 end
 
