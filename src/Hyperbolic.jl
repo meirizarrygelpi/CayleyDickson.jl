@@ -61,11 +61,13 @@ function (+)(z::Hyperbolic{T}, a::T) where T <: Number
 end
 
 function (+)(a::Real, z::Hyperbolic)
-    Hyperbolic(a + z.l, z.r)
+    l = a + z.l
+    Hyperbolic(l, oftype(l, z.r))
 end
 
 function (+)(z::Hyperbolic, a::Real)
-    Hyperbolic(z.l + a, z.r)
+    l = z.l + a
+    Hyperbolic(l, oftype(l, z.r))
 end
 
 function (-)(x::Hyperbolic{T}, y::Hyperbolic{T}) where T <: Number
@@ -81,11 +83,13 @@ function (-)(z::Hyperbolic{T}, a::T) where T <: Number
 end
 
 function (-)(a::Real, z::Hyperbolic)
-    Hyperbolic(a - z.l, -(z.r))
+    l = a - z.l
+    Hyperbolic(l, -(oftype(l, z.r)))
 end
 
 function (-)(z::Hyperbolic, a::Real)
-    Hyperbolic(z.l - a, z.r)
+    l = z.l - a
+    Hyperbolic(l, oftype(l, z.r))
 end
 
 function (*)(x::Hyperbolic{T}, y::Hyperbolic{T}) where T <: Number

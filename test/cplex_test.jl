@@ -30,7 +30,8 @@ end
 end
 
 @test begin
-    convert(Cplex{Int}, Cplex(1)) == Cplex(1)
+    z = Cplex{Int}(1, 2)
+    convert(Elliptic{Int}, z) == z
 end
 
 @test begin

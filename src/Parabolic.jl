@@ -61,11 +61,13 @@ function (+)(z::Parabolic{T}, a::T) where T <: Number
 end
 
 function (+)(a::Real, z::Parabolic)
-    Parabolic(a + z.l, z.r)
+    l = a + z.l
+    Parabolic(l, oftype(l, z.r))
 end
 
 function (+)(z::Parabolic, a::Real)
-    Parabolic(z.l + a, z.r)
+    l = z.l + a
+    Parabolic(l, oftype(l, z.r))
 end
 
 function (-)(x::Parabolic{T}, y::Parabolic{T}) where T <: Number
@@ -81,11 +83,13 @@ function (-)(z::Parabolic{T}, a::T) where T <: Number
 end
 
 function (-)(a::Real, z::Parabolic)
-    Parabolic(a - z.l, -(z.r))
+    l = a - z.l
+    Parabolic(l, -(oftype(l, z.r)))
 end
 
 function (-)(z::Parabolic, a::Real)
-    Parabolic(z.l - a, z.r)
+    l = z.l - a
+    Parabolic(l, oftype(l, z.r))
 end
 
 function (*)(x::Parabolic{T}, y::Parabolic{T}) where T <: Number
