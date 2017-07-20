@@ -2,6 +2,47 @@ using CayleyDickson
 using Base.Test: @test, @test_throws
 
 @test begin
+    promote_rule(Exoplex{Int}, Float64) == Exoplex{Float64}
+end
+
+@test begin
+    promote_rule(Exoplex{Int}, Exoplex{Float64}) == Exoplex{Float64}
+end
+
+@test begin
+    -(1.0 - Exoplex(2, 3)) == Exoplex(1.0, 3.0) == Exoplex(2, 3) - 1.0
+end
+
+@test begin
+    1.0 + Exoplex(2, 3) == Exoplex(3.0, 3.0) == Exoplex(2, 3) + 1.0
+end
+
+@test begin
+    convert(Exoplex{Float64}, 1) == Exoplex(1.0, 0)
+end
+
+@test begin
+    convert(Exoplex{Float64}, Exoplex(1,2)) == Exoplex(1.0, 2.0)
+end
+
+@test begin
+    convert(Exoplex, 2) == Exoplex(2, 0)
+end
+
+@test begin
+    z = Exoplex{Int}(1, 2)
+    convert(Parabolic{Int}, z) == z
+end
+
+@test begin
+    convert(Int, Exoplex(3)) == 3
+end
+
+@test_throws InexactError begin
+    convert(Int, Exoplex(3,4))
+end
+
+@test begin
     a = CayleyDickson.randomBigFloat()
     isreal(Exoplex(a))
 end

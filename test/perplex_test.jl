@@ -2,6 +2,47 @@ using CayleyDickson
 using Base.Test: @test, @test_throws
 
 @test begin
+    promote_rule(Perplex{Int}, Float64) == Perplex{Float64}
+end
+
+@test begin
+    promote_rule(Perplex{Int}, Perplex{Float64}) == Perplex{Float64}
+end
+
+@test begin
+    -(1.0 - Perplex(2, 3)) == Perplex(1.0, 3.0) == Perplex(2, 3) - 1.0
+end
+
+@test begin
+    1.0 + Perplex(2, 3) == Perplex(3.0, 3.0) == Perplex(2, 3) + 1.0
+end
+
+@test begin
+    convert(Perplex{Float64}, 1) == Perplex(1.0, 0)
+end
+
+@test begin
+    convert(Perplex{Float64}, Perplex(1,2)) == Perplex(1.0, 2.0)
+end
+
+@test begin
+    convert(Perplex, 2) == Perplex(2, 0)
+end
+
+@test begin
+    z = Perplex{Int}(1, 2)
+    convert(Hyperbolic{Int}, z) == z
+end
+
+@test begin
+    convert(Int, Perplex(3)) == 3
+end
+
+@test_throws InexactError begin
+    convert(Int, Perplex(3,4))
+end
+
+@test begin
     a = CayleyDickson.randomBigFloat()
     isreal(Perplex(a))
 end

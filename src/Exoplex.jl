@@ -69,3 +69,19 @@ end
 function random(::Type{Exoplex{Rational{BigInt}}})
     Exoplex{Rational{BigInt}}(randomBigRational(), randomBigRational())
 end
+
+function convert(::Type{Exoplex{T}}, a::Real) where T <: Real
+    Exoplex{T}(a, zero(T))
+end
+
+function convert(::Type{Exoplex{T}}, z::Exoplex) where T <: Real
+    Exoplex{T}(z.l, z.r)
+end
+
+function promote_rule(::Type{Exoplex{T}}, ::Type{S}) where {T <: Real, S <: Real}
+    Exoplex{promote_type(T, S)}
+end
+
+function promote_rule(::Type{Exoplex{T}}, ::Type{Exoplex{S}}) where {T <: Real, S <: Real}
+    Exoplex{promote_type(T, S)}
+end

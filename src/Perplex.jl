@@ -49,3 +49,19 @@ end
 function random(::Type{Perplex{Rational{BigInt}}})
     Perplex{Rational{BigInt}}(randomBigRational(), randomBigRational())
 end
+
+function convert(::Type{Perplex{T}}, a::Real) where T <: Real
+    Perplex{T}(a, zero(T))
+end
+
+function convert(::Type{Perplex{T}}, z::Perplex) where T <: Real
+    Perplex{T}(z.l, z.r)
+end
+
+function promote_rule(::Type{Perplex{T}}, ::Type{S}) where {T <: Real, S <: Real}
+    Perplex{promote_type(T, S)}
+end
+
+function promote_rule(::Type{Perplex{T}}, ::Type{Perplex{S}}) where {T <: Real, S <: Real}
+    Perplex{promote_type(T, S)}
+end
