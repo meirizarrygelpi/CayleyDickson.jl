@@ -198,7 +198,7 @@ function convert(::Type{T}, z::Construct) where T <: Real
     convert(T, real(z))
 end
 
-function covert(::Type{T}, z::T) where T <: Construct
+function convert(::Type{T}, z::T) where T <: Construct
     z
 end
 
