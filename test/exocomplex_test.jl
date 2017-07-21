@@ -339,3 +339,28 @@ end
     z = random(ExoComplex{BigInt})
     z == z * one(z)
 end
+
+@test begin
+    z = random(ExoComplex{BigInt})
+    z == cloak(cloak(z))
+end
+
+@test begin
+    z = random(ExoComplex{BigInt})
+    z == dagger(dagger(z))
+end
+
+@test begin
+    z = random(ExoComplex{BigInt})
+    z == star(star(z))
+end
+
+@test begin
+    z = random(ExoComplex{BigInt})
+    selfstar(z) == selfstar(selfstar(z))
+end
+
+@test begin
+    z = random(ExoComplex{BigInt})
+    antiselfstar(z) == antiselfstar(antiselfstar(z))
+end

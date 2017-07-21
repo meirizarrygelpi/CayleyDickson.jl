@@ -41,6 +41,26 @@ function ExoComplex(z::Exoplex{T}) where T <: Real
     ExoComplex(z.l, zero(T), z.r, zero(T))
 end
 
+function cloak(z::ExoComplex{T}) where T <: Real
+    ExoComplex{T}(-(z.l), z.r)
+end
+
+function dagger(z::ExoComplex{T}) where T <: Real
+    ExoComplex{T}(z.l, -(z.r))
+end
+
+function star(z::ExoComplex{T}) where T <: Real
+    ExoComplex{T}(z.r, z.l)
+end
+
+function selfstar(z::ExoComplex)
+    (z + star(z)) / 2
+end
+
+function antiselfstar(z::ExoComplex)
+    (z - star(z)) / 2
+end
+
 """
     unreal(z::ExoComplex)
 
