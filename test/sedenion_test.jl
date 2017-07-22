@@ -344,3 +344,21 @@ end
     z = random(Sedenion{BigInt})
     z == z * one(z)
 end
+
+@test begin
+    i = Sedenion{Int}(Cayley(0,1), zero(Cayley{Int}))
+    m = Sedenion{Int}(zero(Cayley{Int}), one(Cayley{Int}))
+    anti_alternatorL(i, m) != zero(Sedenion{Int})
+end
+
+@test begin
+    i = Sedenion{Int}(Cayley(0,1), zero(Cayley{Int}))
+    m = Sedenion{Int}(zero(Cayley{Int}), one(Cayley{Int}))
+    anti_alternatorR(i, m) != zero(Sedenion{Int})
+end
+
+@test begin
+    i = Sedenion{Int}(Cayley(0,1), zero(Cayley{Int}))
+    m = Sedenion{Int}(zero(Cayley{Int}), one(Cayley{Int}))
+    anti_flexator(i, m) != zero(Sedenion{Int})
+end

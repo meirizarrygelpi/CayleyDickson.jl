@@ -371,3 +371,10 @@ end
     z = random(Cayley{BigInt})
     z == z * one(z)
 end
+
+@test begin
+    i = Cayley(0,1)
+    j = Cayley(0,0,1)
+    k = Cayley(0,0,0,0,1)
+    anti_associator(i,j,k) == zero(Cayley{Int})
+end

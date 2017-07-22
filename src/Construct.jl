@@ -73,6 +73,19 @@ function commutator(x::Construct, y::Construct)
 end
 
 """
+    anti_commutator(x::Construct, y::Construct)
+
+Measure the failure of anti-commutativity of the multiplication operation:
+```julia
+    (x * y) + (y * x)
+```
+If `anti_commutator(x, y)` is zero, then the multiplication operation is anti-commutative.
+"""
+function anti_commutator(x::Construct, y::Construct)
+    (x * y) + (y * x)
+end
+
+"""
     associator(x::Construct, y::Construct, z::Construct)
 
 Measure the failure of associativity of the multiplication operation:
@@ -83,6 +96,19 @@ If `associator(x, y, z)` is zero, then the multiplication operation is associati
 """
 function associator(x::Construct, y::Construct, z::Construct)
     ((x * y) * z) - (x * (y * z))
+end
+
+"""
+    anti_associator(x::Construct, y::Construct, z::Construct)
+
+Measure the failure of anti-associativity of the multiplication operation:
+```julia
+    ((x * y) * z) + (x * (y * z))
+```
+If `anti_associator(x, y, z)` is zero, then the multiplication operation is anti-associative.
+"""
+function anti_associator(x::Construct, y::Construct, z::Construct)
+    ((x * y) * z) + (x * (y * z))
 end
 
 """
@@ -113,6 +139,19 @@ function alternatorL(x::Construct, y::Construct)
 end
 
 """
+    anti_alternatorL(x::Construct, y::Construct)
+
+Measure the failure of the multiplication operation to be anti-left-alternative:
+```julia
+    ((x * x) * y) + (x * (x * y))
+```
+If `anti_alternatorL(x, y)` is zero, then the multiplication operation is anti-left-alternative.
+"""
+function anti_alternatorL(x::Construct, y::Construct)
+    anti_associator(x, x, y)
+end
+
+"""
     alternatorR(x::Construct, y::Construct)
 
 Measure the failure of the multiplication operation to be right-alternative:
@@ -126,6 +165,19 @@ function alternatorR(x::Construct, y::Construct)
 end
 
 """
+    anti_alternatorR(x::Construct, y::Construct)
+
+Measure the failure of the multiplication operation to be anti-right-alternative:
+```julia
+    ((x * y) * y) + (x * (y * y))
+```
+If `anti_alternatorR(x, y)` is zero, then the multiplication operation is anti-right-alternative.
+"""
+function anti_alternatorR(x::Construct, y::Construct)
+    anti_associator(x, y, y)
+end
+
+"""
     flexator(x::Construct, y::Construct)
 
 Measure the failure of the multiplication operation to be flexible:
@@ -136,6 +188,19 @@ If `flexator(x, y)` is zero, then the multiplication operation is flexible.
 """
 function flexator(x::Construct, y::Construct)
     associator(x, y, x)
+end
+
+"""
+    anti_flexator(x::Construct, y::Construct)
+
+Measure the failure of the multiplication operation to be anti-flexible:
+```julia
+    ((x * y) * x) + (x * (y * x))
+```
+If `anti_flexator(x, y)` is zero, then the multiplication operation is anti-flexible.
+"""
+function anti_flexator(x::Construct, y::Construct)
+    anti_associator(x, y, x)
 end
 
 """

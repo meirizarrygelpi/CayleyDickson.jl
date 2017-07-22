@@ -314,3 +314,9 @@ end
     z = random(Hamilton{BigInt})
     z == z * one(z)
 end
+
+@test begin
+    i = Hamilton(0,1)
+    j = Hamilton(0,0,1)
+    anti_commutator(i, j) == zero(Hamilton{Int})
+end
