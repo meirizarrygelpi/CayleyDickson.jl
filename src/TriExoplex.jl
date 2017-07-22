@@ -152,7 +152,7 @@ function selfstar(z::TriExoplex)
     (z + star(z)) / 2
 end
 
-function antiselfstar(z::TriExoplex)
+function anti_selfstar(z::TriExoplex)
     (z - star(z)) / 2
 end
 

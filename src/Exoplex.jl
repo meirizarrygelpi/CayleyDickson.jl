@@ -33,7 +33,7 @@ function selfstar(z::Exoplex)
     (z + star(z)) / 2
 end
 
-function antiselfstar(z::Exoplex)
+function anti_selfstar(z::Exoplex)
     (z - star(z)) / 2
 end
 

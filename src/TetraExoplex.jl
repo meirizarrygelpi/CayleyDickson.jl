@@ -41,7 +41,7 @@ function selfstar(z::TetraExoplex)
     (z + star(z) + dagger(z) + star(dagger(z))) / 4
 end
 
-function antiselfstar(z::TetraExoplex)
+function anti_selfstar(z::TetraExoplex)
     (z - star(z) + dagger(z) - star(dagger(z))) / 4
 end
 

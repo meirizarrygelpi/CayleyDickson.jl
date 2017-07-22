@@ -362,5 +362,5 @@ end
 
 @test begin
     z = random(ExoComplex{BigInt})
-    antiselfstar(z) == antiselfstar(antiselfstar(z))
+    anti_selfstar(z) == anti_selfstar(anti_selfstar(z))
 end

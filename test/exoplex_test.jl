@@ -168,7 +168,7 @@ end
 
 @test begin
     x = random(Exoplex{Rational{BigInt}})
-    antiselfstar(antiselfstar(x)) == antiselfstar(x)
+    anti_selfstar(anti_selfstar(x)) == anti_selfstar(x)
 end
 
 @test begin

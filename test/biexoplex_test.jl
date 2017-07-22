@@ -354,5 +354,5 @@ end
 
 @test begin
     x = random(BiExoplex{Rational{BigInt}})
-    antiselfstar(antiselfstar(x)) == antiselfstar(x)
+    anti_selfstar(anti_selfstar(x)) == anti_selfstar(x)
 end

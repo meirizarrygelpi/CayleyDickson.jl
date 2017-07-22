@@ -53,7 +53,7 @@ function selfstar(z::BiExoplex)
     (z + star(z) + dagger(z) + star(dagger(z))) / 4
 end
 
-function antiselfstar(z::BiExoplex)
+function anti_selfstar(z::BiExoplex)
     (z - star(z) + dagger(z) - star(dagger(z))) / 4
 end
 

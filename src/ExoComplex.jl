@@ -57,7 +57,7 @@ function selfstar(z::ExoComplex)
     (z + star(z)) / 2
 end
 
-function antiselfstar(z::ExoComplex)
+function anti_selfstar(z::ExoComplex)
     (z - star(z)) / 2
 end
 

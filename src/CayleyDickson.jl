@@ -45,6 +45,6 @@ export Construct, Elliptic, Hyperbolic, Parabolic,
 # Methods
 export unreal, array, iszerodivisor, random,
        commutator, associator, jacobiator, alternatorL, alternatorR, flexator,
-       cloak, dagger, star, selfstar, antiselfstar
+       cloak, dagger, star, selfstar, anti_selfstar
 
 end
