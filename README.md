@@ -20,9 +20,6 @@ Basic arithmetic operations are implemented:
 ```julia
 (+), (-), (*), (/), (\), inv, conj
 ```
-
-(The names below are different from the current names in the source code. The source code will be changed in future work.)
-
 A set of aliases are provided for convenience. There are three 2-dimensional algebras:
 ```julia
 Binion{T <: Real} = Elliptic{T}
