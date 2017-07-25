@@ -1,26 +1,26 @@
 """
-    Sedenion{T <: Real} = Elliptic{Cayley{T}}
+    Sedenion{T <: Real} = Elliptic{Octonion{T}}
 
-A sedenion is an elliptic Cayley-Dickson construct with Cayley octonions.
+A sedenion is an elliptic Cayley-Dickson construct with Octonion octonions.
 """
-const Sedenion{T <: Real} = Elliptic{Cayley{T}}
+const Sedenion{T <: Real} = Elliptic{Octonion{T}}
 
-function Sedenion(z::Cayley{T}) where T <: Real
-    Sedenion{T}(z, zero(Cayley{T}))
+function Sedenion(z::Octonion{T}) where T <: Real
+    Sedenion{T}(z, zero(Octonion{T}))
 end
 
 function Sedenion(z::Hamilton{T}) where T <: Real
     Sedenion{T}(
-        Cayley{T}(z, zero(Hamilton{T})),
-        zero(Cayley{T})
+        Octonion{T}(z, zero(Hamilton{T})),
+        zero(Octonion{T})
     )
 end
 
 function Sedenion(z::Cplex{T}) where T <: Real
     Sedenion{T}(
-        Cayley{T}(Hamilton{T}(z, zero(Cplex{T})),
+        Octonion{T}(Hamilton{T}(z, zero(Cplex{T})),
         zero(Hamilton{T})),
-        zero(Cayley{T})
+        zero(Octonion{T})
     )
 end
 
@@ -70,5 +70,5 @@ function show(io::IO, z::Sedenion)
 end
 
 function random(::Type{Sedenion{T}}) where T <: Real
-    Sedenion{T}(random(Cayley{T}), random(Cayley{T}))
+    Sedenion{T}(random(Octonion{T}), random(Octonion{T}))
 end

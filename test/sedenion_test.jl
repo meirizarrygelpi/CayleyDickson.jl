@@ -3,12 +3,12 @@ using Base.Test: @test, @test_throws
 
 @test begin
     a = CayleyDickson.randomBigFloat()
-    isreal(Sedenion(Cayley(a)))
+    isreal(Sedenion(Octonion(a)))
 end
 
 @test begin
     a = 1
-    !isreal(Sedenion(Cayley(a, a, a, a)))
+    !isreal(Sedenion(Octonion(a, a, a, a)))
 end
 
 @test begin
@@ -18,12 +18,12 @@ end
 
 @test begin
     a = CayleyDickson.randomBigFloat()
-    real(Sedenion(Cayley(a))) == a
+    real(Sedenion(Octonion(a))) == a
 end
 
 @test begin
     io = IOBuffer()
-    show(io, Sedenion(Cayley(1.0, 2, 3, 4, 5, 6, 7, 8)))
+    show(io, Sedenion(Octonion(1.0, 2, 3, 4, 5, 6, 7, 8)))
     l = String(take!(io))
     r = "[1: 1.0, i: 2.0, j: 3.0, ij: 4.0, k: 5.0, ik: 6.0, jk: 7.0, (ij)k: 8.0, m: 0.0, im: 0.0, jm: 0.0, (ij)m: 0.0, km: 0.0, (ik)m: 0.0, (jk)m: 0.0, ((ij)k)m: 0.0]"
     l == r
@@ -34,7 +34,7 @@ end
     b = CayleyDickson.randomBigInt()
     c = CayleyDickson.randomBigInt()
     d = CayleyDickson.randomBigInt()
-    l = Sedenion(Cayley(a, b, c, d))
+    l = Sedenion(Octonion(a, b, c, d))
     r = Sedenion(Hamilton(a, b, c, d))
     l == r
 end
@@ -43,7 +43,7 @@ end
     a = CayleyDickson.randomBigInt()
     b = CayleyDickson.randomBigInt()
     l = Sedenion(Cplex(a, b))
-    r = Sedenion(Cayley(a, b))
+    r = Sedenion(Octonion(a, b))
     l == r
 end
 
@@ -62,7 +62,7 @@ end
 end
 
 @test begin
-    a = random(Cayley{BigInt})
+    a = random(Octonion{BigInt})
     z = random(Sedenion{BigInt})
     l = a + z
     r = z + a
@@ -78,7 +78,7 @@ end
 end
 
 @test begin
-    a = random(Cayley{BigInt})
+    a = random(Octonion{BigInt})
     z = random(Sedenion{BigInt})
     l = a - z
     r = -(z - a)
@@ -250,7 +250,7 @@ end
 end
 
 @test begin
-    a = random(Cayley{BigInt})
+    a = random(Octonion{BigInt})
     x = random(Sedenion{BigInt})
     l = commutator(a, x)
     r = zero(Sedenion{BigInt})
@@ -298,7 +298,7 @@ end
 end
 
 @test_throws ErrorException begin
-    inv(Sedenion(Cayley(0)))
+    inv(Sedenion(Octonion(0)))
 end
 
 @test_throws ErrorException begin
@@ -346,19 +346,19 @@ end
 end
 
 @test begin
-    i = Sedenion{Int}(Cayley(0,1), zero(Cayley{Int}))
-    m = Sedenion{Int}(zero(Cayley{Int}), one(Cayley{Int}))
+    i = Sedenion{Int}(Octonion(0,1), zero(Octonion{Int}))
+    m = Sedenion{Int}(zero(Octonion{Int}), one(Octonion{Int}))
     anti_alternatorL(i, m) != zero(Sedenion{Int})
 end
 
 @test begin
-    i = Sedenion{Int}(Cayley(0,1), zero(Cayley{Int}))
-    m = Sedenion{Int}(zero(Cayley{Int}), one(Cayley{Int}))
+    i = Sedenion{Int}(Octonion(0,1), zero(Octonion{Int}))
+    m = Sedenion{Int}(zero(Octonion{Int}), one(Octonion{Int}))
     anti_alternatorR(i, m) != zero(Sedenion{Int})
 end
 
 @test begin
-    i = Sedenion{Int}(Cayley(0,1), zero(Cayley{Int}))
-    m = Sedenion{Int}(zero(Cayley{Int}), one(Cayley{Int}))
+    i = Sedenion{Int}(Octonion(0,1), zero(Octonion{Int}))
+    m = Sedenion{Int}(zero(Octonion{Int}), one(Octonion{Int}))
     anti_flexator(i, m) != zero(Sedenion{Int})
 end
