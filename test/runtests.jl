@@ -11,7 +11,7 @@ using Base.Test: @testset
 @testset "BiExoplex" begin include("biexoplex_test.jl") end
 @testset "Octonion" begin include("octonion_test.jl") end
 @testset "SplitOctonion" begin include("splitoctonion_test.jl") end
-@testset "BiExoComplex" begin include("biexocomplex_test.jl") end
+@testset "Exo2Binion" begin include("exo2binion_test.jl") end
 @testset "BiExoPerplex" begin include("biexoperplex_test.jl") end
 @testset "Exo1Quaternion" begin include("exo1quaternion_test.jl") end
 @testset "Exo1SplitQuaternion" begin include("exo1splitquaternion_test.jl") end
