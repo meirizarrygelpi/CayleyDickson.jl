@@ -41,7 +41,7 @@ end
 @test begin
     a = CayleyDickson.randomBigInt()
     b = CayleyDickson.randomBigFloat()
-    l = Exo2Real(Exoplex(a, b))
+    l = Exo2Real(Exo1Real(a, b))
     r = Exo2Real(a, b)
     l == r
 end
@@ -70,7 +70,7 @@ end
 end
 
 @test begin
-    a = random(Exoplex{BigInt})
+    a = random(Exo1Real{BigInt})
     z = random(Exo2Real{BigInt})
     l = a + z
     r = z + a
@@ -86,7 +86,7 @@ end
 end
 
 @test begin
-    a = random(Exoplex{BigInt})
+    a = random(Exo1Real{BigInt})
     z = random(Exo2Real{BigInt})
     l = a - z
     r = -(z - a)
@@ -229,7 +229,7 @@ end
 end
 
 @test begin
-    a = random(Exoplex{BigInt})
+    a = random(Exo1Real{BigInt})
     x = random(Exo2Real{BigInt})
     l = a * x
     r = x * a

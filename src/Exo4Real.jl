@@ -16,10 +16,10 @@ function Exo4Real(z::Exo2Real{T}) where T <: Real
     )
 end
 
-function Exo4Real(z::Exoplex{T}) where T <: Real
+function Exo4Real(z::Exo1Real{T}) where T <: Real
     Exo4Real{T}(
         Exo3Real{T}(
-            Exo2Real{T}(z, zero(Exoplex{T})),
+            Exo2Real{T}(z, zero(Exo1Real{T})),
             zero(Exo2Real{T})),
         zero(Exo3Real{T})
     )

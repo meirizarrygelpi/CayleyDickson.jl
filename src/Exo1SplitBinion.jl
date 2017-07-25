@@ -37,7 +37,7 @@ function Exo1SplitBinion(a::Real, b::Real, c::Real, d::Real)
     Exo1SplitBinion(promote(a, b, c, d)...)
 end
 
-function Exo1SplitBinion(z::Exoplex{T}) where T <: Real
+function Exo1SplitBinion(z::Exo1Real{T}) where T <: Real
     Exo1SplitBinion(z.l, zero(T), z.r, zero(T))
 end
 

@@ -4,7 +4,7 @@ using Base.Test: @test, @test_throws
 @test begin
     a = CayleyDickson.randomBigInt()
     b = CayleyDickson.randomBigInt()
-    l = Exo1Binion(Exoplex(a, b))
+    l = Exo1Binion(Exo1Real(a, b))
     r = Exo1Binion(a, 0, b, 0)
     l == r
 end

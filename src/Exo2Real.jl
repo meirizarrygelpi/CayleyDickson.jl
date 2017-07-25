@@ -1,28 +1,28 @@
 """
-    Exo2Real{T <: Real} = Parabolic{Exoplex{T}}
+    Exo2Real{T <: Real} = Parabolic{Exo1Real{T}}
 
 A 2-exo-real number is a parabolic Cayley-Dickson construct with 1-exo-real numbers.
 """
-const Exo2Real{T <: Real} = Parabolic{Exoplex{T}}
+const Exo2Real{T <: Real} = Parabolic{Exo1Real{T}}
 
-function Exo2Real(z::Exoplex{T}) where T <: Real
-    Exo2Real{T}(z, zero(Exoplex{T}))
+function Exo2Real(z::Exo1Real{T}) where T <: Real
+    Exo2Real{T}(z, zero(Exo1Real{T}))
 end
 
 function Exo2Real(a::T, b::T, c::T, d::T) where T <: Real
-    Exo2Real{T}(Exoplex{T}(a, b), Exoplex{T}(c, d))
+    Exo2Real{T}(Exo1Real{T}(a, b), Exo1Real{T}(c, d))
 end
 
 function Exo2Real(a::T, b::T, c::T) where T <: Real
-    Exo2Real{T}(Exoplex{T}(a, b), Exoplex{T}(c, zero(T)))
+    Exo2Real{T}(Exo1Real{T}(a, b), Exo1Real{T}(c, zero(T)))
 end
 
 function Exo2Real(a::T, b::T) where T <: Real
-    Exo2Real{T}(Exoplex{T}(a, b), zero(Exoplex{T}))
+    Exo2Real{T}(Exo1Real{T}(a, b), zero(Exo1Real{T}))
 end
 
 function Exo2Real(a::T) where T <: Real
-    Exo2Real{T}(Exoplex{T}(a, zero(T)), zero(Exoplex{T}))
+    Exo2Real{T}(Exo1Real{T}(a, zero(T)), zero(Exo1Real{T}))
 end
 
 function Exo2Real(a::Real, b::Real)
@@ -79,5 +79,5 @@ function show(io::IO, z::Exo2Real)
 end
 
 function random(::Type{Exo2Real{T}}) where T <: Real
-    Exo2Real{T}(random(Exoplex{T}), random(Exoplex{T}))
+    Exo2Real{T}(random(Exo1Real{T}), random(Exo1Real{T}))
 end

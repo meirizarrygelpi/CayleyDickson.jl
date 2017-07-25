@@ -136,7 +136,7 @@ function Exo1Quaternion(a::Real, b::Real, c::Real, d::Real, f::Real, g::Real, h:
     Exo1Quaternion(promote(a, b, c, d, f, g, h, j)...)
 end
 
-function Exo1Quaternion(z::Exoplex{T}) where T <: Real
+function Exo1Quaternion(z::Exo1Real{T}) where T <: Real
     Exo1Quaternion(z.l, zero(T), zero(T), zero(T), z.r, zero(T), zero(T), zero(T))
 end
 

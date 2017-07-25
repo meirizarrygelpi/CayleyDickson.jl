@@ -3,7 +3,7 @@ using Base.Test: @testset
 
 @testset "Cplex" begin include("cplex_test.jl") end
 @testset "SplitBinion" begin include("splitbinion_test.jl") end
-@testset "Exoplex" begin include("exoplex_test.jl") end
+@testset "Exo1Real" begin include("exo1real_test.jl") end
 @testset "Quaternion" begin include("quaternion_test.jl") end
 @testset "SplitQuaternion" begin include("splitquaternion_test.jl") end
 @testset "Exo1Binion" begin include("exo1binion_test.jl") end

@@ -136,7 +136,7 @@ function Exo1SplitQuaternion(a::Real, b::Real, c::Real, d::Real, f::Real, g::Rea
     Exo1SplitQuaternion(promote(a, b, c, d, f, g, h, j)...)
 end
 
-function Exo1SplitQuaternion(z::Exoplex{T}) where T <: Real
+function Exo1SplitQuaternion(z::Exo1Real{T}) where T <: Real
     Exo1SplitQuaternion(z.l, zero(T), zero(T), zero(T), z.r, zero(T), zero(T), zero(T))
 end
 

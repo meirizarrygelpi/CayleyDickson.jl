@@ -81,7 +81,7 @@ end
 @test begin
     a = CayleyDickson.randomBigInt()
     b = CayleyDickson.randomBigFloat()
-    l = Exo3Real(Exoplex(a, b))
+    l = Exo3Real(Exo1Real(a, b))
     r = Exo3Real(a, b)
     l == r
 end

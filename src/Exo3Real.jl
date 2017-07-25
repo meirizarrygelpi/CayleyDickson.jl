@@ -9,9 +9,9 @@ function Exo3Real(z::Exo2Real{T}) where T <: Real
     Exo3Real{T}(z, zero(Exo2Real{T}))
 end
 
-function Exo3Real(z::Exoplex{T}) where T <: Real
+function Exo3Real(z::Exo1Real{T}) where T <: Real
     Exo3Real{T}(
-        Exo2Real{T}(z, zero(Exoplex{T})),
+        Exo2Real{T}(z, zero(Exo1Real{T})),
         zero(Exo2Real{T})
     )
 end
@@ -19,12 +19,12 @@ end
 function Exo3Real(a::T, b::T, c::T, d::T, f::T, g::T, h::T, j::T) where T <: Real
     Exo3Real{T}(
         Exo2Real{T}(
-            Exoplex{T}(a, b),
-            Exoplex{T}(c, d)
+            Exo1Real{T}(a, b),
+            Exo1Real{T}(c, d)
         ),
         Exo2Real{T}(
-            Exoplex{T}(f, g),
-            Exoplex{T}(h, j)
+            Exo1Real{T}(f, g),
+            Exo1Real{T}(h, j)
         )
     )
 end
@@ -32,12 +32,12 @@ end
 function Exo3Real(a::T, b::T, c::T, d::T, f::T, g::T, h::T) where T <: Real
     Exo3Real{T}(
         Exo2Real{T}(
-            Exoplex{T}(a, b),
-            Exoplex{T}(c, d)
+            Exo1Real{T}(a, b),
+            Exo1Real{T}(c, d)
         ),
         Exo2Real{T}(
-            Exoplex{T}(f, g),
-            Exoplex{T}(h, zero(T))
+            Exo1Real{T}(f, g),
+            Exo1Real{T}(h, zero(T))
         )
     )
 end
@@ -45,12 +45,12 @@ end
 function Exo3Real(a::T, b::T, c::T, d::T, f::T, g::T) where T <: Real
     Exo3Real{T}(
         Exo2Real{T}(
-            Exoplex{T}(a, b),
-            Exoplex{T}(c, d)
+            Exo1Real{T}(a, b),
+            Exo1Real{T}(c, d)
         ),
         Exo2Real{T}(
-            Exoplex{T}(f, g),
-            zero(Exoplex{T})
+            Exo1Real{T}(f, g),
+            zero(Exo1Real{T})
         )
     )
 end
@@ -58,12 +58,12 @@ end
 function Exo3Real(a::T, b::T, c::T, d::T, f::T) where T <: Real
     Exo3Real{T}(
         Exo2Real{T}(
-            Exoplex{T}(a, b),
-            Exoplex{T}(c, d)
+            Exo1Real{T}(a, b),
+            Exo1Real{T}(c, d)
         ),
         Exo2Real{T}(
-            Exoplex{T}(f, zero(T)),
-            zero(Exoplex{T})
+            Exo1Real{T}(f, zero(T)),
+            zero(Exo1Real{T})
         )
     )
 end
@@ -71,8 +71,8 @@ end
 function Exo3Real(a::T, b::T, c::T, d::T) where T <: Real
     Exo3Real{T}(
         Exo2Real{T}(
-            Exoplex{T}(a, b),
-            Exoplex{T}(c, d)
+            Exo1Real{T}(a, b),
+            Exo1Real{T}(c, d)
         ),
         zero(Exo2Real{T})
     )
@@ -81,8 +81,8 @@ end
 function Exo3Real(a::T, b::T, c::T) where T <: Real
     Exo3Real{T}(
         Exo2Real{T}(
-            Exoplex{T}(a, b),
-            Exoplex{T}(c, zero(T))
+            Exo1Real{T}(a, b),
+            Exo1Real{T}(c, zero(T))
         ),
         zero(Exo2Real{T})
     )
@@ -91,8 +91,8 @@ end
 function Exo3Real(a::T, b::T) where T <: Real
     Exo3Real{T}(
         Exo2Real{T}(
-            Exoplex{T}(a, b),
-            zero(Exoplex{T})
+            Exo1Real{T}(a, b),
+            zero(Exo1Real{T})
         ),
         zero(Exo2Real{T})
     )
@@ -101,8 +101,8 @@ end
 function Exo3Real(a::T) where T <: Real
     Exo3Real{T}(
         Exo2Real{T}(
-            Exoplex{T}(a, zero(T)),
-            zero(Exoplex{T})
+            Exo1Real{T}(a, zero(T)),
+            zero(Exo1Real{T})
         ),
         zero(Exo2Real{T})
     )

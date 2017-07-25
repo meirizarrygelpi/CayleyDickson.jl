@@ -42,7 +42,7 @@ end
 @test begin
     a = CayleyDickson.randomBigInt()
     b = CayleyDickson.randomBigInt()
-    l = Exo4Real(Exoplex(a, b))
+    l = Exo4Real(Exo1Real(a, b))
     r = Exo4Real(Exo3Real(a, b))
     l == r
 end

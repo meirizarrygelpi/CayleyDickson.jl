@@ -37,7 +37,7 @@ function Exo1Binion(a::Real, b::Real, c::Real, d::Real)
     Exo1Binion(promote(a, b, c, d)...)
 end
 
-function Exo1Binion(z::Exoplex{T}) where T <: Real
+function Exo1Binion(z::Exo1Real{T}) where T <: Real
     Exo1Binion(z.l, zero(T), z.r, zero(T))
 end
 
