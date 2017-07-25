@@ -136,7 +136,7 @@ function Exo2SplitBinion(a::Real, b::Real, c::Real, d::Real, f::Real, g::Real, h
     Exo2SplitBinion(promote(a, b, c, d, f, g, h, j)...)
 end
 
-function Exo2SplitBinion(z::BiExoplex{T}) where T <: Real
+function Exo2SplitBinion(z::Exo2Real{T}) where T <: Real
     Exo2SplitBinion(z.l.l, zero(T), z.l.r, zero(T), z.r.l, zero(T), z.r.r)
 end
 

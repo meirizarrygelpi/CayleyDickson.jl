@@ -35,7 +35,7 @@ end
     c = CayleyDickson.randomBigInt()
     d = CayleyDickson.randomBigInt()
     l = Exo4Real(Exo3Real(a, b, c, d))
-    r = Exo4Real(BiExoplex(a, b, c, d))
+    r = Exo4Real(Exo2Real(a, b, c, d))
     l == r
 end
 

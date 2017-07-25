@@ -1,28 +1,28 @@
 """
-    Exo3Real{T <: Real} = Parabolic{BiExoplex{T}}
+    Exo3Real{T <: Real} = Parabolic{Exo2Real{T}}
 
 A 3-exo-real number is a parabolic Cayley-Dickson construct with bi-exoplex numbers.
 """
-const Exo3Real{T <: Real} = Parabolic{BiExoplex{T}}
+const Exo3Real{T <: Real} = Parabolic{Exo2Real{T}}
 
-function Exo3Real(z::BiExoplex{T}) where T <: Real
-    Exo3Real{T}(z, zero(BiExoplex{T}))
+function Exo3Real(z::Exo2Real{T}) where T <: Real
+    Exo3Real{T}(z, zero(Exo2Real{T}))
 end
 
 function Exo3Real(z::Exoplex{T}) where T <: Real
     Exo3Real{T}(
-        BiExoplex{T}(z, zero(Exoplex{T})),
-        zero(BiExoplex{T})
+        Exo2Real{T}(z, zero(Exoplex{T})),
+        zero(Exo2Real{T})
     )
 end
 
 function Exo3Real(a::T, b::T, c::T, d::T, f::T, g::T, h::T, j::T) where T <: Real
     Exo3Real{T}(
-        BiExoplex{T}(
+        Exo2Real{T}(
             Exoplex{T}(a, b),
             Exoplex{T}(c, d)
         ),
-        BiExoplex{T}(
+        Exo2Real{T}(
             Exoplex{T}(f, g),
             Exoplex{T}(h, j)
         )
@@ -31,11 +31,11 @@ end
 
 function Exo3Real(a::T, b::T, c::T, d::T, f::T, g::T, h::T) where T <: Real
     Exo3Real{T}(
-        BiExoplex{T}(
+        Exo2Real{T}(
             Exoplex{T}(a, b),
             Exoplex{T}(c, d)
         ),
-        BiExoplex{T}(
+        Exo2Real{T}(
             Exoplex{T}(f, g),
             Exoplex{T}(h, zero(T))
         )
@@ -44,11 +44,11 @@ end
 
 function Exo3Real(a::T, b::T, c::T, d::T, f::T, g::T) where T <: Real
     Exo3Real{T}(
-        BiExoplex{T}(
+        Exo2Real{T}(
             Exoplex{T}(a, b),
             Exoplex{T}(c, d)
         ),
-        BiExoplex{T}(
+        Exo2Real{T}(
             Exoplex{T}(f, g),
             zero(Exoplex{T})
         )
@@ -57,11 +57,11 @@ end
 
 function Exo3Real(a::T, b::T, c::T, d::T, f::T) where T <: Real
     Exo3Real{T}(
-        BiExoplex{T}(
+        Exo2Real{T}(
             Exoplex{T}(a, b),
             Exoplex{T}(c, d)
         ),
-        BiExoplex{T}(
+        Exo2Real{T}(
             Exoplex{T}(f, zero(T)),
             zero(Exoplex{T})
         )
@@ -70,41 +70,41 @@ end
 
 function Exo3Real(a::T, b::T, c::T, d::T) where T <: Real
     Exo3Real{T}(
-        BiExoplex{T}(
+        Exo2Real{T}(
             Exoplex{T}(a, b),
             Exoplex{T}(c, d)
         ),
-        zero(BiExoplex{T})
+        zero(Exo2Real{T})
     )
 end
 
 function Exo3Real(a::T, b::T, c::T) where T <: Real
     Exo3Real{T}(
-        BiExoplex{T}(
+        Exo2Real{T}(
             Exoplex{T}(a, b),
             Exoplex{T}(c, zero(T))
         ),
-        zero(BiExoplex{T})
+        zero(Exo2Real{T})
     )
 end
 
 function Exo3Real(a::T, b::T) where T <: Real
     Exo3Real{T}(
-        BiExoplex{T}(
+        Exo2Real{T}(
             Exoplex{T}(a, b),
             zero(Exoplex{T})
         ),
-        zero(BiExoplex{T})
+        zero(Exo2Real{T})
     )
 end
 
 function Exo3Real(a::T) where T <: Real
     Exo3Real{T}(
-        BiExoplex{T}(
+        Exo2Real{T}(
             Exoplex{T}(a, zero(T)),
             zero(Exoplex{T})
         ),
-        zero(BiExoplex{T})
+        zero(Exo2Real{T})
     )
 end
 
@@ -186,5 +186,5 @@ function show(io::IO, z::Exo3Real)
 end
 
 function random(::Type{Exo3Real{T}}) where T <: Real
-    Exo3Real{T}(random(BiExoplex{T}), random(BiExoplex{T}))
+    Exo3Real{T}(random(Exo2Real{T}), random(Exo2Real{T}))
 end

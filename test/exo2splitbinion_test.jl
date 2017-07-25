@@ -2,7 +2,7 @@ using CayleyDickson
 using Base.Test: @test, @test_throws
 
 @test begin
-    l = Exo2SplitBinion(BiExoplex(1,2,3,4))
+    l = Exo2SplitBinion(Exo2Real(1,2,3,4))
     r = Exo2SplitBinion(1,0,2,0,3,0,4)
     l == r
 end

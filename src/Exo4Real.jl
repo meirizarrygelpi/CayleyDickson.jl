@@ -9,9 +9,9 @@ function Exo4Real(z::Exo3Real{T}) where T <: Real
     Exo4Real{T}(z, zero(Exo3Real{T}))
 end
 
-function Exo4Real(z::BiExoplex{T}) where T <: Real
+function Exo4Real(z::Exo2Real{T}) where T <: Real
     Exo4Real{T}(
-        Exo3Real{T}(z, zero(BiExoplex{T})),
+        Exo3Real{T}(z, zero(Exo2Real{T})),
         zero(Exo3Real{T})
     )
 end
@@ -19,8 +19,8 @@ end
 function Exo4Real(z::Exoplex{T}) where T <: Real
     Exo4Real{T}(
         Exo3Real{T}(
-            BiExoplex{T}(z, zero(Exoplex{T})),
-            zero(BiExoplex{T})),
+            Exo2Real{T}(z, zero(Exoplex{T})),
+            zero(Exo2Real{T})),
         zero(Exo3Real{T})
     )
 end

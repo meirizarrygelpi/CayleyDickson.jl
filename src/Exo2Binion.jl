@@ -136,7 +136,7 @@ function Exo2Binion(a::Real, b::Real, c::Real, d::Real, f::Real, g::Real, h::Rea
     Exo2Binion(promote(a, b, c, d, f, g, h, j)...)
 end
 
-function Exo2Binion(z::BiExoplex{T}) where T <: Real
+function Exo2Binion(z::Exo2Real{T}) where T <: Real
     Exo2Binion(z.l.l, zero(T), z.l.r, zero(T), z.r.l, zero(T), z.r.r)
 end
 
