@@ -1,28 +1,28 @@
 """
-    Exo1SplitBinion{T <: Real} = Parabolic{Perplex{T}}
+    Exo1SplitBinion{T <: Real} = Parabolic{SplitBinion{T}}
 
 An exo-perplex number is a parabolic Cayley-Dickson construct with perplex numbers.
 """
-const Exo1SplitBinion{T <: Real} = Parabolic{Perplex{T}}
+const Exo1SplitBinion{T <: Real} = Parabolic{SplitBinion{T}}
 
-function Exo1SplitBinion(z::Perplex{T}) where T <: Real
-    Exo1SplitBinion{T}(z, zero(Perplex{T}))
+function Exo1SplitBinion(z::SplitBinion{T}) where T <: Real
+    Exo1SplitBinion{T}(z, zero(SplitBinion{T}))
 end
 
 function Exo1SplitBinion(a::T, b::T, c::T, d::T) where T <: Real
-    Exo1SplitBinion{T}(Perplex{T}(a, b), Perplex{T}(c, d))
+    Exo1SplitBinion{T}(SplitBinion{T}(a, b), SplitBinion{T}(c, d))
 end
 
 function Exo1SplitBinion(a::T, b::T, c::T) where T <: Real
-    Exo1SplitBinion{T}(Perplex{T}(a, b), Perplex{T}(c, zero(T)))
+    Exo1SplitBinion{T}(SplitBinion{T}(a, b), SplitBinion{T}(c, zero(T)))
 end
 
 function Exo1SplitBinion(a::T, b::T) where T <: Real
-    Exo1SplitBinion{T}(Perplex{T}(a, b), zero(Perplex{T}))
+    Exo1SplitBinion{T}(SplitBinion{T}(a, b), zero(SplitBinion{T}))
 end
 
 function Exo1SplitBinion(a::T) where T <: Real
-    Exo1SplitBinion{T}(Perplex{T}(a, zero(T)), zero(Perplex{T}))
+    Exo1SplitBinion{T}(SplitBinion{T}(a, zero(T)), zero(SplitBinion{T}))
 end
 
 function Exo1SplitBinion(a::Real, b::Real)
@@ -63,5 +63,5 @@ function show(io::IO, z::Exo1SplitBinion)
 end
 
 function random(::Type{Exo1SplitBinion{T}}) where T <: Real
-    Exo1SplitBinion{T}(random(Perplex{T}), random(Perplex{T}))
+    Exo1SplitBinion{T}(random(SplitBinion{T}), random(SplitBinion{T}))
 end

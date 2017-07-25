@@ -80,7 +80,7 @@ end
 @test begin
     a = CayleyDickson.randomBigInt()
     b = CayleyDickson.randomBigFloat()
-    l = Exo2SplitBinion(Perplex(a, b))
+    l = Exo2SplitBinion(SplitBinion(a, b))
     r = Exo2SplitBinion(a, b)
     l == r
 end

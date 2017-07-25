@@ -9,9 +9,9 @@ function Exo2SplitBinion(z::Exo1SplitBinion{T}) where T <: Real
     Exo2SplitBinion{T}(z, zero(Exo1SplitBinion{T}))
 end
 
-function Exo2SplitBinion(z::Perplex{T}) where T <: Real
+function Exo2SplitBinion(z::SplitBinion{T}) where T <: Real
     Exo2SplitBinion{T}(
-        Exo1SplitBinion{T}(z, zero(Perplex{T})),
+        Exo1SplitBinion{T}(z, zero(SplitBinion{T})),
         zero(Exo1SplitBinion{T})
     )
 end
@@ -19,12 +19,12 @@ end
 function Exo2SplitBinion(a::T, b::T, c::T, d::T, f::T, g::T, h::T, j::T) where T <: Real
     Exo2SplitBinion{T}(
         Exo1SplitBinion{T}(
-            Perplex{T}(a, b),
-            Perplex{T}(c, d)
+            SplitBinion{T}(a, b),
+            SplitBinion{T}(c, d)
         ),
         Exo1SplitBinion{T}(
-            Perplex{T}(f, g),
-            Perplex{T}(h, j)
+            SplitBinion{T}(f, g),
+            SplitBinion{T}(h, j)
         )
     )
 end
@@ -32,12 +32,12 @@ end
 function Exo2SplitBinion(a::T, b::T, c::T, d::T, f::T, g::T, h::T) where T <: Real
     Exo2SplitBinion{T}(
         Exo1SplitBinion{T}(
-            Perplex{T}(a, b),
-            Perplex{T}(c, d)
+            SplitBinion{T}(a, b),
+            SplitBinion{T}(c, d)
         ),
         Exo1SplitBinion{T}(
-            Perplex{T}(f, g),
-            Perplex{T}(h, zero(T))
+            SplitBinion{T}(f, g),
+            SplitBinion{T}(h, zero(T))
         )
     )
 end
@@ -45,12 +45,12 @@ end
 function Exo2SplitBinion(a::T, b::T, c::T, d::T, f::T, g::T) where T <: Real
     Exo2SplitBinion{T}(
         Exo1SplitBinion{T}(
-            Perplex{T}(a, b),
-            Perplex{T}(c, d)
+            SplitBinion{T}(a, b),
+            SplitBinion{T}(c, d)
         ),
         Exo1SplitBinion{T}(
-            Perplex{T}(f, g),
-            zero(Perplex{T})
+            SplitBinion{T}(f, g),
+            zero(SplitBinion{T})
         )
     )
 end
@@ -58,12 +58,12 @@ end
 function Exo2SplitBinion(a::T, b::T, c::T, d::T, f::T) where T <: Real
     Exo2SplitBinion{T}(
         Exo1SplitBinion{T}(
-            Perplex{T}(a, b),
-            Perplex{T}(c, d)
+            SplitBinion{T}(a, b),
+            SplitBinion{T}(c, d)
         ),
         Exo1SplitBinion{T}(
-            Perplex{T}(f, zero(T)),
-            zero(Perplex{T})
+            SplitBinion{T}(f, zero(T)),
+            zero(SplitBinion{T})
         )
     )
 end
@@ -71,8 +71,8 @@ end
 function Exo2SplitBinion(a::T, b::T, c::T, d::T) where T <: Real
     Exo2SplitBinion{T}(
         Exo1SplitBinion{T}(
-            Perplex{T}(a, b),
-            Perplex{T}(c, d)
+            SplitBinion{T}(a, b),
+            SplitBinion{T}(c, d)
         ),
         zero(Exo1SplitBinion{T})
     )
@@ -81,8 +81,8 @@ end
 function Exo2SplitBinion(a::T, b::T, c::T) where T <: Real
     Exo2SplitBinion{T}(
         Exo1SplitBinion{T}(
-            Perplex{T}(a, b),
-            Perplex{T}(c, zero(T))
+            SplitBinion{T}(a, b),
+            SplitBinion{T}(c, zero(T))
         ),
         zero(Exo1SplitBinion{T})
     )
@@ -91,8 +91,8 @@ end
 function Exo2SplitBinion(a::T, b::T) where T <: Real
     Exo2SplitBinion{T}(
         Exo1SplitBinion{T}(
-            Perplex{T}(a, b),
-            zero(Perplex{T})
+            SplitBinion{T}(a, b),
+            zero(SplitBinion{T})
         ),
         zero(Exo1SplitBinion{T})
     )
@@ -101,8 +101,8 @@ end
 function Exo2SplitBinion(a::T) where T <: Real
     Exo2SplitBinion{T}(
         Exo1SplitBinion{T}(
-            Perplex{T}(a, zero(T)),
-            zero(Perplex{T})
+            SplitBinion{T}(a, zero(T)),
+            zero(SplitBinion{T})
         ),
         zero(Exo1SplitBinion{T})
     )
