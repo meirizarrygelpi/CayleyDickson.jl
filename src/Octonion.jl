@@ -1,7 +1,7 @@
 """
     Octonion{T <: Real} = Elliptic{Quaternion{T}}
 
-An octonion is an elliptic Cayley-Dickson construct with Quaternion quaternions.
+An octonion is an elliptic Cayley-Dickson construct with quaternions.
 """
 const Octonion{T <: Real} = Elliptic{Quaternion{T}}
 
