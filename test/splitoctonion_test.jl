@@ -74,7 +74,7 @@ end
 @test begin
     a = CayleyDickson.randomBigInt()
     b = CayleyDickson.randomBigFloat()
-    l = SplitOctonion(Cplex(a, b))
+    l = SplitOctonion(Binion(a, b))
     r = SplitOctonion(a, b)
     l == r
 end

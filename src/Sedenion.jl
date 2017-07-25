@@ -16,9 +16,9 @@ function Sedenion(z::Quaternion{T}) where T <: Real
     )
 end
 
-function Sedenion(z::Cplex{T}) where T <: Real
+function Sedenion(z::Binion{T}) where T <: Real
     Sedenion{T}(
-        Octonion{T}(Quaternion{T}(z, zero(Cplex{T})),
+        Octonion{T}(Quaternion{T}(z, zero(Binion{T})),
         zero(Quaternion{T})),
         zero(Octonion{T})
     )

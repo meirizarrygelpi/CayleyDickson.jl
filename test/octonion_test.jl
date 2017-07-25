@@ -74,7 +74,7 @@ end
 @test begin
     a = CayleyDickson.randomBigInt()
     b = CayleyDickson.randomBigFloat()
-    l = Octonion(Cplex(a, b))
+    l = Octonion(Binion(a, b))
     r = Octonion(a, b)
     l == r
 end

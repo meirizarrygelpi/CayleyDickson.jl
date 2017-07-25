@@ -42,7 +42,7 @@ end
 @test begin
     a = CayleyDickson.randomBigInt()
     b = CayleyDickson.randomBigInt()
-    l = Sedenion(Cplex(a, b))
+    l = Sedenion(Binion(a, b))
     r = Sedenion(Octonion(a, b))
     l == r
 end

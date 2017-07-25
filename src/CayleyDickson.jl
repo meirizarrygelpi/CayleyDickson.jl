@@ -14,7 +14,7 @@ const ZeroDenominator = "denominator is zero"
 
 include("Construct.jl")
 include("Elliptic.jl")
-include("Cplex.jl")
+include("Binion.jl")
 include("Quaternion.jl")
 include("Octonion.jl")
 include("Hyperbolic.jl")
@@ -37,7 +37,7 @@ include("random.jl")
 
 # Types
 export Construct, Elliptic, Hyperbolic, Parabolic,
-       Cplex, SplitBinion, Exo1Real,
+       Binion, SplitBinion, Exo1Real,
        Quaternion, SplitQuaternion, Exo2Real, Exo1Binion, Exo1SplitBinion,
        Octonion, SplitOctonion, Exo1Quaternion, Exo1SplitQuaternion, Exo3Real, Exo2Binion, Exo2SplitBinion,
        Sedenion, Exo4Real

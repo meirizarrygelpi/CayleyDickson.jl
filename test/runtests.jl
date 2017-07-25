@@ -1,7 +1,7 @@
 using CayleyDickson
 using Base.Test: @testset
 
-@testset "Cplex" begin include("cplex_test.jl") end
+@testset "Binion" begin include("binion_test.jl") end
 @testset "SplitBinion" begin include("splitbinion_test.jl") end
 @testset "Exo1Real" begin include("exo1real_test.jl") end
 @testset "Quaternion" begin include("quaternion_test.jl") end

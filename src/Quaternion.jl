@@ -1,28 +1,28 @@
 """
-    Quaternion{T <: Real} = Elliptic{Cplex{T}}
+    Quaternion{T <: Real} = Elliptic{Binion{T}}
 
 A quaternion is an elliptic Cayley-Dickson construct with complex numbers.
 """
-const Quaternion{T <: Real} = Elliptic{Cplex{T}}
+const Quaternion{T <: Real} = Elliptic{Binion{T}}
 
-function Quaternion(z::Cplex{T}) where T <: Real
-    Quaternion{T}(z, zero(Cplex{T}))
+function Quaternion(z::Binion{T}) where T <: Real
+    Quaternion{T}(z, zero(Binion{T}))
 end
 
 function Quaternion(a::T, b::T, c::T, d::T) where T <: Real
-    Quaternion{T}(Cplex{T}(a, b), Cplex{T}(c, d))
+    Quaternion{T}(Binion{T}(a, b), Binion{T}(c, d))
 end
 
 function Quaternion(a::T, b::T, c::T) where T <: Real
-    Quaternion{T}(Cplex{T}(a, b), Cplex{T}(c, zero(T)))
+    Quaternion{T}(Binion{T}(a, b), Binion{T}(c, zero(T)))
 end
 
 function Quaternion(a::T, b::T) where T <: Real
-    Quaternion{T}(Cplex{T}(a, b), zero(Cplex{T}))
+    Quaternion{T}(Binion{T}(a, b), zero(Binion{T}))
 end
 
 function Quaternion(a::T) where T <: Real
-    Quaternion{T}(Cplex{T}(a, zero(T)), zero(Cplex{T}))
+    Quaternion{T}(Binion{T}(a, zero(T)), zero(Binion{T}))
 end
 
 function Quaternion(a::Real, b::Real)
@@ -59,5 +59,5 @@ function show(io::IO, z::Quaternion)
 end
 
 function random(::Type{Quaternion{T}}) where T <: Real
-    Quaternion{T}(random(Cplex{T}), random(Cplex{T}))
+    Quaternion{T}(random(Binion{T}), random(Binion{T}))
 end

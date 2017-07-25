@@ -41,7 +41,7 @@ end
 @test begin
     a = CayleyDickson.randomBigInt()
     b = CayleyDickson.randomBigFloat()
-    l = SplitQuaternion(Cplex(a, b))
+    l = SplitQuaternion(Binion(a, b))
     r = SplitQuaternion(a, b)
     l == r
 end
@@ -70,7 +70,7 @@ end
 end
 
 @test begin
-    a = random(Cplex{BigInt})
+    a = random(Binion{BigInt})
     z = random(SplitQuaternion{BigInt})
     l = a + z
     r = z + a
@@ -86,7 +86,7 @@ end
 end
 
 @test begin
-    a = random(Cplex{BigInt})
+    a = random(Binion{BigInt})
     z = random(SplitQuaternion{BigInt})
     l = a - z
     r = -(z - a)
@@ -229,7 +229,7 @@ end
 end
 
 @test begin
-    a = random(Cplex{BigInt})
+    a = random(Binion{BigInt})
     x = random(SplitQuaternion{BigInt})
     l = a * x
     r = x * a

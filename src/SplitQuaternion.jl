@@ -1,28 +1,28 @@
 """
-    SplitQuaternion{T <: Real} = Hyperbolic{Cplex{T}}
+    SplitQuaternion{T <: Real} = Hyperbolic{Binion{T}}
 
 A split-quaternion is a hyperbolic Cayley-Dickson construct with complex numbers.
 """
-const SplitQuaternion{T <: Real} = Hyperbolic{Cplex{T}}
+const SplitQuaternion{T <: Real} = Hyperbolic{Binion{T}}
 
-function SplitQuaternion(z::Cplex{T}) where T <: Real
-    SplitQuaternion{T}(z, zero(Cplex{T}))
+function SplitQuaternion(z::Binion{T}) where T <: Real
+    SplitQuaternion{T}(z, zero(Binion{T}))
 end
 
 function SplitQuaternion(a::T, b::T, c::T, d::T) where T <: Real
-    SplitQuaternion{T}(Cplex{T}(a, b), Cplex{T}(c, d))
+    SplitQuaternion{T}(Binion{T}(a, b), Binion{T}(c, d))
 end
 
 function SplitQuaternion(a::T, b::T, c::T) where T <: Real
-    SplitQuaternion{T}(Cplex{T}(a, b), Cplex{T}(c, zero(T)))
+    SplitQuaternion{T}(Binion{T}(a, b), Binion{T}(c, zero(T)))
 end
 
 function SplitQuaternion(a::T, b::T) where T <: Real
-    SplitQuaternion{T}(Cplex{T}(a, b), zero(Cplex{T}))
+    SplitQuaternion{T}(Binion{T}(a, b), zero(Binion{T}))
 end
 
 function SplitQuaternion(a::T) where T <: Real
-    SplitQuaternion{T}(Cplex{T}(a, zero(T)), zero(Cplex{T}))
+    SplitQuaternion{T}(Binion{T}(a, zero(T)), zero(Binion{T}))
 end
 
 function SplitQuaternion(a::Real, b::Real)
@@ -59,5 +59,5 @@ function show(io::IO, z::SplitQuaternion)
 end
 
 function random(::Type{SplitQuaternion{T}}) where T <: Real
-    SplitQuaternion{T}(random(Cplex{T}), random(Cplex{T}))
+    SplitQuaternion{T}(random(Binion{T}), random(Binion{T}))
 end

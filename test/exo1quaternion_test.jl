@@ -82,7 +82,7 @@ end
 @test begin
     a = CayleyDickson.randomBigInt()
     b = CayleyDickson.randomBigFloat()
-    l = Exo1Quaternion(Cplex(a, b))
+    l = Exo1Quaternion(Binion(a, b))
     r = Exo1Quaternion(a, b)
     l == r
 end

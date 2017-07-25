@@ -1,28 +1,28 @@
 """
-    Exo1Binion{T <: Real} = Parabolic{Cplex{T}}
+    Exo1Binion{T <: Real} = Parabolic{Binion{T}}
 
 A 1-exo-binion is a parabolic Cayley-Dickson construct with binions.
 """
-const Exo1Binion{T <: Real} = Parabolic{Cplex{T}}
+const Exo1Binion{T <: Real} = Parabolic{Binion{T}}
 
-function Exo1Binion(z::Cplex{T}) where T <: Real
-    Exo1Binion{T}(z, zero(Cplex{T}))
+function Exo1Binion(z::Binion{T}) where T <: Real
+    Exo1Binion{T}(z, zero(Binion{T}))
 end
 
 function Exo1Binion(a::T, b::T, c::T, d::T) where T <: Real
-    Exo1Binion{T}(Cplex{T}(a, b), Cplex{T}(c, d))
+    Exo1Binion{T}(Binion{T}(a, b), Binion{T}(c, d))
 end
 
 function Exo1Binion(a::T, b::T, c::T) where T <: Real
-    Exo1Binion{T}(Cplex{T}(a, b), Cplex{T}(c, zero(T)))
+    Exo1Binion{T}(Binion{T}(a, b), Binion{T}(c, zero(T)))
 end
 
 function Exo1Binion(a::T, b::T) where T <: Real
-    Exo1Binion{T}(Cplex{T}(a, b), zero(Cplex{T}))
+    Exo1Binion{T}(Binion{T}(a, b), zero(Binion{T}))
 end
 
 function Exo1Binion(a::T) where T <: Real
-    Exo1Binion{T}(Cplex{T}(a, zero(T)), zero(Cplex{T}))
+    Exo1Binion{T}(Binion{T}(a, zero(T)), zero(Binion{T}))
 end
 
 function Exo1Binion(a::Real, b::Real)
@@ -83,5 +83,5 @@ function show(io::IO, z::Exo1Binion)
 end
 
 function random(::Type{Exo1Binion{T}}) where T <: Real
-    Exo1Binion{T}(random(Cplex{T}), random(Cplex{T}))
+    Exo1Binion{T}(random(Binion{T}), random(Binion{T}))
 end

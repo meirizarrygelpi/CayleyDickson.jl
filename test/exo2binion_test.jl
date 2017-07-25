@@ -80,7 +80,7 @@ end
 @test begin
     a = CayleyDickson.randomBigInt()
     b = CayleyDickson.randomBigFloat()
-    l = Exo2Binion(Cplex(a, b))
+    l = Exo2Binion(Binion(a, b))
     r = Exo2Binion(a, b)
     l == r
 end

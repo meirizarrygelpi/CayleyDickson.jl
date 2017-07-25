@@ -9,9 +9,9 @@ function Exo2Binion(z::Exo1Binion{T}) where T <: Real
     Exo2Binion{T}(z, zero(Exo1Binion{T}))
 end
 
-function Exo2Binion(z::Cplex{T}) where T <: Real
+function Exo2Binion(z::Binion{T}) where T <: Real
     Exo2Binion{T}(
-        Exo1Binion{T}(z, zero(Cplex{T})),
+        Exo1Binion{T}(z, zero(Binion{T})),
         zero(Exo1Binion{T})
     )
 end
@@ -19,12 +19,12 @@ end
 function Exo2Binion(a::T, b::T, c::T, d::T, f::T, g::T, h::T, j::T) where T <: Real
     Exo2Binion{T}(
         Exo1Binion{T}(
-            Cplex{T}(a, b),
-            Cplex{T}(c, d)
+            Binion{T}(a, b),
+            Binion{T}(c, d)
         ),
         Exo1Binion{T}(
-            Cplex{T}(f, g),
-            Cplex{T}(h, j)
+            Binion{T}(f, g),
+            Binion{T}(h, j)
         )
     )
 end
@@ -32,12 +32,12 @@ end
 function Exo2Binion(a::T, b::T, c::T, d::T, f::T, g::T, h::T) where T <: Real
     Exo2Binion{T}(
         Exo1Binion{T}(
-            Cplex{T}(a, b),
-            Cplex{T}(c, d)
+            Binion{T}(a, b),
+            Binion{T}(c, d)
         ),
         Exo1Binion{T}(
-            Cplex{T}(f, g),
-            Cplex{T}(h, zero(T))
+            Binion{T}(f, g),
+            Binion{T}(h, zero(T))
         )
     )
 end
@@ -45,12 +45,12 @@ end
 function Exo2Binion(a::T, b::T, c::T, d::T, f::T, g::T) where T <: Real
     Exo2Binion{T}(
         Exo1Binion{T}(
-            Cplex{T}(a, b),
-            Cplex{T}(c, d)
+            Binion{T}(a, b),
+            Binion{T}(c, d)
         ),
         Exo1Binion{T}(
-            Cplex{T}(f, g),
-            zero(Cplex{T})
+            Binion{T}(f, g),
+            zero(Binion{T})
         )
     )
 end
@@ -58,12 +58,12 @@ end
 function Exo2Binion(a::T, b::T, c::T, d::T, f::T) where T <: Real
     Exo2Binion{T}(
         Exo1Binion{T}(
-            Cplex{T}(a, b),
-            Cplex{T}(c, d)
+            Binion{T}(a, b),
+            Binion{T}(c, d)
         ),
         Exo1Binion{T}(
-            Cplex{T}(f, zero(T)),
-            zero(Cplex{T})
+            Binion{T}(f, zero(T)),
+            zero(Binion{T})
         )
     )
 end
@@ -71,8 +71,8 @@ end
 function Exo2Binion(a::T, b::T, c::T, d::T) where T <: Real
     Exo2Binion{T}(
         Exo1Binion{T}(
-            Cplex{T}(a, b),
-            Cplex{T}(c, d)
+            Binion{T}(a, b),
+            Binion{T}(c, d)
         ),
         zero(Exo1Binion{T})
     )
@@ -81,8 +81,8 @@ end
 function Exo2Binion(a::T, b::T, c::T) where T <: Real
     Exo2Binion{T}(
         Exo1Binion{T}(
-            Cplex{T}(a, b),
-            Cplex{T}(c, zero(T))
+            Binion{T}(a, b),
+            Binion{T}(c, zero(T))
         ),
         zero(Exo1Binion{T})
     )
@@ -91,8 +91,8 @@ end
 function Exo2Binion(a::T, b::T) where T <: Real
     Exo2Binion{T}(
         Exo1Binion{T}(
-            Cplex{T}(a, b),
-            zero(Cplex{T})
+            Binion{T}(a, b),
+            zero(Binion{T})
         ),
         zero(Exo1Binion{T})
     )
@@ -101,8 +101,8 @@ end
 function Exo2Binion(a::T) where T <: Real
     Exo2Binion{T}(
         Exo1Binion{T}(
-            Cplex{T}(a, zero(T)),
-            zero(Cplex{T})
+            Binion{T}(a, zero(T)),
+            zero(Binion{T})
         ),
         zero(Exo1Binion{T})
     )

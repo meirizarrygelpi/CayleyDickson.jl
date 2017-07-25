@@ -49,7 +49,7 @@ end
 @test begin
     a = CayleyDickson.randomBigInt()
     b = CayleyDickson.randomBigFloat()
-    l = Exo1Binion(Cplex(a, b))
+    l = Exo1Binion(Binion(a, b))
     r = Exo1Binion(a, b)
     l == r
 end
@@ -78,7 +78,7 @@ end
 end
 
 @test begin
-    a = random(Cplex{BigInt})
+    a = random(Binion{BigInt})
     z = random(Exo1Binion{BigInt})
     l = a + z
     r = z + a
@@ -94,7 +94,7 @@ end
 end
 
 @test begin
-    a = random(Cplex{BigInt})
+    a = random(Binion{BigInt})
     z = random(Exo1Binion{BigInt})
     l = a - z
     r = -(z - a)
@@ -237,7 +237,7 @@ end
 end
 
 @test begin
-    a = random(Cplex{BigInt})
+    a = random(Binion{BigInt})
     x = random(Exo1Binion{BigInt})
     l = a * x
     r = x * a
