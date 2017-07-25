@@ -74,7 +74,7 @@ end
     b = CayleyDickson.randomBigFloat()
     c = CayleyDickson.randomBigInt()
     d = CayleyDickson.randomBigFloat()
-    l = ExoHamilton(Hamilton(a, b, c, d))
+    l = ExoHamilton(Quaternion(a, b, c, d))
     r = ExoHamilton(a, b, c, d)
     l == r
 end
@@ -111,7 +111,7 @@ end
 end
 
 @test begin
-    a = random(Hamilton{BigInt})
+    a = random(Quaternion{BigInt})
     z = random(ExoHamilton{BigInt})
     l = a + z
     r = z + a
@@ -127,7 +127,7 @@ end
 end
 
 @test begin
-    a = random(Hamilton{BigInt})
+    a = random(Quaternion{BigInt})
     z = random(ExoHamilton{BigInt})
     l = a - z
     r = -(z - a)
@@ -277,7 +277,7 @@ end
 end
 
 @test begin
-    a = random(Hamilton{BigInt})
+    a = random(Quaternion{BigInt})
     x = random(ExoHamilton{BigInt})
     l = commutator(a, x)
     r = zero(ExoHamilton{BigInt})

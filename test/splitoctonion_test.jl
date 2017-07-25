@@ -66,7 +66,7 @@ end
     b = CayleyDickson.randomBigFloat()
     c = CayleyDickson.randomBigInt()
     d = CayleyDickson.randomBigFloat()
-    l = SplitOctonion(Hamilton(a, b, c, d))
+    l = SplitOctonion(Quaternion(a, b, c, d))
     r = SplitOctonion(a, b, c, d)
     l == r
 end
@@ -103,7 +103,7 @@ end
 end
 
 @test begin
-    a = random(Hamilton{BigInt})
+    a = random(Quaternion{BigInt})
     z = random(SplitOctonion{BigInt})
     l = a + z
     r = z + a
@@ -119,7 +119,7 @@ end
 end
 
 @test begin
-    a = random(Hamilton{BigInt})
+    a = random(Quaternion{BigInt})
     z = random(SplitOctonion{BigInt})
     l = a - z
     r = -(z - a)
@@ -269,7 +269,7 @@ end
 end
 
 @test begin
-    a = random(Hamilton{BigInt})
+    a = random(Quaternion{BigInt})
     x = random(SplitOctonion{BigInt})
     l = commutator(a, x)
     r = zero(SplitOctonion{BigInt})

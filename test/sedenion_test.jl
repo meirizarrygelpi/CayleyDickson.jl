@@ -35,7 +35,7 @@ end
     c = CayleyDickson.randomBigInt()
     d = CayleyDickson.randomBigInt()
     l = Sedenion(Octonion(a, b, c, d))
-    r = Sedenion(Hamilton(a, b, c, d))
+    r = Sedenion(Quaternion(a, b, c, d))
     l == r
 end
 

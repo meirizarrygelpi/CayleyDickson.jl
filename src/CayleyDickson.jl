@@ -15,7 +15,7 @@ const ZeroDenominator = "denominator is zero"
 include("Construct.jl")
 include("Elliptic.jl")
 include("Cplex.jl")
-include("Hamilton.jl")
+include("Quaternion.jl")
 include("Octonion.jl")
 include("Hyperbolic.jl")
 include("Perplex.jl")
@@ -38,7 +38,7 @@ include("random.jl")
 # Types
 export Construct, Elliptic, Hyperbolic, Parabolic,
        Cplex, Perplex, Exoplex,
-       Hamilton, SplitQuaternion, BiExoplex, ExoComplex, ExoPerplex,
+       Quaternion, SplitQuaternion, BiExoplex, ExoComplex, ExoPerplex,
        Octonion, SplitOctonion, ExoHamilton, ExoCockle, TriExoplex, BiExoComplex, BiExoPerplex,
        Sedenion, TetraExoplex
 

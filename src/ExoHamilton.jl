@@ -1,28 +1,28 @@
 """
-    ExoHamilton{T <: Real} = Parabolic{Hamilton{T}}
+    ExoHamilton{T <: Real} = Parabolic{Quaternion{T}}
 
-An exo-Hamilton quaterion is a parabolic Cayley-Dickson construct with Hamilton quaternions.
+An exo-Quaternion quaterion is a parabolic Cayley-Dickson construct with Quaternion quaternions.
 """
-const ExoHamilton{T <: Real} = Parabolic{Hamilton{T}}
+const ExoHamilton{T <: Real} = Parabolic{Quaternion{T}}
 
-function ExoHamilton(z::Hamilton{T}) where T <: Real
-    ExoHamilton{T}(z, zero(Hamilton{T}))
+function ExoHamilton(z::Quaternion{T}) where T <: Real
+    ExoHamilton{T}(z, zero(Quaternion{T}))
 end
 
 function ExoHamilton(z::Cplex{T}) where T <: Real
     ExoHamilton{T}(
-        Hamilton{T}(z, zero(Cplex{T})),
-        zero(Hamilton{T})
+        Quaternion{T}(z, zero(Cplex{T})),
+        zero(Quaternion{T})
     )
 end
 
 function ExoHamilton(a::T, b::T, c::T, d::T, f::T, g::T, h::T, j::T) where T <: Real
     ExoHamilton{T}(
-        Hamilton{T}(
+        Quaternion{T}(
             Cplex{T}(a, b),
             Cplex{T}(c, d)
         ),
-        Hamilton{T}(
+        Quaternion{T}(
             Cplex{T}(f, g),
             Cplex{T}(h, j)
         )
@@ -31,11 +31,11 @@ end
 
 function ExoHamilton(a::T, b::T, c::T, d::T, f::T, g::T, h::T) where T <: Real
     ExoHamilton{T}(
-        Hamilton{T}(
+        Quaternion{T}(
             Cplex{T}(a, b),
             Cplex{T}(c, d)
         ),
-        Hamilton{T}(
+        Quaternion{T}(
             Cplex{T}(f, g),
             Cplex{T}(h, zero(T))
         )
@@ -44,11 +44,11 @@ end
 
 function ExoHamilton(a::T, b::T, c::T, d::T, f::T, g::T) where T <: Real
     ExoHamilton{T}(
-        Hamilton{T}(
+        Quaternion{T}(
             Cplex{T}(a, b),
             Cplex{T}(c, d)
         ),
-        Hamilton{T}(
+        Quaternion{T}(
             Cplex{T}(f, g),
             zero(Cplex{T})
         )
@@ -57,11 +57,11 @@ end
 
 function ExoHamilton(a::T, b::T, c::T, d::T, f::T) where T <: Real
     ExoHamilton{T}(
-        Hamilton{T}(
+        Quaternion{T}(
             Cplex{T}(a, b),
             Cplex{T}(c, d)
         ),
-        Hamilton{T}(
+        Quaternion{T}(
             Cplex{T}(f, zero(T)),
             zero(Cplex{T})
         )
@@ -70,41 +70,41 @@ end
 
 function ExoHamilton(a::T, b::T, c::T, d::T) where T <: Real
     ExoHamilton{T}(
-        Hamilton{T}(
+        Quaternion{T}(
             Cplex{T}(a, b),
             Cplex{T}(c, d)
         ),
-        zero(Hamilton{T})
+        zero(Quaternion{T})
     )
 end
 
 function ExoHamilton(a::T, b::T, c::T) where T <: Real
     ExoHamilton{T}(
-        Hamilton{T}(
+        Quaternion{T}(
             Cplex{T}(a, b),
             Cplex{T}(c, zero(T))
         ),
-        zero(Hamilton{T})
+        zero(Quaternion{T})
     )
 end
 
 function ExoHamilton(a::T, b::T) where T <: Real
     ExoHamilton{T}(
-        Hamilton{T}(
+        Quaternion{T}(
             Cplex{T}(a, b),
             zero(Cplex{T})
         ),
-        zero(Hamilton{T})
+        zero(Quaternion{T})
     )
 end
 
 function ExoHamilton(a::T) where T <: Real
     ExoHamilton{T}(
-        Hamilton{T}(
+        Quaternion{T}(
             Cplex{T}(a, zero(T)),
             zero(Cplex{T})
         ),
-        zero(Hamilton{T})
+        zero(Quaternion{T})
     )
 end
 
@@ -144,7 +144,7 @@ end
 
     unreal(z::ExoHamilton)
 
-The unreal part of an exo-Hamilton quaternion is a 7-vector.
+The unreal part of an exo-quaternion is a 7-vector.
 """
 function unreal(z::ExoHamilton)
     vcat(unreal(z.l), array(z.r))
@@ -171,5 +171,5 @@ function show(io::IO, z::ExoHamilton)
 end
 
 function random(::Type{ExoHamilton{T}}) where T <: Real
-    ExoHamilton{T}(random(Hamilton{T}), random(Hamilton{T}))
+    ExoHamilton{T}(random(Quaternion{T}), random(Quaternion{T}))
 end

@@ -1,28 +1,28 @@
 """
-    Octonion{T <: Real} = Elliptic{Hamilton{T}}
+    Octonion{T <: Real} = Elliptic{Quaternion{T}}
 
-An octonion is an elliptic Cayley-Dickson construct with Hamilton quaternions.
+An octonion is an elliptic Cayley-Dickson construct with Quaternion quaternions.
 """
-const Octonion{T <: Real} = Elliptic{Hamilton{T}}
+const Octonion{T <: Real} = Elliptic{Quaternion{T}}
 
-function Octonion(z::Hamilton{T}) where T <: Real
-    Octonion{T}(z, zero(Hamilton{T}))
+function Octonion(z::Quaternion{T}) where T <: Real
+    Octonion{T}(z, zero(Quaternion{T}))
 end
 
 function Octonion(z::Cplex{T}) where T <: Real
     Octonion{T}(
-        Hamilton{T}(z, zero(Cplex{T})),
-        zero(Hamilton{T})
+        Quaternion{T}(z, zero(Cplex{T})),
+        zero(Quaternion{T})
     )
 end
 
 function Octonion(a::T, b::T, c::T, d::T, f::T, g::T, h::T, j::T) where T <: Real
     Octonion{T}(
-        Hamilton{T}(
+        Quaternion{T}(
             Cplex{T}(a, b),
             Cplex{T}(c, d)
         ),
-        Hamilton{T}(
+        Quaternion{T}(
             Cplex{T}(f, g),
             Cplex{T}(h, j)
         )
@@ -31,11 +31,11 @@ end
 
 function Octonion(a::T, b::T, c::T, d::T, f::T, g::T, h::T) where T <: Real
     Octonion{T}(
-        Hamilton{T}(
+        Quaternion{T}(
             Cplex{T}(a, b),
             Cplex{T}(c, d)
         ),
-        Hamilton{T}(
+        Quaternion{T}(
             Cplex{T}(f, g),
             Cplex{T}(h, zero(T))
         )
@@ -44,11 +44,11 @@ end
 
 function Octonion(a::T, b::T, c::T, d::T, f::T, g::T) where T <: Real
     Octonion{T}(
-        Hamilton{T}(
+        Quaternion{T}(
             Cplex{T}(a, b),
             Cplex{T}(c, d)
         ),
-        Hamilton{T}(
+        Quaternion{T}(
             Cplex{T}(f, g),
             zero(Cplex{T})
         )
@@ -57,11 +57,11 @@ end
 
 function Octonion(a::T, b::T, c::T, d::T, f::T) where T <: Real
     Octonion{T}(
-        Hamilton{T}(
+        Quaternion{T}(
             Cplex{T}(a, b),
             Cplex{T}(c, d)
         ),
-        Hamilton{T}(
+        Quaternion{T}(
             Cplex{T}(f, zero(T)),
             zero(Cplex{T})
         )
@@ -70,41 +70,41 @@ end
 
 function Octonion(a::T, b::T, c::T, d::T) where T <: Real
     Octonion{T}(
-        Hamilton{T}(
+        Quaternion{T}(
             Cplex{T}(a, b),
             Cplex{T}(c, d)
         ),
-        zero(Hamilton{T})
+        zero(Quaternion{T})
     )
 end
 
 function Octonion(a::T, b::T, c::T) where T <: Real
     Octonion{T}(
-        Hamilton{T}(
+        Quaternion{T}(
             Cplex{T}(a, b),
             Cplex{T}(c, zero(T))
         ),
-        zero(Hamilton{T})
+        zero(Quaternion{T})
     )
 end
 
 function Octonion(a::T, b::T) where T <: Real
     Octonion{T}(
-        Hamilton{T}(
+        Quaternion{T}(
             Cplex{T}(a, b),
             zero(Cplex{T})
         ),
-        zero(Hamilton{T})
+        zero(Quaternion{T})
     )
 end
 
 function Octonion(a::T) where T <: Real
     Octonion{T}(
-        Hamilton{T}(
+        Quaternion{T}(
             Cplex{T}(a, zero(T)),
             zero(Cplex{T})
         ),
-        zero(Hamilton{T})
+        zero(Quaternion{T})
     )
 end
 
@@ -166,5 +166,5 @@ function show(io::IO, z::Octonion)
 end
 
 function random(::Type{Octonion{T}}) where T <: Real
-    Octonion{T}(random(Hamilton{T}), random(Hamilton{T}))
+    Octonion{T}(random(Quaternion{T}), random(Quaternion{T}))
 end

@@ -9,17 +9,17 @@ function Sedenion(z::Octonion{T}) where T <: Real
     Sedenion{T}(z, zero(Octonion{T}))
 end
 
-function Sedenion(z::Hamilton{T}) where T <: Real
+function Sedenion(z::Quaternion{T}) where T <: Real
     Sedenion{T}(
-        Octonion{T}(z, zero(Hamilton{T})),
+        Octonion{T}(z, zero(Quaternion{T})),
         zero(Octonion{T})
     )
 end
 
 function Sedenion(z::Cplex{T}) where T <: Real
     Sedenion{T}(
-        Octonion{T}(Hamilton{T}(z, zero(Cplex{T})),
-        zero(Hamilton{T})),
+        Octonion{T}(Quaternion{T}(z, zero(Cplex{T})),
+        zero(Quaternion{T})),
         zero(Octonion{T})
     )
 end

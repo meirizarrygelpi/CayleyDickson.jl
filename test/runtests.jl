@@ -4,7 +4,7 @@ using Base.Test: @testset
 @testset "Cplex" begin include("cplex_test.jl") end
 @testset "Perplex" begin include("perplex_test.jl") end
 @testset "Exoplex" begin include("exoplex_test.jl") end
-@testset "Hamilton" begin include("hamilton_test.jl") end
+@testset "Quaternion" begin include("quaternion_test.jl") end
 @testset "SplitQuaternion" begin include("splitquaternion_test.jl") end
 @testset "ExoComplex" begin include("exocomplex_test.jl") end
 @testset "ExoPerplex" begin include("exoperplex_test.jl") end
