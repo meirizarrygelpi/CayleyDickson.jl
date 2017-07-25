@@ -16,6 +16,13 @@ function real(z::Parabolic)
     real(z.l)
 end
 
+"""
+    abs2(z::CayleyDickson.Parabolic)
+
+For parabolic Cayley-Dickson constructs, return the squared absolute value of the
+left component of `z`. Depending on the type of the components of `z`, this can
+either be non-negative, or positive, negative or zero.
+"""
 function abs2(z::Parabolic)
     abs2(z.l)
 end

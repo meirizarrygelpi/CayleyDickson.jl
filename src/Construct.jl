@@ -8,7 +8,7 @@ abstract type Construct{T <: Number} <: Number end
 """
     unreal(::T) where T <: Real
 
-The unreal part of a real number is an empty array.
+For real numbers, return the typed empty array.
 """
 function unreal(::T) where T <: Real
     T[]
@@ -26,7 +26,7 @@ end
 """
     iszerodivisor(a::Real) -> Bool
 
-Return `true` if a is zero. Equivalent to `iszero(a)`.
+Return `true` if `a` is zero. Equivalent to `iszero(a)`.
 """
 function iszerodivisor(a::Real)
     iszero(a)
@@ -255,6 +255,13 @@ function (\)(z::Construct, a::Real)
     inv(z) * a
 end
 
+"""
+    convert(::Type{T}, z::Construct) where T <: Real
+
+Convert a Cayley-Dickson construct to a real number.
+If `z` is not real (i.e. has non-zero unreal part), then an `InexactError` is
+thrown.
+"""
 function convert(::Type{T}, z::Construct) where T <: Real
     if !isreal(z)
         throw(InexactError())
@@ -263,10 +270,20 @@ function convert(::Type{T}, z::Construct) where T <: Real
     convert(T, real(z))
 end
 
+"""
+    convert(::Type{T}, z::T) where T <: Construct
+
+The trivial conversion. Equivalent to the identity operation.
+"""
 function convert(::Type{T}, z::T) where T <: Construct
     z
 end
 
+"""
+    convert(::Type{T}, a::Real) where T <: Construct
+
+Convert a real number into a Cayley-Dickson construct.
+"""
 function convert(::Type{T}, a::Real) where T <: Construct
     T(a)
 end

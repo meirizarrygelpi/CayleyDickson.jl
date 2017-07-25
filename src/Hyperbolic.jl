@@ -16,6 +16,13 @@ function real(z::Hyperbolic)
     real(z.l)
 end
 
+"""
+    abs2(z::CayleyDickson.Hyperbolic)
+
+For hyperbolic Cayley-Dickson constructs, return the difference of the squared
+absolute value of the left and right components of `z`.
+Note that this can be positive, negative, or zero.
+"""
 function abs2(z::Hyperbolic)
     abs2(z.l) - abs2(z.r)
 end
