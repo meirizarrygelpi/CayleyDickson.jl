@@ -1,28 +1,28 @@
 """
-    Exo2SplitBinion{T <: Real} = Parabolic{ExoPerplex{T}}
+    Exo2SplitBinion{T <: Real} = Parabolic{Exo1SplitBinion{T}}
 
 A 2-exo-split-binion is a parabolic Cayley-Dickson construct with 1-exo-split-binions.
 """
-const Exo2SplitBinion{T <: Real} = Parabolic{ExoPerplex{T}}
+const Exo2SplitBinion{T <: Real} = Parabolic{Exo1SplitBinion{T}}
 
-function Exo2SplitBinion(z::ExoPerplex{T}) where T <: Real
-    Exo2SplitBinion{T}(z, zero(ExoPerplex{T}))
+function Exo2SplitBinion(z::Exo1SplitBinion{T}) where T <: Real
+    Exo2SplitBinion{T}(z, zero(Exo1SplitBinion{T}))
 end
 
 function Exo2SplitBinion(z::Perplex{T}) where T <: Real
     Exo2SplitBinion{T}(
-        ExoPerplex{T}(z, zero(Perplex{T})),
-        zero(ExoPerplex{T})
+        Exo1SplitBinion{T}(z, zero(Perplex{T})),
+        zero(Exo1SplitBinion{T})
     )
 end
 
 function Exo2SplitBinion(a::T, b::T, c::T, d::T, f::T, g::T, h::T, j::T) where T <: Real
     Exo2SplitBinion{T}(
-        ExoPerplex{T}(
+        Exo1SplitBinion{T}(
             Perplex{T}(a, b),
             Perplex{T}(c, d)
         ),
-        ExoPerplex{T}(
+        Exo1SplitBinion{T}(
             Perplex{T}(f, g),
             Perplex{T}(h, j)
         )
@@ -31,11 +31,11 @@ end
 
 function Exo2SplitBinion(a::T, b::T, c::T, d::T, f::T, g::T, h::T) where T <: Real
     Exo2SplitBinion{T}(
-        ExoPerplex{T}(
+        Exo1SplitBinion{T}(
             Perplex{T}(a, b),
             Perplex{T}(c, d)
         ),
-        ExoPerplex{T}(
+        Exo1SplitBinion{T}(
             Perplex{T}(f, g),
             Perplex{T}(h, zero(T))
         )
@@ -44,11 +44,11 @@ end
 
 function Exo2SplitBinion(a::T, b::T, c::T, d::T, f::T, g::T) where T <: Real
     Exo2SplitBinion{T}(
-        ExoPerplex{T}(
+        Exo1SplitBinion{T}(
             Perplex{T}(a, b),
             Perplex{T}(c, d)
         ),
-        ExoPerplex{T}(
+        Exo1SplitBinion{T}(
             Perplex{T}(f, g),
             zero(Perplex{T})
         )
@@ -57,11 +57,11 @@ end
 
 function Exo2SplitBinion(a::T, b::T, c::T, d::T, f::T) where T <: Real
     Exo2SplitBinion{T}(
-        ExoPerplex{T}(
+        Exo1SplitBinion{T}(
             Perplex{T}(a, b),
             Perplex{T}(c, d)
         ),
-        ExoPerplex{T}(
+        Exo1SplitBinion{T}(
             Perplex{T}(f, zero(T)),
             zero(Perplex{T})
         )
@@ -70,41 +70,41 @@ end
 
 function Exo2SplitBinion(a::T, b::T, c::T, d::T) where T <: Real
     Exo2SplitBinion{T}(
-        ExoPerplex{T}(
+        Exo1SplitBinion{T}(
             Perplex{T}(a, b),
             Perplex{T}(c, d)
         ),
-        zero(ExoPerplex{T})
+        zero(Exo1SplitBinion{T})
     )
 end
 
 function Exo2SplitBinion(a::T, b::T, c::T) where T <: Real
     Exo2SplitBinion{T}(
-        ExoPerplex{T}(
+        Exo1SplitBinion{T}(
             Perplex{T}(a, b),
             Perplex{T}(c, zero(T))
         ),
-        zero(ExoPerplex{T})
+        zero(Exo1SplitBinion{T})
     )
 end
 
 function Exo2SplitBinion(a::T, b::T) where T <: Real
     Exo2SplitBinion{T}(
-        ExoPerplex{T}(
+        Exo1SplitBinion{T}(
             Perplex{T}(a, b),
             zero(Perplex{T})
         ),
-        zero(ExoPerplex{T})
+        zero(Exo1SplitBinion{T})
     )
 end
 
 function Exo2SplitBinion(a::T) where T <: Real
     Exo2SplitBinion{T}(
-        ExoPerplex{T}(
+        Exo1SplitBinion{T}(
             Perplex{T}(a, zero(T)),
             zero(Perplex{T})
         ),
-        zero(ExoPerplex{T})
+        zero(Exo1SplitBinion{T})
     )
 end
 
@@ -170,5 +170,5 @@ function show(io::IO, z::Exo2SplitBinion)
 end
 
 function random(::Type{Exo2SplitBinion{T}}) where T <: Real
-    Exo2SplitBinion{T}(random(ExoPerplex{T}), random(ExoPerplex{T}))
+    Exo2SplitBinion{T}(random(Exo1SplitBinion{T}), random(Exo1SplitBinion{T}))
 end

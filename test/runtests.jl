@@ -7,7 +7,7 @@ using Base.Test: @testset
 @testset "Quaternion" begin include("quaternion_test.jl") end
 @testset "SplitQuaternion" begin include("splitquaternion_test.jl") end
 @testset "Exo1Binion" begin include("exo1binion_test.jl") end
-@testset "ExoPerplex" begin include("exoperplex_test.jl") end
+@testset "Exo1SplitBinion" begin include("exo1splitbinion_test.jl") end
 @testset "Exo2Real" begin include("exo2real_test.jl") end
 @testset "Octonion" begin include("octonion_test.jl") end
 @testset "SplitOctonion" begin include("splitoctonion_test.jl") end

@@ -25,7 +25,7 @@ include("Parabolic.jl")
 include("Exoplex.jl")
 include("Exo2Real.jl")
 include("Exo1Binion.jl")
-include("ExoPerplex.jl")
+include("Exo1SplitBinion.jl")
 include("Exo3Real.jl")
 include("Exo2Binion.jl")
 include("Exo2SplitBinion.jl")
@@ -38,7 +38,7 @@ include("random.jl")
 # Types
 export Construct, Elliptic, Hyperbolic, Parabolic,
        Cplex, Perplex, Exoplex,
-       Quaternion, SplitQuaternion, Exo2Real, Exo1Binion, ExoPerplex,
+       Quaternion, SplitQuaternion, Exo2Real, Exo1Binion, Exo1SplitBinion,
        Octonion, SplitOctonion, Exo1Quaternion, Exo1SplitQuaternion, Exo3Real, Exo2Binion, Exo2SplitBinion,
        Sedenion, Exo4Real
 

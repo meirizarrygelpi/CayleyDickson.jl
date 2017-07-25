@@ -1,7 +1,7 @@
 """
     Exo1Binion{T <: Real} = Parabolic{Cplex{T}}
 
-An exo-complex number is a parabolic Cayley-Dickson construct with complex numbers.
+A 1-exo-binion is a parabolic Cayley-Dickson construct with binions.
 """
 const Exo1Binion{T <: Real} = Parabolic{Cplex{T}}
 
@@ -64,7 +64,7 @@ end
 """
     unreal(z::Exo1Binion)
 
-The unreal part of an exo-complex number is a 3-vector.
+The unreal part of a 1-exo-binion is a 3-vector.
 """
 function unreal(z::Exo1Binion)
     vcat(unreal(z.l), array(z.r))

@@ -72,7 +72,7 @@ end
     b = CayleyDickson.randomBigFloat()
     c = CayleyDickson.randomBigInt()
     d = CayleyDickson.randomBigFloat()
-    l = Exo2SplitBinion(ExoPerplex(a, b, c, d))
+    l = Exo2SplitBinion(Exo1SplitBinion(a, b, c, d))
     r = Exo2SplitBinion(a, b, c, d)
     l == r
 end
@@ -109,7 +109,7 @@ end
 end
 
 @test begin
-    a = random(ExoPerplex{BigInt})
+    a = random(Exo1SplitBinion{BigInt})
     z = random(Exo2SplitBinion{BigInt})
     l = a + z
     r = z + a
@@ -125,7 +125,7 @@ end
 end
 
 @test begin
-    a = random(ExoPerplex{BigInt})
+    a = random(Exo1SplitBinion{BigInt})
     z = random(Exo2SplitBinion{BigInt})
     l = a - z
     r = -(z - a)
@@ -275,7 +275,7 @@ end
 end
 
 @test begin
-    a = random(ExoPerplex{BigInt})
+    a = random(Exo1SplitBinion{BigInt})
     x = random(Exo2SplitBinion{BigInt})
     l = commutator(a, x)
     r = zero(Exo2SplitBinion{BigInt})
