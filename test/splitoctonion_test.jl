@@ -3,27 +3,27 @@ using Base.Test: @test, @test_throws
 
 @test begin
     a = CayleyDickson.randomBigFloat()
-    isreal(Zorn(a))
+    isreal(SplitOctonion(a))
 end
 
 @test begin
     a = 1
-    !isreal(Zorn(a, a, a, a))
+    !isreal(SplitOctonion(a, a, a, a))
 end
 
 @test begin
-    z = random(Zorn{Int})
+    z = random(SplitOctonion{Int})
     z == +(z)
 end
 
 @test begin
     a = CayleyDickson.randomBigFloat()
-    real(Zorn(a)) == a
+    real(SplitOctonion(a)) == a
 end
 
 @test begin
     io = IOBuffer()
-    show(io, Zorn(1.0, 2, 3, 4, 5, 6, 7, 8))
+    show(io, SplitOctonion(1.0, 2, 3, 4, 5, 6, 7, 8))
     l = String(take!(io))
     r = "[1: 1.0, i: 2.0, j: 3.0, ij: 4.0, s: 5.0, is: 6.0, js: 7.0, (ij)s: 8.0]"
     l == r
@@ -31,7 +31,7 @@ end
 
 @test begin
     io = IOBuffer()
-    show(io, Zorn(1.0, 2, 3, 4, 5, 6, 7))
+    show(io, SplitOctonion(1.0, 2, 3, 4, 5, 6, 7))
     l = String(take!(io))
     r = "[1: 1.0, i: 2.0, j: 3.0, ij: 4.0, s: 5.0, is: 6.0, js: 7.0, (ij)s: 0.0]"
     l == r
@@ -39,7 +39,7 @@ end
 
 @test begin
     io = IOBuffer()
-    show(io, Zorn(1.0, 2, 3, 4, 5, 6))
+    show(io, SplitOctonion(1.0, 2, 3, 4, 5, 6))
     l = String(take!(io))
     r = "[1: 1.0, i: 2.0, j: 3.0, ij: 4.0, s: 5.0, is: 6.0, js: 0.0, (ij)s: 0.0]"
     l == r
@@ -47,7 +47,7 @@ end
 
 @test begin
     io = IOBuffer()
-    show(io, Zorn(1.0, 2, 3, 4, 5))
+    show(io, SplitOctonion(1.0, 2, 3, 4, 5))
     l = String(take!(io))
     r = "[1: 1.0, i: 2.0, j: 3.0, ij: 4.0, s: 5.0, is: 0.0, js: 0.0, (ij)s: 0.0]"
     l == r
@@ -55,7 +55,7 @@ end
 
 @test begin
     io = IOBuffer()
-    show(io, Zorn(1.0, 2, 3, 4))
+    show(io, SplitOctonion(1.0, 2, 3, 4))
     l = String(take!(io))
     r = "[1: 1.0, i: 2.0, j: 3.0, ij: 4.0, s: 0.0, is: 0.0, js: 0.0, (ij)s: 0.0]"
     l == r
@@ -66,16 +66,16 @@ end
     b = CayleyDickson.randomBigFloat()
     c = CayleyDickson.randomBigInt()
     d = CayleyDickson.randomBigFloat()
-    l = Zorn(Hamilton(a, b, c, d))
-    r = Zorn(a, b, c, d)
+    l = SplitOctonion(Hamilton(a, b, c, d))
+    r = SplitOctonion(a, b, c, d)
     l == r
 end
 
 @test begin
     a = CayleyDickson.randomBigInt()
     b = CayleyDickson.randomBigFloat()
-    l = Zorn(Cplex(a, b))
-    r = Zorn(a, b)
+    l = SplitOctonion(Cplex(a, b))
+    r = SplitOctonion(a, b)
     l == r
 end
 
@@ -83,20 +83,20 @@ end
     a = CayleyDickson.randomBigInt()
     b = CayleyDickson.randomBigFloat()
     c = CayleyDickson.randomBigInt()
-    l = Zorn(a, b, c)
-    r = Zorn(a, b, c, 0)
+    l = SplitOctonion(a, b, c)
+    r = SplitOctonion(a, b, c, 0)
     l == r
 end
 
 @test begin
-    x = random(Zorn{BigFloat})
-    y = random(Zorn{BigFloat})
+    x = random(SplitOctonion{BigFloat})
+    y = random(SplitOctonion{BigFloat})
     x != y
 end
 
 @test begin
     a = CayleyDickson.randomBigInt()
-    z = random(Zorn{BigInt})
+    z = random(SplitOctonion{BigInt})
     l = a + z
     r = z + a
     l == r
@@ -104,7 +104,7 @@ end
 
 @test begin
     a = random(Hamilton{BigInt})
-    z = random(Zorn{BigInt})
+    z = random(SplitOctonion{BigInt})
     l = a + z
     r = z + a
     l == r
@@ -112,7 +112,7 @@ end
 
 @test begin
     a = CayleyDickson.randomBigInt()
-    z = random(Zorn{BigInt})
+    z = random(SplitOctonion{BigInt})
     l = a - z
     r = -(z - a)
     l == r
@@ -120,132 +120,132 @@ end
 
 @test begin
     a = random(Hamilton{BigInt})
-    z = random(Zorn{BigInt})
+    z = random(SplitOctonion{BigInt})
     l = a - z
     r = -(z - a)
     l == r
 end
 
 @test begin
-    x = random(Zorn{BigInt})
-    y = random(Zorn{BigInt})
+    x = random(SplitOctonion{BigInt})
+    y = random(SplitOctonion{BigInt})
     l = x + y
     r = y + x
     l == r
 end
 
 @test begin
-    x = random(Zorn{BigInt})
-    y = random(Zorn{BigInt})
+    x = random(SplitOctonion{BigInt})
+    y = random(SplitOctonion{BigInt})
     l = x * y
     r = y * x
     l != r
 end
 
 @test begin
-    x = random(Zorn{BigInt})
-    y = random(Zorn{BigInt})
+    x = random(SplitOctonion{BigInt})
+    y = random(SplitOctonion{BigInt})
     l = x - y
     r = -(y - x)
     l == r
 end
 
 @test begin
-    x = random(Zorn{BigInt})
-    y = random(Zorn{BigInt})
-    z = random(Zorn{BigInt})
+    x = random(SplitOctonion{BigInt})
+    y = random(SplitOctonion{BigInt})
+    z = random(SplitOctonion{BigInt})
     l = (x + y) + z
     r = x + (y + z)
     l == r
 end
 
 @test begin
-    x = random(Zorn{BigInt})
-    y = random(Zorn{BigInt})
-    z = random(Zorn{BigInt})
+    x = random(SplitOctonion{BigInt})
+    y = random(SplitOctonion{BigInt})
+    z = random(SplitOctonion{BigInt})
     l = (x * y) * z
     r = x * (y * z)
     l != r
 end
 
 @test begin
-    x = random(Zorn{BigInt})
-    y = random(Zorn{BigInt})
+    x = random(SplitOctonion{BigInt})
+    y = random(SplitOctonion{BigInt})
     l = alternatorL(x, y)
-    r = zero(Zorn{BigInt})
+    r = zero(SplitOctonion{BigInt})
     l == r
 end
 
 @test begin
-    x = random(Zorn{BigInt})
-    y = random(Zorn{BigInt})
+    x = random(SplitOctonion{BigInt})
+    y = random(SplitOctonion{BigInt})
     l = alternatorR(x, y)
-    r = zero(Zorn{BigInt})
+    r = zero(SplitOctonion{BigInt})
     l == r
 end
 
 @test begin
-    x = random(Zorn{BigInt})
+    x = random(SplitOctonion{BigInt})
     conj(conj(x)) == x
 end
 
 @test begin
-    x = random(Zorn{Rational{BigInt}})
+    x = random(SplitOctonion{Rational{BigInt}})
     inv(inv(x)) == x
 end
 
 @test begin
-    x = random(Zorn{BigInt})
-    y = random(Zorn{BigInt})
+    x = random(SplitOctonion{BigInt})
+    y = random(SplitOctonion{BigInt})
     l = conj(x * y)
     r = conj(y) * conj(x)
     l == r
 end
 
 @test begin
-    x = random(Zorn{BigInt})
-    y = random(Zorn{BigInt})
+    x = random(SplitOctonion{BigInt})
+    y = random(SplitOctonion{BigInt})
     l = conj(x + y)
     r = conj(x) + conj(y)
     l == r
 end
 
 @test begin
-    x = random(Zorn{BigInt})
-    y = random(Zorn{BigInt})
+    x = random(SplitOctonion{BigInt})
+    y = random(SplitOctonion{BigInt})
     l = conj(x - y)
     r = conj(x) - conj(y)
     l == r
 end
 
 @test begin
-    x = random(Zorn{Rational{BigInt}})
-    y = random(Zorn{Rational{BigInt}})
+    x = random(SplitOctonion{Rational{BigInt}})
+    y = random(SplitOctonion{Rational{BigInt}})
     l = inv(x * y)
     r = inv(y) * inv(x)
     l == r
 end
 
 @test begin
-    x = random(Zorn{Rational{BigInt}})
-    y = random(Zorn{Rational{BigInt}})
+    x = random(SplitOctonion{Rational{BigInt}})
+    y = random(SplitOctonion{Rational{BigInt}})
     l = inv(x / y)
     r = y / x
     l == r
 end
 
 @test begin
-    x = random(Zorn{Rational{BigInt}})
-    y = random(Zorn{Rational{BigInt}})
+    x = random(SplitOctonion{Rational{BigInt}})
+    y = random(SplitOctonion{Rational{BigInt}})
     l = inv(x \ y)
     r = y \ x
     l == r
 end
 
 @test begin
-    x = random(Zorn{BigInt})
-    y = random(Zorn{BigInt})
-    z = random(Zorn{BigInt})
+    x = random(SplitOctonion{BigInt})
+    y = random(SplitOctonion{BigInt})
+    z = random(SplitOctonion{BigInt})
     l = x * (y + z)
     r = (x * y) + (x * z)
     l == r
@@ -253,8 +253,8 @@ end
 
 @test begin
     a = CayleyDickson.randomBigInt()
-    x = random(Zorn{BigInt})
-    y = random(Zorn{BigInt})
+    x = random(SplitOctonion{BigInt})
+    y = random(SplitOctonion{BigInt})
     l = a * (x + y)
     r = (a * x) + (a * y)
     l == r
@@ -262,7 +262,7 @@ end
 
 @test begin
     a = CayleyDickson.randomBigInt()
-    x = random(Zorn{BigInt})
+    x = random(SplitOctonion{BigInt})
     l = a * x
     r = x * a
     l == r
@@ -270,67 +270,67 @@ end
 
 @test begin
     a = random(Hamilton{BigInt})
-    x = random(Zorn{BigInt})
+    x = random(SplitOctonion{BigInt})
     l = commutator(a, x)
-    r = zero(Zorn{BigInt})
+    r = zero(SplitOctonion{BigInt})
     l != r
 end
 
 @test begin
-    x = random(Zorn{BigInt})
-    y = random(Zorn{BigInt})
-    z = random(Zorn{BigInt})
+    x = random(SplitOctonion{BigInt})
+    y = random(SplitOctonion{BigInt})
+    z = random(SplitOctonion{BigInt})
     l = (x + y) * z
     r = (x * z) + (y * z)
     l == r
 end
 
 @test begin
-    x = random(Zorn{BigInt})
-    y = random(Zorn{BigInt})
-    z = random(Zorn{BigInt})
+    x = random(SplitOctonion{BigInt})
+    y = random(SplitOctonion{BigInt})
+    z = random(SplitOctonion{BigInt})
     l = x * (y - z)
     r = (x * y) - (x * z)
     l == r
 end
 
 @test begin
-    x = random(Zorn{BigInt})
-    y = random(Zorn{BigInt})
-    z = random(Zorn{BigInt})
+    x = random(SplitOctonion{BigInt})
+    y = random(SplitOctonion{BigInt})
+    z = random(SplitOctonion{BigInt})
     l = (x - y) * z
     r = (x * z) - (y * z)
     l == r
 end
 
 @test begin
-    x = random(Zorn{BigInt})
+    x = random(SplitOctonion{BigInt})
     abs2(x) > big(0) || abs2(x) < big(0) || abs2(x) == big(0)
 end
 
 @test begin
-    x = random(Zorn{BigInt})
-    y = random(Zorn{BigInt})
+    x = random(SplitOctonion{BigInt})
+    y = random(SplitOctonion{BigInt})
     l = abs2(x * y)
     r = abs2(x) * abs2(y)
     l == r
 end
 
 @test_throws ErrorException begin
-    inv(Zorn(0, 0.0))
+    inv(SplitOctonion(0, 0.0))
 end
 
 @test_throws ErrorException begin
-    random(Zorn{Int}) / 0
+    random(SplitOctonion{Int}) / 0
 end
 
 @test_throws ErrorException begin
-    0 \ random(Zorn{Int})
+    0 \ random(SplitOctonion{Int})
 end
 
 @test begin
     a = CayleyDickson.randomBigRational()
-    z = random(Zorn{Rational{BigInt}})
+    z = random(SplitOctonion{Rational{BigInt}})
     l = z / a
     r = a \ z
     l == r
@@ -338,28 +338,28 @@ end
 
 @test begin
     a = CayleyDickson.randomBigRational()
-    z = random(Zorn{Rational{BigInt}})
+    z = random(SplitOctonion{Rational{BigInt}})
     l = a / z
     r = z \ a
     l == r
 end
 
 @test begin
-    z = random(Zorn{BigInt})
-    z == z + zero(Zorn{BigInt})
+    z = random(SplitOctonion{BigInt})
+    z == z + zero(SplitOctonion{BigInt})
 end
 
 @test begin
-    z = random(Zorn{BigInt})
-    z == z * one(Zorn{BigInt})
+    z = random(SplitOctonion{BigInt})
+    z == z * one(SplitOctonion{BigInt})
 end
 
 @test begin
-    z = random(Zorn{BigInt})
+    z = random(SplitOctonion{BigInt})
     z == z + zero(z)
 end
 
 @test begin
-    z = random(Zorn{BigInt})
+    z = random(SplitOctonion{BigInt})
     z == z * one(z)
 end
