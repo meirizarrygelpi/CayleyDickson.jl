@@ -1,23 +1,23 @@
 """
-    TetraExoplex{T <: Real} = Parabolic{TriExoplex{T}}
+    Exo4Real{T <: Real} = Parabolic{TriExoplex{T}}
 
-A tetra-exoplex number is a parabolic Cayley-Dickson construct with tri-exoplex numbers.
+A 4-exo-real number is a parabolic Cayley-Dickson construct with tri-exoplex numbers.
 """
-const TetraExoplex{T <: Real} = Parabolic{TriExoplex{T}}
+const Exo4Real{T <: Real} = Parabolic{TriExoplex{T}}
 
-function TetraExoplex(z::TriExoplex{T}) where T <: Real
-    TetraExoplex{T}(z, zero(TriExoplex{T}))
+function Exo4Real(z::TriExoplex{T}) where T <: Real
+    Exo4Real{T}(z, zero(TriExoplex{T}))
 end
 
-function TetraExoplex(z::BiExoplex{T}) where T <: Real
-    TetraExoplex{T}(
+function Exo4Real(z::BiExoplex{T}) where T <: Real
+    Exo4Real{T}(
         TriExoplex{T}(z, zero(BiExoplex{T})),
         zero(TriExoplex{T})
     )
 end
 
-function TetraExoplex(z::Exoplex{T}) where T <: Real
-    TetraExoplex{T}(
+function Exo4Real(z::Exoplex{T}) where T <: Real
+    Exo4Real{T}(
         TriExoplex{T}(
             BiExoplex{T}(z, zero(Exoplex{T})),
             zero(BiExoplex{T})),
@@ -25,36 +25,36 @@ function TetraExoplex(z::Exoplex{T}) where T <: Real
     )
 end
 
-function cloak(z::TetraExoplex{T}) where T <: Real
-    TetraExoplex{T}(cloak(z.l), dagger(z.r))
+function cloak(z::Exo4Real{T}) where T <: Real
+    Exo4Real{T}(cloak(z.l), dagger(z.r))
 end
 
-function dagger(z::TetraExoplex{T}) where T <: Real
-    TetraExoplex{T}(dagger(z.l), cloak(z.r))
+function dagger(z::Exo4Real{T}) where T <: Real
+    Exo4Real{T}(dagger(z.l), cloak(z.r))
 end
 
-function star(z::TetraExoplex{T}) where T <: Real
-    TetraExoplex{T}(dagger(star(z.r)), star(z.l))
+function star(z::Exo4Real{T}) where T <: Real
+    Exo4Real{T}(dagger(star(z.r)), star(z.l))
 end
 
-function selfstar(z::TetraExoplex)
+function selfstar(z::Exo4Real)
     (z + star(z) + dagger(z) + star(dagger(z))) / 4
 end
 
-function anti_selfstar(z::TetraExoplex)
+function anti_selfstar(z::Exo4Real)
     (z - star(z) + dagger(z) - star(dagger(z))) / 4
 end
 
 """
-    unreal(z::TetraExoplex)
+    unreal(z::Exo4Real)
 
-The unreal part of a tri-exoplex number is a 15-vector.
+The unreal part of a 4-exo-real number is a 15-vector.
 """
-function unreal(z::TetraExoplex)
+function unreal(z::Exo4Real)
     vcat(unreal(z.l), array(z.r))
 end
 
-function show(io::IO, z::TetraExoplex)
+function show(io::IO, z::Exo4Real)
     print(io, "[1: ")
     print(io, z.l.l.l.l)
     print(io, ", a: ")
@@ -90,6 +90,6 @@ function show(io::IO, z::TetraExoplex)
     print(io, "]")
 end
 
-function random(::Type{TetraExoplex{T}}) where T <: Real
-    TetraExoplex{T}(random(TriExoplex{T}), random(TriExoplex{T}))
+function random(::Type{Exo4Real{T}}) where T <: Real
+    Exo4Real{T}(random(TriExoplex{T}), random(TriExoplex{T}))
 end

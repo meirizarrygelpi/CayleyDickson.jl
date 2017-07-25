@@ -3,27 +3,27 @@ using Base.Test: @test, @test_throws
 
 @test begin
     a = CayleyDickson.randomBigFloat()
-    isreal(TetraExoplex(TriExoplex(a)))
+    isreal(Exo4Real(TriExoplex(a)))
 end
 
 @test begin
     a = 1
-    !isreal(TetraExoplex(TriExoplex(a, a, a, a)))
+    !isreal(Exo4Real(TriExoplex(a, a, a, a)))
 end
 
 @test begin
-    z = random(TetraExoplex{Int})
+    z = random(Exo4Real{Int})
     z == +(z)
 end
 
 @test begin
     a = CayleyDickson.randomBigFloat()
-    real(TetraExoplex(TriExoplex(a))) == a
+    real(Exo4Real(TriExoplex(a))) == a
 end
 
 @test begin
     io = IOBuffer()
-    show(io, TetraExoplex(TriExoplex(1.0, 2, 3, 4, 5, 6, 7, 8)))
+    show(io, Exo4Real(TriExoplex(1.0, 2, 3, 4, 5, 6, 7, 8)))
     l = String(take!(io))
     r = "[1: 1.0, a: 2.0, b: 3.0, ab: 4.0, c: 5.0, ac: 6.0, bc: 7.0, (ab)c: 8.0, d: 0.0, ad: 0.0, bd: 0.0, (ab)d: 0.0, cd: 0.0, (ac)d: 0.0, (bc)d: 0.0, ((ab)c)d: 0.0]"
     l == r
@@ -34,28 +34,28 @@ end
     b = CayleyDickson.randomBigInt()
     c = CayleyDickson.randomBigInt()
     d = CayleyDickson.randomBigInt()
-    l = TetraExoplex(TriExoplex(a, b, c, d))
-    r = TetraExoplex(BiExoplex(a, b, c, d))
+    l = Exo4Real(TriExoplex(a, b, c, d))
+    r = Exo4Real(BiExoplex(a, b, c, d))
     l == r
 end
 
 @test begin
     a = CayleyDickson.randomBigInt()
     b = CayleyDickson.randomBigInt()
-    l = TetraExoplex(Exoplex(a, b))
-    r = TetraExoplex(TriExoplex(a, b))
+    l = Exo4Real(Exoplex(a, b))
+    r = Exo4Real(TriExoplex(a, b))
     l == r
 end
 
 @test begin
-    x = random(TetraExoplex{BigFloat})
-    y = random(TetraExoplex{BigFloat})
+    x = random(Exo4Real{BigFloat})
+    y = random(Exo4Real{BigFloat})
     x != y
 end
 
 @test begin
     a = CayleyDickson.randomBigInt()
-    z = random(TetraExoplex{BigInt})
+    z = random(Exo4Real{BigInt})
     l = a + z
     r = z + a
     l == r
@@ -63,7 +63,7 @@ end
 
 @test begin
     a = random(TriExoplex{BigInt})
-    z = random(TetraExoplex{BigInt})
+    z = random(Exo4Real{BigInt})
     l = a + z
     r = z + a
     l == r
@@ -71,7 +71,7 @@ end
 
 @test begin
     a = CayleyDickson.randomBigInt()
-    z = random(TetraExoplex{BigInt})
+    z = random(Exo4Real{BigInt})
     l = a - z
     r = -(z - a)
     l == r
@@ -79,146 +79,146 @@ end
 
 @test begin
     a = random(TriExoplex{BigInt})
-    z = random(TetraExoplex{BigInt})
+    z = random(Exo4Real{BigInt})
     l = a - z
     r = -(z - a)
     l == r
 end
 
 @test begin
-    x = random(TetraExoplex{BigInt})
-    y = random(TetraExoplex{BigInt})
+    x = random(Exo4Real{BigInt})
+    y = random(Exo4Real{BigInt})
     l = x + y
     r = y + x
     l == r
 end
 
 @test begin
-    x = random(TetraExoplex{BigInt})
-    y = random(TetraExoplex{BigInt})
+    x = random(Exo4Real{BigInt})
+    y = random(Exo4Real{BigInt})
     l = x * y
     r = y * x
     l != r
 end
 
 @test begin
-    x = random(TetraExoplex{BigInt})
-    y = random(TetraExoplex{BigInt})
+    x = random(Exo4Real{BigInt})
+    y = random(Exo4Real{BigInt})
     l = x - y
     r = -(y - x)
     l == r
 end
 
 @test begin
-    x = random(TetraExoplex{BigInt})
-    y = random(TetraExoplex{BigInt})
-    z = random(TetraExoplex{BigInt})
+    x = random(Exo4Real{BigInt})
+    y = random(Exo4Real{BigInt})
+    z = random(Exo4Real{BigInt})
     l = (x + y) + z
     r = x + (y + z)
     l == r
 end
 
 @test begin
-    x = random(TetraExoplex{BigInt})
-    y = random(TetraExoplex{BigInt})
-    z = random(TetraExoplex{BigInt})
+    x = random(Exo4Real{BigInt})
+    y = random(Exo4Real{BigInt})
+    z = random(Exo4Real{BigInt})
     l = (x * y) * z
     r = x * (y * z)
     l != r
 end
 
 @test begin
-    x = random(TetraExoplex{BigInt})
-    y = random(TetraExoplex{BigInt})
+    x = random(Exo4Real{BigInt})
+    y = random(Exo4Real{BigInt})
     l = alternatorL(x, y)
-    r = zero(TetraExoplex{BigInt})
+    r = zero(Exo4Real{BigInt})
     l != r
 end
 
 @test begin
-    x = random(TetraExoplex{BigInt})
-    y = random(TetraExoplex{BigInt})
+    x = random(Exo4Real{BigInt})
+    y = random(Exo4Real{BigInt})
     l = alternatorR(x, y)
-    r = zero(TetraExoplex{BigInt})
+    r = zero(Exo4Real{BigInt})
     l != r
 end
 
 @test begin
-    x = random(TetraExoplex{BigInt})
+    x = random(Exo4Real{BigInt})
     conj(conj(x)) == x
 end
 
 @test begin
-    x = random(TetraExoplex{Rational{BigInt}})
+    x = random(Exo4Real{Rational{BigInt}})
     inv(inv(x)) == x
 end
 
 @test begin
-    x = random(TetraExoplex{BigInt})
-    y = random(TetraExoplex{BigInt})
+    x = random(Exo4Real{BigInt})
+    y = random(Exo4Real{BigInt})
     l = conj(x * y)
     r = conj(y) * conj(x)
     l == r
 end
 
 @test begin
-    x = random(TetraExoplex{BigInt})
-    y = random(TetraExoplex{BigInt})
+    x = random(Exo4Real{BigInt})
+    y = random(Exo4Real{BigInt})
     l = conj(x + y)
     r = conj(x) + conj(y)
     l == r
 end
 
 @test begin
-    x = random(TetraExoplex{BigInt})
-    y = random(TetraExoplex{BigInt})
+    x = random(Exo4Real{BigInt})
+    y = random(Exo4Real{BigInt})
     l = conj(x - y)
     r = conj(x) - conj(y)
     l == r
 end
 
 # @test begin
-#     x = random(TetraExoplex{Rational{BigInt}})
-#     y = random(TetraExoplex{Rational{BigInt}})
+#     x = random(Exo4Real{Rational{BigInt}})
+#     y = random(Exo4Real{Rational{BigInt}})
 #     z = x * y
 #     z / y == x
 # end
 
 # @test begin
-#     x = random(TetraExoplex{Rational{BigInt}})
-#     y = random(TetraExoplex{Rational{BigInt}})
+#     x = random(Exo4Real{Rational{BigInt}})
+#     y = random(Exo4Real{Rational{BigInt}})
 #     z = x * y
 #     x \ z == y
 # end
 
 # @test begin
-#     x = random(TetraExoplex{Rational{BigInt}})
-#     y = random(TetraExoplex{Rational{BigInt}})
+#     x = random(Exo4Real{Rational{BigInt}})
+#     y = random(Exo4Real{Rational{BigInt}})
 #     l = inv(x * y)
 #     r = inv(y) * inv(x)
 #     l == r
 # end
 
 # @test begin
-#     x = random(TetraExoplex{Rational{BigInt}})
-#     y = random(TetraExoplex{Rational{BigInt}})
+#     x = random(Exo4Real{Rational{BigInt}})
+#     y = random(Exo4Real{Rational{BigInt}})
 #     l = inv(x / y)
 #     r = y / x
 #     l == r
 # end
 
 # @test begin
-#     x = random(TetraExoplex{Rational{BigInt}})
-#     y = random(TetraExoplex{Rational{BigInt}})
+#     x = random(Exo4Real{Rational{BigInt}})
+#     y = random(Exo4Real{Rational{BigInt}})
 #     l = inv(x \ y)
 #     r = y \ x
 #     l == r
 # end
 
 @test begin
-    x = random(TetraExoplex{BigInt})
-    y = random(TetraExoplex{BigInt})
-    z = random(TetraExoplex{BigInt})
+    x = random(Exo4Real{BigInt})
+    y = random(Exo4Real{BigInt})
+    z = random(Exo4Real{BigInt})
     l = x * (y + z)
     r = (x * y) + (x * z)
     l == r
@@ -226,8 +226,8 @@ end
 
 @test begin
     a = CayleyDickson.randomBigInt()
-    x = random(TetraExoplex{BigInt})
-    y = random(TetraExoplex{BigInt})
+    x = random(Exo4Real{BigInt})
+    y = random(Exo4Real{BigInt})
     l = a * (x + y)
     r = (a * x) + (a * y)
     l == r
@@ -235,7 +235,7 @@ end
 
 @test begin
     a = CayleyDickson.randomBigInt()
-    x = random(TetraExoplex{BigInt})
+    x = random(Exo4Real{BigInt})
     l = a * x
     r = x * a
     l == r
@@ -243,67 +243,67 @@ end
 
 @test begin
     a = random(TriExoplex{BigInt})
-    x = random(TetraExoplex{BigInt})
+    x = random(Exo4Real{BigInt})
     l = commutator(a, x)
-    r = zero(TetraExoplex{BigInt})
+    r = zero(Exo4Real{BigInt})
     l != r
 end
 
 @test begin
-    x = random(TetraExoplex{BigInt})
-    y = random(TetraExoplex{BigInt})
-    z = random(TetraExoplex{BigInt})
+    x = random(Exo4Real{BigInt})
+    y = random(Exo4Real{BigInt})
+    z = random(Exo4Real{BigInt})
     l = (x + y) * z
     r = (x * z) + (y * z)
     l == r
 end
 
 @test begin
-    x = random(TetraExoplex{BigInt})
-    y = random(TetraExoplex{BigInt})
-    z = random(TetraExoplex{BigInt})
+    x = random(Exo4Real{BigInt})
+    y = random(Exo4Real{BigInt})
+    z = random(Exo4Real{BigInt})
     l = x * (y - z)
     r = (x * y) - (x * z)
     l == r
 end
 
 @test begin
-    x = random(TetraExoplex{BigInt})
-    y = random(TetraExoplex{BigInt})
-    z = random(TetraExoplex{BigInt})
+    x = random(Exo4Real{BigInt})
+    y = random(Exo4Real{BigInt})
+    z = random(Exo4Real{BigInt})
     l = (x - y) * z
     r = (x * z) - (y * z)
     l == r
 end
 
 @test begin
-    x = random(TetraExoplex{BigInt})
+    x = random(Exo4Real{BigInt})
     abs2(x) > big(0) || abs2(x) == big(0)
 end
 
 @test begin
-    x = random(TetraExoplex{BigInt})
-    y = random(TetraExoplex{BigInt})
+    x = random(Exo4Real{BigInt})
+    y = random(Exo4Real{BigInt})
     l = abs2(x * y)
     r = abs2(x) * abs2(y)
     l == r
 end
 
 @test_throws ErrorException begin
-    inv(TetraExoplex(TriExoplex(0)))
+    inv(Exo4Real(TriExoplex(0)))
 end
 
 @test_throws ErrorException begin
-    random(TetraExoplex{Int}) / 0
+    random(Exo4Real{Int}) / 0
 end
 
 @test_throws ErrorException begin
-    0 \ random(TetraExoplex{Int})
+    0 \ random(Exo4Real{Int})
 end
 
 @test begin
     a = CayleyDickson.randomBigRational()
-    z = random(TetraExoplex{Rational{BigInt}})
+    z = random(Exo4Real{Rational{BigInt}})
     l = z / a
     r = a \ z
     l == r
@@ -311,53 +311,53 @@ end
 
 @test begin
     a = CayleyDickson.randomBigRational()
-    z = random(TetraExoplex{Rational{BigInt}})
+    z = random(Exo4Real{Rational{BigInt}})
     l = a / z
     r = z \ a
     l == r
 end
 
 @test begin
-    z = random(TetraExoplex{BigInt})
-    z == z + zero(TetraExoplex{BigInt})
+    z = random(Exo4Real{BigInt})
+    z == z + zero(Exo4Real{BigInt})
 end
 
 @test begin
-    z = random(TetraExoplex{BigInt})
-    z == z * one(TetraExoplex{BigInt})
+    z = random(Exo4Real{BigInt})
+    z == z * one(Exo4Real{BigInt})
 end
 
 @test begin
-    z = random(TetraExoplex{BigInt})
+    z = random(Exo4Real{BigInt})
     z == z + zero(z)
 end
 
 @test begin
-    z = random(TetraExoplex{BigInt})
+    z = random(Exo4Real{BigInt})
     z == z * one(z)
 end
 
 @test begin
-    x = random(TetraExoplex{BigInt})
+    x = random(Exo4Real{BigInt})
     cloak(cloak(x)) == x
 end
 
 @test begin
-    x = random(TetraExoplex{BigInt})
+    x = random(Exo4Real{BigInt})
     dagger(dagger(x)) == x
 end
 
 @test begin
-    x = random(TetraExoplex{BigInt})
+    x = random(Exo4Real{BigInt})
     star(star(x)) == dagger(x)
 end
 
 @test begin
-    x = random(TetraExoplex{Rational{BigInt}})
+    x = random(Exo4Real{Rational{BigInt}})
     selfstar(selfstar(x)) == selfstar(x)
 end
 
 @test begin
-    x = random(TetraExoplex{Rational{BigInt}})
+    x = random(Exo4Real{Rational{BigInt}})
     anti_selfstar(anti_selfstar(x)) == anti_selfstar(x)
 end

@@ -32,7 +32,7 @@ include("BiExoPerplex.jl")
 include("ExoHamilton.jl")
 include("ExoCockle.jl")
 include("Sedenion.jl")
-include("TetraExoplex.jl")
+include("Exo4Real.jl")
 include("random.jl")
 
 # Types
@@ -40,7 +40,7 @@ export Construct, Elliptic, Hyperbolic, Parabolic,
        Cplex, Perplex, Exoplex,
        Quaternion, SplitQuaternion, BiExoplex, ExoComplex, ExoPerplex,
        Octonion, SplitOctonion, ExoHamilton, ExoCockle, TriExoplex, BiExoComplex, BiExoPerplex,
-       Sedenion, TetraExoplex
+       Sedenion, Exo4Real
 
 # Methods
 export unreal, array, iszerodivisor, random,
