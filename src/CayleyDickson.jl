@@ -26,7 +26,7 @@ include("Exoplex.jl")
 include("BiExoplex.jl")
 include("ExoComplex.jl")
 include("ExoPerplex.jl")
-include("TriExoplex.jl")
+include("Exo3Real.jl")
 include("BiExoComplex.jl")
 include("BiExoPerplex.jl")
 include("ExoHamilton.jl")
@@ -39,7 +39,7 @@ include("random.jl")
 export Construct, Elliptic, Hyperbolic, Parabolic,
        Cplex, Perplex, Exoplex,
        Quaternion, SplitQuaternion, BiExoplex, ExoComplex, ExoPerplex,
-       Octonion, SplitOctonion, ExoHamilton, ExoCockle, TriExoplex, BiExoComplex, BiExoPerplex,
+       Octonion, SplitOctonion, ExoHamilton, ExoCockle, Exo3Real, BiExoComplex, BiExoPerplex,
        Sedenion, Exo4Real
 
 # Methods

@@ -1,27 +1,27 @@
 """
-    Exo4Real{T <: Real} = Parabolic{TriExoplex{T}}
+    Exo4Real{T <: Real} = Parabolic{Exo3Real{T}}
 
-A 4-exo-real number is a parabolic Cayley-Dickson construct with tri-exoplex numbers.
+A 4-exo-real number is a parabolic Cayley-Dickson construct with 3-exo-real numbers.
 """
-const Exo4Real{T <: Real} = Parabolic{TriExoplex{T}}
+const Exo4Real{T <: Real} = Parabolic{Exo3Real{T}}
 
-function Exo4Real(z::TriExoplex{T}) where T <: Real
-    Exo4Real{T}(z, zero(TriExoplex{T}))
+function Exo4Real(z::Exo3Real{T}) where T <: Real
+    Exo4Real{T}(z, zero(Exo3Real{T}))
 end
 
 function Exo4Real(z::BiExoplex{T}) where T <: Real
     Exo4Real{T}(
-        TriExoplex{T}(z, zero(BiExoplex{T})),
-        zero(TriExoplex{T})
+        Exo3Real{T}(z, zero(BiExoplex{T})),
+        zero(Exo3Real{T})
     )
 end
 
 function Exo4Real(z::Exoplex{T}) where T <: Real
     Exo4Real{T}(
-        TriExoplex{T}(
+        Exo3Real{T}(
             BiExoplex{T}(z, zero(Exoplex{T})),
             zero(BiExoplex{T})),
-        zero(TriExoplex{T})
+        zero(Exo3Real{T})
     )
 end
 
@@ -91,5 +91,5 @@ function show(io::IO, z::Exo4Real)
 end
 
 function random(::Type{Exo4Real{T}}) where T <: Real
-    Exo4Real{T}(random(TriExoplex{T}), random(TriExoplex{T}))
+    Exo4Real{T}(random(Exo3Real{T}), random(Exo3Real{T}))
 end
