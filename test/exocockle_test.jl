@@ -74,7 +74,7 @@ end
     b = CayleyDickson.randomBigFloat()
     c = CayleyDickson.randomBigInt()
     d = CayleyDickson.randomBigFloat()
-    l = ExoCockle(Cockle(a, b, c, d))
+    l = ExoCockle(SplitQuaternion(a, b, c, d))
     r = ExoCockle(a, b, c, d)
     l == r
 end
@@ -111,7 +111,7 @@ end
 end
 
 @test begin
-    a = random(Cockle{BigInt})
+    a = random(SplitQuaternion{BigInt})
     z = random(ExoCockle{BigInt})
     l = a + z
     r = z + a
@@ -127,7 +127,7 @@ end
 end
 
 @test begin
-    a = random(Cockle{BigInt})
+    a = random(SplitQuaternion{BigInt})
     z = random(ExoCockle{BigInt})
     l = a - z
     r = -(z - a)
@@ -277,7 +277,7 @@ end
 end
 
 @test begin
-    a = random(Cockle{BigInt})
+    a = random(SplitQuaternion{BigInt})
     x = random(ExoCockle{BigInt})
     l = commutator(a, x)
     r = zero(ExoCockle{BigInt})

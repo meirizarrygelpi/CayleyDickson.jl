@@ -1,28 +1,28 @@
 """
-    ExoCockle{T <: Real} = Parabolic{Cockle{T}}
+    ExoCockle{T <: Real} = Parabolic{SplitQuaternion{T}}
 
-An exo-Cockle quaterion is a parabolic Cayley-Dickson construct with Cockle quaternions.
+An exo-SplitQuaternion quaterion is a parabolic Cayley-Dickson construct with SplitQuaternion quaternions.
 """
-const ExoCockle{T <: Real} = Parabolic{Cockle{T}}
+const ExoCockle{T <: Real} = Parabolic{SplitQuaternion{T}}
 
-function ExoCockle(z::Cockle{T}) where T <: Real
-    ExoCockle{T}(z, zero(Cockle{T}))
+function ExoCockle(z::SplitQuaternion{T}) where T <: Real
+    ExoCockle{T}(z, zero(SplitQuaternion{T}))
 end
 
 function ExoCockle(z::Cplex{T}) where T <: Real
     ExoCockle{T}(
-        Cockle{T}(z, zero(Cplex{T})),
-        zero(Cockle{T})
+        SplitQuaternion{T}(z, zero(Cplex{T})),
+        zero(SplitQuaternion{T})
     )
 end
 
 function ExoCockle(a::T, b::T, c::T, d::T, f::T, g::T, h::T, j::T) where T <: Real
     ExoCockle{T}(
-        Cockle{T}(
+        SplitQuaternion{T}(
             Cplex{T}(a, b),
             Cplex{T}(c, d)
         ),
-        Cockle{T}(
+        SplitQuaternion{T}(
             Cplex{T}(f, g),
             Cplex{T}(h, j)
         )
@@ -31,11 +31,11 @@ end
 
 function ExoCockle(a::T, b::T, c::T, d::T, f::T, g::T, h::T) where T <: Real
     ExoCockle{T}(
-        Cockle{T}(
+        SplitQuaternion{T}(
             Cplex{T}(a, b),
             Cplex{T}(c, d)
         ),
-        Cockle{T}(
+        SplitQuaternion{T}(
             Cplex{T}(f, g),
             Cplex{T}(h, zero(T))
         )
@@ -44,11 +44,11 @@ end
 
 function ExoCockle(a::T, b::T, c::T, d::T, f::T, g::T) where T <: Real
     ExoCockle{T}(
-        Cockle{T}(
+        SplitQuaternion{T}(
             Cplex{T}(a, b),
             Cplex{T}(c, d)
         ),
-        Cockle{T}(
+        SplitQuaternion{T}(
             Cplex{T}(f, g),
             zero(Cplex{T})
         )
@@ -57,11 +57,11 @@ end
 
 function ExoCockle(a::T, b::T, c::T, d::T, f::T) where T <: Real
     ExoCockle{T}(
-        Cockle{T}(
+        SplitQuaternion{T}(
             Cplex{T}(a, b),
             Cplex{T}(c, d)
         ),
-        Cockle{T}(
+        SplitQuaternion{T}(
             Cplex{T}(f, zero(T)),
             zero(Cplex{T})
         )
@@ -70,41 +70,41 @@ end
 
 function ExoCockle(a::T, b::T, c::T, d::T) where T <: Real
     ExoCockle{T}(
-        Cockle{T}(
+        SplitQuaternion{T}(
             Cplex{T}(a, b),
             Cplex{T}(c, d)
         ),
-        zero(Cockle{T})
+        zero(SplitQuaternion{T})
     )
 end
 
 function ExoCockle(a::T, b::T, c::T) where T <: Real
     ExoCockle{T}(
-        Cockle{T}(
+        SplitQuaternion{T}(
             Cplex{T}(a, b),
             Cplex{T}(c, zero(T))
         ),
-        zero(Cockle{T})
+        zero(SplitQuaternion{T})
     )
 end
 
 function ExoCockle(a::T, b::T) where T <: Real
     ExoCockle{T}(
-        Cockle{T}(
+        SplitQuaternion{T}(
             Cplex{T}(a, b),
             zero(Cplex{T})
         ),
-        zero(Cockle{T})
+        zero(SplitQuaternion{T})
     )
 end
 
 function ExoCockle(a::T) where T <: Real
     ExoCockle{T}(
-        Cockle{T}(
+        SplitQuaternion{T}(
             Cplex{T}(a, zero(T)),
             zero(Cplex{T})
         ),
-        zero(Cockle{T})
+        zero(SplitQuaternion{T})
     )
 end
 
@@ -143,7 +143,7 @@ end
 """
     unreal(z::ExoCockle)
 
-The unreal part of an exo-Cockle quaterion is a 7-vector.
+The unreal part of an exo-SplitQuaternion quaterion is a 7-vector.
 """
 function unreal(z::ExoCockle)
     vcat(unreal(z.l), array(z.r))
@@ -170,5 +170,5 @@ function show(io::IO, z::ExoCockle)
 end
 
 function random(::Type{ExoCockle{T}}) where T <: Real
-    ExoCockle{T}(random(Cockle{T}), random(Cockle{T}))
+    ExoCockle{T}(random(SplitQuaternion{T}), random(SplitQuaternion{T}))
 end
