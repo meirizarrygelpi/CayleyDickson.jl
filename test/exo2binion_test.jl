@@ -72,7 +72,7 @@ end
     b = CayleyDickson.randomBigFloat()
     c = CayleyDickson.randomBigInt()
     d = CayleyDickson.randomBigFloat()
-    l = Exo2Binion(ExoComplex(a, b, c, d))
+    l = Exo2Binion(Exo1Binion(a, b, c, d))
     r = Exo2Binion(a, b, c, d)
     l == r
 end
@@ -109,7 +109,7 @@ end
 end
 
 @test begin
-    a = random(ExoComplex{BigInt})
+    a = random(Exo1Binion{BigInt})
     z = random(Exo2Binion{BigInt})
     l = a + z
     r = z + a
@@ -125,7 +125,7 @@ end
 end
 
 @test begin
-    a = random(ExoComplex{BigInt})
+    a = random(Exo1Binion{BigInt})
     z = random(Exo2Binion{BigInt})
     l = a - z
     r = -(z - a)
@@ -275,7 +275,7 @@ end
 end
 
 @test begin
-    a = random(ExoComplex{BigInt})
+    a = random(Exo1Binion{BigInt})
     x = random(Exo2Binion{BigInt})
     l = commutator(a, x)
     r = zero(Exo2Binion{BigInt})

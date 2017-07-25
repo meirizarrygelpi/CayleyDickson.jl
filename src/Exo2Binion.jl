@@ -1,28 +1,28 @@
 """
-    Exo2Binion{T <: Real} = Parabolic{ExoComplex{T}}
+    Exo2Binion{T <: Real} = Parabolic{Exo1Binion{T}}
 
 A 2-exo-binion is a parabolic Cayley-Dickson construct with 1-exo-binions.
 """
-const Exo2Binion{T <: Real} = Parabolic{ExoComplex{T}}
+const Exo2Binion{T <: Real} = Parabolic{Exo1Binion{T}}
 
-function Exo2Binion(z::ExoComplex{T}) where T <: Real
-    Exo2Binion{T}(z, zero(ExoComplex{T}))
+function Exo2Binion(z::Exo1Binion{T}) where T <: Real
+    Exo2Binion{T}(z, zero(Exo1Binion{T}))
 end
 
 function Exo2Binion(z::Cplex{T}) where T <: Real
     Exo2Binion{T}(
-        ExoComplex{T}(z, zero(Cplex{T})),
-        zero(ExoComplex{T})
+        Exo1Binion{T}(z, zero(Cplex{T})),
+        zero(Exo1Binion{T})
     )
 end
 
 function Exo2Binion(a::T, b::T, c::T, d::T, f::T, g::T, h::T, j::T) where T <: Real
     Exo2Binion{T}(
-        ExoComplex{T}(
+        Exo1Binion{T}(
             Cplex{T}(a, b),
             Cplex{T}(c, d)
         ),
-        ExoComplex{T}(
+        Exo1Binion{T}(
             Cplex{T}(f, g),
             Cplex{T}(h, j)
         )
@@ -31,11 +31,11 @@ end
 
 function Exo2Binion(a::T, b::T, c::T, d::T, f::T, g::T, h::T) where T <: Real
     Exo2Binion{T}(
-        ExoComplex{T}(
+        Exo1Binion{T}(
             Cplex{T}(a, b),
             Cplex{T}(c, d)
         ),
-        ExoComplex{T}(
+        Exo1Binion{T}(
             Cplex{T}(f, g),
             Cplex{T}(h, zero(T))
         )
@@ -44,11 +44,11 @@ end
 
 function Exo2Binion(a::T, b::T, c::T, d::T, f::T, g::T) where T <: Real
     Exo2Binion{T}(
-        ExoComplex{T}(
+        Exo1Binion{T}(
             Cplex{T}(a, b),
             Cplex{T}(c, d)
         ),
-        ExoComplex{T}(
+        Exo1Binion{T}(
             Cplex{T}(f, g),
             zero(Cplex{T})
         )
@@ -57,11 +57,11 @@ end
 
 function Exo2Binion(a::T, b::T, c::T, d::T, f::T) where T <: Real
     Exo2Binion{T}(
-        ExoComplex{T}(
+        Exo1Binion{T}(
             Cplex{T}(a, b),
             Cplex{T}(c, d)
         ),
-        ExoComplex{T}(
+        Exo1Binion{T}(
             Cplex{T}(f, zero(T)),
             zero(Cplex{T})
         )
@@ -70,41 +70,41 @@ end
 
 function Exo2Binion(a::T, b::T, c::T, d::T) where T <: Real
     Exo2Binion{T}(
-        ExoComplex{T}(
+        Exo1Binion{T}(
             Cplex{T}(a, b),
             Cplex{T}(c, d)
         ),
-        zero(ExoComplex{T})
+        zero(Exo1Binion{T})
     )
 end
 
 function Exo2Binion(a::T, b::T, c::T) where T <: Real
     Exo2Binion{T}(
-        ExoComplex{T}(
+        Exo1Binion{T}(
             Cplex{T}(a, b),
             Cplex{T}(c, zero(T))
         ),
-        zero(ExoComplex{T})
+        zero(Exo1Binion{T})
     )
 end
 
 function Exo2Binion(a::T, b::T) where T <: Real
     Exo2Binion{T}(
-        ExoComplex{T}(
+        Exo1Binion{T}(
             Cplex{T}(a, b),
             zero(Cplex{T})
         ),
-        zero(ExoComplex{T})
+        zero(Exo1Binion{T})
     )
 end
 
 function Exo2Binion(a::T) where T <: Real
     Exo2Binion{T}(
-        ExoComplex{T}(
+        Exo1Binion{T}(
             Cplex{T}(a, zero(T)),
             zero(Cplex{T})
         ),
-        zero(ExoComplex{T})
+        zero(Exo1Binion{T})
     )
 end
 
@@ -170,5 +170,5 @@ function show(io::IO, z::Exo2Binion)
 end
 
 function random(::Type{Exo2Binion{T}}) where T <: Real
-    Exo2Binion{T}(random(ExoComplex{T}), random(ExoComplex{T}))
+    Exo2Binion{T}(random(Exo1Binion{T}), random(Exo1Binion{T}))
 end
