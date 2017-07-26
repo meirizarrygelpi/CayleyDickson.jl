@@ -72,4 +72,8 @@ A `Sedenion` is a traditional [sedenion](https://en.wikipedia.org/wiki/Sedenion)
 
 All 16-dimensional types have a multiplication operation that is non-commutative, non-associative, non-alternative, and flexible. None are composition algebras.
 
-NEEDS DOCS.
+TO-DO:
+
+* Documentation.
+* Rename `abs2` method `quadrance`.
+* Maybe make this a submodule of `Pairs.jl`, along with `Plexifications.jl`.

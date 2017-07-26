@@ -3,6 +3,8 @@
 
 An elliptic Cayley-Dickson construct as a pair.
 Elliptic constructs use the elliptic multiplication operation.
+Examples of elliptic Cayley-Dickson constructs are binions (complex numbers), quaternions,
+octonions, and sedenions.
 """
 struct Elliptic{T <: Number} <: Construct{T}
     l::T
@@ -14,8 +16,8 @@ end
     (==)(x::CayleyDickson.Parabolic, y::CayleyDickson.Parabolic)
     (==)(x::CayleyDickson.Hyperbolic, y::CayleyDickson.Hyperbolic)
 
-Return true if the left components of x and y are equal,
-and also the right components of x and y are equal.
+Return true if the left components of `x` and `y` are equal,
+and also the right components of `x` and `y` are equal.
 """
 function (==)(x::Elliptic, y::Elliptic)
     x.l == y.l && x.r == y.r
@@ -37,6 +39,13 @@ end
 
 For elliptic Cayley-Dickson constructs, return the sum of the squared absolute value of the
 left and right components of `z`. Note that this is always non-negative.
+
+For the `Binion`, `Quaternion`, and `Octonion` types, `abs2(z)` satisfies the composition
+property:
+```math
+    abs2(x * y) == abs2(x) * abs2(y)
+```
+The composition property does not hold true for the `Sedenion` type.
 """
 function abs2(z::Elliptic)
     abs2(z.l) + abs2(z.r)
@@ -57,7 +66,7 @@ end
     zero(::Type{CayleyDickson.Hyperbolic{T}}) where T <: Number
 
 For Cayley-Dickson construct types, return a Cayley-Dickson
-construct consisting of both left and right components being zero of type T.
+construct consisting of both left and right components being zero of type `T`.
 """
 function zero(::Type{Elliptic{T}}) where T <: Number
     Elliptic{T}(zero(T), zero(T))
@@ -69,7 +78,7 @@ end
     zero(::CayleyDickson.Hyperbolic{T}) where T <: Number
 
 For Cayley-Dickson constructs, return a Cayley-Dickson
-construct consisting of both left and right components being zero of type T.
+construct consisting of both left and right components being zero of type `T`.
 """
 function zero(::Elliptic{T}) where T <: Number
     zero(Elliptic{T})
@@ -81,8 +90,8 @@ end
     one(::Type{CayleyDickson.Hyperbolic{T}}) where T <: Number
 
 For Cayley-Dickson construct types, return a Cayley-Dickson
-construct where the left component is one of type T, and the right component
-is zero of type T.
+construct where the left component is one of type `T`, and the right component
+is zero of type `T`.
 """
 function one(::Type{Elliptic{T}}) where T <: Number
     Elliptic{T}(one(T), zero(T))
@@ -94,8 +103,8 @@ end
     one(::CayleyDickson.Hyperbolic{T}) where T <: Number
 
 For Cayley-Dickson constructs, return a Cayley-Dickson
-construct where the left component is one of type T, and the right component
-is zero of type T.
+construct where the left component is one of type `T`, and the right component
+is zero of type `T`.
 """
 function one(::Elliptic{T}) where T <: Number
     one(Elliptic{T})
@@ -199,6 +208,10 @@ end
     (-)(a::T, z::Elliptic{T}) where T <: Number
     (-)(a::T, z::Parabolic{T}) where T <: Number
     (-)(a::T, z::Hyperbolic{T}) where T <: Number
+
+For Cayley-Dickson constructs, return a Cayley-Dickson construct where the left component is
+the difference of `a` and the left component of `z`, and the right component is minus the
+right component of `z`. Note that `a` is of the same type as the components of `z`.
 """
 function (-)(a::T, z::Elliptic{T}) where T <: Number
     Elliptic{T}(a - z.l, -(z.r))
@@ -208,6 +221,10 @@ end
     (-)(z::Elliptic{T}, a::T) where T <: Number
     (-)(z::Parabolic{T}, a::T) where T <: Number
     (-)(z::Hyperbolic{T}, a::T) where T <: Number
+
+For Cayley-Dickson constructs, return a Cayley-Dickson construct where the left component is
+the difference of the left component of `z` and `a`, and the right component is the right
+component of `z`. Note that `a` is of the same type as the components of `z`.
 """
 function (-)(z::Elliptic{T}, a::T) where T <: Number
     Elliptic{T}(z.l - a, z.r)
@@ -217,6 +234,11 @@ end
     (-)(a::Real, z::Elliptic)
     (-)(a::Real, z::Parabolic)
     (-)(a::Real, z::Hyperbolic)
+
+For Cayley-Dickson constructs, return a Cayley-Dickson construct where the left component is
+the difference of `a` and the left component of `z`, and the right component is minus the
+right component of `z` converted to the same type as the left component of the result. Note
+that `a` and the components of `z` are not necessarily of the same type.
 """
 function (-)(a::Real, z::Elliptic)
     l = a - z.l
@@ -227,6 +249,11 @@ end
     (-)(z::Elliptic, a::Real)
     (-)(z::Parabolic, a::Real)
     (-)(z::Hyperbolic, a::Real)
+
+For Cayley-Dickson constructs, return a Cayley-Dickson construct where the left component is
+the difference of the left component of `z` and `a`, and the right component is the right
+component of `z` converted to the same type as the left component of the result. Note
+that `a` and the components of `z` are not necessarily of the same type.
 """
 function (-)(z::Elliptic, a::Real)
     l = z.l - a
@@ -237,6 +264,16 @@ end
     (*)(x::Elliptic{T}, y::Elliptic{T})
 
 For elliptic Cayley-Dickson constructs, the elliptic multiplication operation.
+
+The elliptic multiplication of two `Binion` types is commutative and associative.
+
+The elliptic multiplication of two `Quaternion` types is non-commutative but associative.
+
+The elliptic multiplication of two `Octonion` types is non-commutative, non-associative,
+but alternative.
+
+The elliptic multiplication of two `Sedenion` types is non-commutative, non-associative,
+non-alternative but flexible.
 """
 function (*)(x::Elliptic{T}, y::Elliptic{T}) where T <: Number
     Elliptic{T}(

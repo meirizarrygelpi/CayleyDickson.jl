@@ -1,7 +1,7 @@
 """
     Quaternion{T <: Real} = Elliptic{Binion{T}}
 
-A quaternion is an elliptic Cayley-Dickson construct with complex numbers.
+A quaternion is an elliptic Cayley-Dickson construct with binions.
 """
 const Quaternion{T <: Real} = Elliptic{Binion{T}}
 
