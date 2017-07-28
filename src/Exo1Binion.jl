@@ -41,18 +41,6 @@ function Exo1Binion(z::Exo1Real{T}) where T <: Real
     Exo1Binion(z.l, zero(T), z.r, zero(T))
 end
 
-function cloak(z::Exo1Binion{T}) where T <: Real
-    Exo1Binion{T}(-(z.l), z.r)
-end
-
-function dagger(z::Exo1Binion{T}) where T <: Real
-    Exo1Binion{T}(z.l, -(z.r))
-end
-
-function star(z::Exo1Binion{T}) where T <: Real
-    Exo1Binion{T}(z.r, z.l)
-end
-
 function selfstar(z::Exo1Binion)
     (z + star(z)) / 2
 end

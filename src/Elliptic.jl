@@ -374,3 +374,30 @@ given Cayley-Dickson construct type.
 function float(::Type{Elliptic{T}}) where T
     Elliptic{float(T)}
 end
+
+"""
+    cloak(a::Elliptic)
+
+For elliptic Cayley-Dickson constructs, equivalent to the minus operation.
+"""
+function cloak(a::Elliptic)
+    -(a)
+end
+
+"""
+    dagger(a::Elliptic)
+
+For elliptic Cayley-Dickson constructs, equivalent to the identity operation.
+"""
+function dagger(a::Elliptic)
+    a
+end
+
+"""
+    star(a::Elliptic)
+
+For elliptic Cayley-Dickson constructs, the identity operation.
+"""
+function star(a::Elliptic)
+    a
+end

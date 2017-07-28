@@ -149,3 +149,30 @@ end
 function float(::Type{Hyperbolic{T}}) where T
     Hyperbolic{float(T)}
 end
+
+"""
+    cloak(a::Hyperbolic)
+
+For hyperbolic Cayley-Dickson constructs, equivalent to the minus operation.
+"""
+function cloak(a::Hyperbolic)
+    -(a)
+end
+
+"""
+    dagger(a::Hyperbolic)
+
+For hyperbolic Cayley-Dickson constructs, equivalent to the identity operation.
+"""
+function dagger(a::Hyperbolic)
+    a
+end
+
+"""
+    star(a::Hyperbolic)
+
+For hyperbolic Cayley-Dickson constructs, the identity operation.
+"""
+function star(a::Hyperbolic)
+    a
+end
