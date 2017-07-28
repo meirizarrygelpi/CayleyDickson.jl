@@ -6,30 +6,12 @@ An abstract Cayley-Dickson construct.
 abstract type Construct{T <: Number} <: Number end
 
 """
-    unreal(::T) where T <: Real
-
-For real numbers, return the typed empty array.
-"""
-function unreal(::T) where T <: Real
-    T[]
-end
-
-"""
     array(z::Construct) -> Array
 
 Return an array with all the `Real` components of `z`.
 """
 function array(z::Construct)
     vcat(real(z), unreal(z))
-end
-
-"""
-    iszerodivisor(a::Real) -> Bool
-
-Return `true` if `a` is zero. Equivalent to `iszero(a)`.
-"""
-function iszerodivisor(a::Real)
-    iszero(a)
 end
 
 """

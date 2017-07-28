@@ -1,7 +1,7 @@
 """
     Binion{T <: Real} = Elliptic{T}
 
-A complex number is an elliptic Cayley-Dickson construct with real numbers.
+A binion is an elliptic Cayley-Dickson construct with real numbers.
 """
 const Binion{T <: Real} = Elliptic{T}
 
