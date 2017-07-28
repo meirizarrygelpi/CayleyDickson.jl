@@ -17,18 +17,6 @@ function Exo1Real(a::Real, b::Real)
     Exo1Real(promote(a, b)...)
 end
 
-function cloak(z::Exo1Real{T}) where T <: Real
-    Exo1Real{T}(-(z.l), z.r)
-end
-
-function dagger(z::Exo1Real{T}) where T <: Real
-    Exo1Real{T}(z.l, -(z.r))
-end
-
-function star(z::Exo1Real{T}) where T <: Real
-    Exo1Real{T}(z.r, z.l)
-end
-
 function selfstar(z::Exo1Real)
     (z + star(z)) / 2
 end

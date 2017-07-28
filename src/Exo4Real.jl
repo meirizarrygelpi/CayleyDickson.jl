@@ -25,18 +25,6 @@ function Exo4Real(z::Exo1Real{T}) where T <: Real
     )
 end
 
-function cloak(z::Exo4Real{T}) where T <: Real
-    Exo4Real{T}(cloak(z.l), dagger(z.r))
-end
-
-function dagger(z::Exo4Real{T}) where T <: Real
-    Exo4Real{T}(dagger(z.l), cloak(z.r))
-end
-
-function star(z::Exo4Real{T}) where T <: Real
-    Exo4Real{T}(dagger(star(z.r)), star(z.l))
-end
-
 function selfstar(z::Exo4Real)
     (z + star(z) + dagger(z) + star(dagger(z))) / 4
 end

@@ -149,3 +149,15 @@ end
 function float(::Type{Parabolic{T}}) where T
     Parabolic{float(T)}
 end
+
+function cloak(z::Parabolic)
+    Parabolic(cloak(z.l), dagger(z.r))
+end
+
+function dagger(z::Parabolic)
+    Parabolic(dagger(z.l), cloak(z.r))
+end
+
+function star(z::Parabolic)
+    Parabolic(dagger(star(z.r)), star(z.l))
+end

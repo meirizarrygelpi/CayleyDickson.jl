@@ -136,18 +136,6 @@ function Exo3Real(a::Real, b::Real, c::Real, d::Real, f::Real, g::Real, h::Real,
     Exo3Real(promote(a, b, c, d, f, g, h, j)...)
 end
 
-function cloak(z::Exo3Real{T}) where T <: Real
-    Exo3Real{T}(cloak(z.l), dagger(z.r))
-end
-
-function dagger(z::Exo3Real{T}) where T <: Real
-    Exo3Real{T}(dagger(z.l), cloak(z.r))
-end
-
-function star(z::Exo3Real{T}) where T <: Real
-    Exo3Real{T}(dagger(star(z.r)), star(z.l))
-end
-
 function selfstar(z::Exo3Real)
     (z + star(z)) / 2
 end
