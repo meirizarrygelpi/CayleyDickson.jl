@@ -313,14 +313,14 @@ end
 
 @test begin
     x = random(Exo1SplitQuaternion{BigInt})
-    abs2(x) > big(0) || abs2(x) < big(0) || abs2(x) == big(0)
+    quadrance(x) > big(0) || quadrance(x) < big(0) || quadrance(x) == big(0)
 end
 
 @test begin
     x = random(Exo1SplitQuaternion{BigInt})
     y = random(Exo1SplitQuaternion{BigInt})
-    l = abs2(x * y)
-    r = abs2(x) * abs2(y)
+    l = quadrance(x * y)
+    r = quadrance(x) * quadrance(y)
     l == r
 end
 

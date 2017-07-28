@@ -196,7 +196,7 @@ function inv(z::Construct)
         error(ZeroDivisorInverse)
     end
 
-    conj(z) / abs2(z)
+    conj(z) / quadrance(z)
 end
 
 """

@@ -3,7 +3,7 @@ __precompile__()
 module CayleyDickson
 
 import Base: +, -, *, /, \, ==
-import Base: real, isreal, conj, inv, abs2, zero, one, iszero
+import Base: real, isreal, conj, inv, zero, one, iszero
 import Base: show, promote_rule, widen, convert, float
 # import Unreal: unreal
 

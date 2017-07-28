@@ -311,14 +311,14 @@ end
 
 @test begin
     x = random(Exo2SplitBinion{BigInt})
-    abs2(x) > big(0) || abs2(x) < big(0) ||abs2(x) == big(0)
+    quadrance(x) > big(0) || quadrance(x) < big(0) ||quadrance(x) == big(0)
 end
 
 @test begin
     x = random(Exo2SplitBinion{BigInt})
     y = random(Exo2SplitBinion{BigInt})
-    l = abs2(x * y)
-    r = abs2(x) * abs2(y)
+    l = quadrance(x * y)
+    r = quadrance(x) * quadrance(y)
     l == r
 end
 

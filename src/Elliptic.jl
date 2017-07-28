@@ -35,20 +35,20 @@ function real(z::Elliptic)
 end
 
 """
-    abs2(z::CayleyDickson.Elliptic)
+    quadrance(z::CayleyDickson.Elliptic)
 
 For elliptic Cayley-Dickson constructs, return the sum of the squared absolute value of the
 left and right components of `z`. Note that this is always non-negative.
 
-For the `Binion`, `Quaternion`, and `Octonion` types, `abs2(z)` satisfies the composition
+For the `Binion`, `Quaternion`, and `Octonion` types, `quadrance(z)` satisfies the composition
 property:
 ```math
-    abs2(x * y) == abs2(x) * abs2(y)
+    quadrance(x * y) == quadrance(x) * quadrance(y)
 ```
 The composition property does not hold true for the `Sedenion` type.
 """
-function abs2(z::Elliptic)
-    abs2(z.l) + abs2(z.r)
+function quadrance(z::Elliptic)
+    quadrance(z.l) + quadrance(z.r)
 end
 
 """

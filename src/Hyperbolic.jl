@@ -17,18 +17,18 @@ function real(z::Hyperbolic)
 end
 
 """
-    abs2(z::CayleyDickson.Hyperbolic)
+    quadrance(z::CayleyDickson.Hyperbolic)
 
 For hyperbolic Cayley-Dickson constructs, return the difference of the squared
 absolute value of the left and right components of `z`.
 Note that this can be positive, negative, or zero.
 """
-function abs2(z::Hyperbolic)
-    abs2(z.l) - abs2(z.r)
+function quadrance(z::Hyperbolic)
+    quadrance(z.l) - quadrance(z.r)
 end
 
 function iszerodivisor(z::Hyperbolic)
-    abs2(z.l) == abs2(z.r)
+    quadrance(z.l) == quadrance(z.r)
 end
 
 function zero(::Type{Hyperbolic{T}}) where T <: Number
