@@ -65,3 +65,11 @@ end
 function promote_rule(::Type{Binion{T}}, ::Type{Binion{S}}) where {T <: Real, S <: Real}
     Binion{promote_type(T, S)}
 end
+
+function selfstar(z::Binion)
+    (z + star(z)) / 2
+end
+
+function anti_selfstar(z::Binion)
+    (z - star(z)) / 2
+end

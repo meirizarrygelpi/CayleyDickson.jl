@@ -309,3 +309,13 @@ end
     z = random(Binion{BigInt})
     z == z * one(z)
 end
+
+@test begin
+    x = random(Binion{Rational{BigInt}})
+    selfstar(selfstar(x)) == selfstar(x)
+end
+
+@test begin
+    x = random(Binion{Rational{BigInt}})
+    anti_selfstar(anti_selfstar(x)) == anti_selfstar(x)
+end

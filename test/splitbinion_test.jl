@@ -320,3 +320,13 @@ end
 @test begin
     float(SplitBinion{Float64}) == SplitBinion{Float64}
 end
+
+@test begin
+    x = random(SplitBinion{Rational{BigInt}})
+    selfstar(selfstar(x)) == selfstar(x)
+end
+
+@test begin
+    x = random(SplitBinion{Rational{BigInt}})
+    anti_selfstar(anti_selfstar(x)) == anti_selfstar(x)
+end

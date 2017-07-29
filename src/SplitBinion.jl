@@ -65,3 +65,11 @@ end
 function promote_rule(::Type{SplitBinion{T}}, ::Type{SplitBinion{S}}) where {T <: Real, S <: Real}
     SplitBinion{promote_type(T, S)}
 end
+
+function selfstar(z::SplitBinion)
+    (z + star(z)) / 2
+end
+
+function anti_selfstar(z::SplitBinion)
+    (z - star(z)) / 2
+end
