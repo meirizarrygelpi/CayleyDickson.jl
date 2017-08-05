@@ -361,3 +361,15 @@ end
     x = random(Exo4Real{Rational{BigInt}})
     anti_selfstar(anti_selfstar(x)) == anti_selfstar(x)
 end
+
+@test begin
+    l = Exo4Real(1,2,3,4)
+    r = Exo4Real(Exo2Real(1,2,3,4))
+    l == r
+end
+
+@test begin
+    l = Exo4Real(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17)
+    r = Exo4Real(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16)
+    l == r
+end

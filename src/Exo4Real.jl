@@ -25,6 +25,19 @@ function Exo4Real(z::Exo1Real{T}) where T <: Real
     )
 end
 
+function Exo4Real(v::T...) where T <: Real
+    n = length(v)
+    if n <= 8
+        return Exo4Real{T}(Exo3Real(v...), zero(Exo3Real{T}))
+    end
+    
+    if n > 16
+        return Exo4Real{T}(Exo3Real(v[1:8]...), Exo3Real(v[9:16]...))
+    end
+
+    Exo4Real{T}(Exo3Real(v[1:8]...), Exo3Real(v[9:end]...))
+end
+
 function selfstar(z::Exo4Real)
     (z + star(z) + dagger(z) + star(dagger(z))) / 4
 end
