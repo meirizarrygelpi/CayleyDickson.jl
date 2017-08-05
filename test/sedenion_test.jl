@@ -362,3 +362,15 @@ end
     m = Sedenion{Int}(zero(Octonion{Int}), one(Octonion{Int}))
     anti_flexator(i, m) != zero(Sedenion{Int})
 end
+
+@test begin
+    l = Sedenion(1,2,3,4)
+    r = Sedenion(Quaternion(1,2,3,4))
+    l == r
+end
+
+@test begin
+    l = Sedenion(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17)
+    r = Sedenion(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16)
+    l == r
+end

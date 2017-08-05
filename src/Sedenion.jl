@@ -24,6 +24,19 @@ function Sedenion(z::Binion{T}) where T <: Real
     )
 end
 
+function Sedenion(v::T...) where T <: Real
+    n = length(v)
+    if n <= 8
+        return Sedenion{T}(Octonion(v...), zero(Octonion{T}))
+    end
+    
+    if n > 16
+        return Sedenion{T}(Octonion(v[1:8]...), Octonion(v[9:16]...))
+    end
+
+    Sedenion{T}(Octonion(v[1:8]...), Octonion(v[9:end]...))
+end
+
 """
     unreal(z::Sedenion)
 
